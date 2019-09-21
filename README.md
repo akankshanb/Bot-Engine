@@ -7,7 +7,7 @@
 *  The need for specific information. For example, steps to install a library in a Linux machine does not give results for only that machine but comes with additional information for different machines like Mac or Windows. 
 * Another issue with using libraries is using a proper version of itself and all of its dependencies. Many times we need to upgrade some library, but are unaware or have difficulty knowing what other dependencies will have to be updated. This can cause conflicts if done manually leading to confusion when searched online.
 
-Thus, A system is required where you can quickly query anything you want, and get results as per your need with specific information from an interface which is much easier to use with human like interaction
+Thus, a system is required where you can quickly query anything you want, and get results as per your need with specific information from an interface which is much easier to use with human like interaction
 
 
 ## BOT Description
