@@ -30,10 +30,10 @@ Tagline: **Jarvis for APIs**
 * Redirect search results to a specified user via an email.
 
 ### How can you use it?
-Specify language && specify the library/api for its usage
+Specify language && specify the library/api for its usage.
 E.g. How can I use the socket api in python?
 
-Ask to install a certain package
+Ask to install a certain package.
 E.g. : install pycryptodome on all of my X-level machines
 
 Check for dependencies and update libraries:
