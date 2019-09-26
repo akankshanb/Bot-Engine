@@ -1,8 +1,8 @@
 # CSC510-22
 
 ## Problem Description
-//Why people find it difficult to use plots
-* How to plot data
+Plotting graphs from all sorts of data is a necessitty among people with or without some sort of programming background. They first need to know what kind of data they have and the type of graph that can be generated from it. This in itself is a challenging task as not all types of graphs can be generated from any dataset. Then comes the part of which library in what language to use for plotting the said data into graphs. A plethora of options are available to choose from and can overwhelm the user. There is a need for a quick solution to map any dataset into a graph for people with little to no knowledge on plotting graphs.
+
 
 
 ## BOT Description
