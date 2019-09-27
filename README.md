@@ -24,10 +24,10 @@ Use Case 1: Give the user the right plot name with code snippet.
 1 Preconditions
    User must have mattermost account.
 2 Main Flow
-  [S1] User provides the bot with the type of graph it requires.
-  [S2] Bot returns the appropriate library packages with a usage.
-  [S3] Bot asks the user if they need a sample visualization. User responds
-  [S4] Bot returns according to the response
+  User provides the bot with the type of graph it requires [S1].
+  Bot returns the appropriate library packages with a usage [S2].
+  Bot asks the user if they need a sample visualization. User responds [S3].
+  Bot returns according to the response [S4].
 3 Subflows
   [S1] User tells bot the graph type @graph_type. e.g. Histogram
   [S2] Bot returns the entire code snippet.
@@ -42,7 +42,10 @@ Use Case2: Plot the graph for the user with their sample data.
    User must have mattermost account.
    User must give the data in the format required by the bot.
 2 Main Flow
-   User requests bot to generate a graph of a type for their data [S1]. Bot will provide a specific data format for the graph to be generated [S2]. User provides its data in the specified format [S3]. Bot generates the graph and returns it to the user[S4].
+   User requests bot to generate a graph of a type for their data [S1].
+   Bot will provide a specific data format for the graph to be generated [S2].
+   User provides its data in the specified format [S3].
+   Bot generates the graph and returns it to the user [S4].
 3 Subflows
   [S1] User gives a /plot command with @graph_type.
   [S2] Bot will return a sample data format, e.g. a comma separated list.
