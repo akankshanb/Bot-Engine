@@ -20,7 +20,7 @@ Tagline: **Plotbot**
 ## Use cases
 Below are some of the use cases for **PlotBot**
 ```
-Use Case 1: Give the user the right plot name with code snippet.
+Use Case 1: Give the user with code snippet for the required type of graph.
 1 Preconditions
    User must have mattermost account.
 2 Main Flow
@@ -37,7 +37,7 @@ Use Case 1: Give the user the right plot name with code snippet.
   [E1] Requested graph data not available.
 ```
 ```
-Use Case2: Plot the graph for the user with their sample data.
+Use Case2: Plot the graph for the user with their data.
 1 Preconditions
    User must have mattermost account.
    User must give the data in the format required by the bot.
