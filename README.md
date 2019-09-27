@@ -15,6 +15,7 @@ This Library bot makes it easy for the users to choose the kind of plot and make
    * Piechart
    * Box-plot
    * 3D plot
+ <br>
 Tagline: **Plotbot**
 
 ## Use cases
@@ -65,7 +66,7 @@ Use Case3: Provide user with the ability to view all his plots.
   [S1] User asks to give all the plotted graphs.
   [S2] Bot will return the file of all user plotted graphs. 
 4 Alternative Flows
-  //[E1] No plots available.
+  [E1] No plots available.
 ```
 
 
