@@ -17,6 +17,7 @@ This library bot makes it easy for the users to choose the kind of plot and make
    * Box-plot
    * 3D plot
  <br>
+
 Tagline: **Plotbot**
 
 ## Use cases
