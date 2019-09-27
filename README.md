@@ -86,6 +86,10 @@ PlotBot is a chat bot which helps in plotting graphs and viewing your history. T
 ![SE_archi](https://media.github.ncsu.edu/user/13071/files/625a3d80-e0be-11e9-9e92-e9e9de2252d8)
 
 ### Architecture components  
+#### Mattermost server API endpoint: 
+The server endpoint parses incoming request calls, fetches metadata, identifies the user and sends this information to message parsing engine. When the message parsing engine returns a piece of data for the user, the MM endpoint API pushes it to the specidied user.
+#### Message parsing engine: 
+The message parsing engine, as the name suggests take the requests from the marttermost server endpoint, analyzes it and classifies the request in one of the three specified scenarios. Once classified, it sends the request either to the plotting service or to the datastore depending on the usecase. The output from either is then encoded into human readable message and sent back to the the Mattermost server endpoint 
 
 
 ### Additional patterns
