@@ -1,7 +1,8 @@
 # CSC510-22
 
 ## Problem Description
-Plotting graphs from all sorts of data is a necessitty among people with or without some sort of programming background. They first need to know what kind of data they have and the type of graph that can be generated from it. This in itself is a challenging task as not all types of graphs can be generated from any dataset. Then comes the part of which library in what language to use for plotting the said data into graphs. A plethora of options are available to choose from and can overwhelm the user. There is a need for a quick solution to map any dataset into a graph for people with little to no knowledge on plotting graphs. Also, plotting graphs for data visualization is a frequent task for data engineers and machine learning enthusiasts. Even the data engineers get confused which plot to use and how to plot their data.
+
+Visualizing data is an integral part for people to understand data literacy. Data literacy allows a learner to ask and answer meaningful questions by collecting, analyzing and making sense of the data encountered in real life. Many students, data analysts, data scientists and machine learning enthusiasts can analyze data using integrated plots and determine the most appropriate way to visualize information. As they visualize data as it moves through the types of plots, they formulate and discover meaning from the visual representation. As smoothly as they ace through comprehending the data, many find it difficult to write code to achieve this task, especially people without a programming background. Moreover, with a plethora of libraries available in the same language, it becomes a daunting task to go through the installation procedures and following lines of code step by step. Here comes PlotBot - a solution that helps user not to get overwhelmed. There is a need for a quick solution to map any dataset into a graph for people with little to no knowledge on plotting graphs. It is quick and easy with a friendly interaction platform which caters to a specific task instead of providing a million solutions.
 
 ## BOT Description
 This Library bot makes it easy for the users to choose the kind of plot and makes their work easy by also providing details of how to plot their data. Data visualization by plotting graphs is most common task for Data engineers, Machine learning enthusiasts and commonly preferred way to see the statistics of any study. One of the widely used library in Python for plotting graphs is **matplotlib**. matplotlib is a plotting library used in python programming language and it can be used in python scripts, shell, web application servers and other graphical user interface toolkits. There are many kinds of plots available in this library, but user might not be aware of which kind of plot to use for his data. So for the users working with Python, this bot will suggest the library to use for  plotting and also help users choose the right kind of plot based on the type of data user wants to visualize. Also, this bot will provide him with sample code for the kind of plot user wants to use and also lets him try out the code and see the way plot looks like by providing some sample data.  
@@ -80,16 +81,12 @@ Use Case3: Provide user with the ability to view all his plots.
 
 
 ## Architecture Design
-PlotBot is a chat bot which helps in plotting graphs and viewing your history. The architecture follows a hybrid pattern, where repository pattern is used for storage section and pipe and filter for message parsing and plotting.
-
-### High-level architecture  
 ![SE_archi](https://media.github.ncsu.edu/user/13071/files/625a3d80-e0be-11e9-9e92-e9e9de2252d8)
 
+### High-level architecture  
+
+
 ### Architecture components  
-#### Mattermost server API endpoint: 
-The server endpoint parses incoming request calls, fetches metadata, identifies the user and sends this information to message parsing engine. When the message parsing engine returns a piece of data for the user, the MM endpoint API pushes it to the specidied user.
-#### Message parsing engine: 
-The message parsing engine, as the name suggests take the requests from the marttermost server endpoint, analyzes it and classifies the request in one of the three specified scenarios. Once classified, it sends the request either to the plotting service or to the datastore depending on the usecase. The output from either is then encoded into human readable message and sent back to the the Mattermost server endpoint 
 
 
 ### Additional patterns
