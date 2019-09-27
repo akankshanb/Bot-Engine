@@ -81,16 +81,21 @@ Use Case3: Provide user with the ability to view all his plots.
 
 
 ## Architecture Design
-PlotBot is a chat bot which helps in plotting graphs and viewing your history. The architecture follows a hybrid pattern, where repository pattern is used for storage section and pipe and filter for message parsing and plotting.
+PlotBot is a chat bot which helps in plotting graphs and viewing your history. The architecture follows a hybrid pattern, where repository pattern is used for storage section and pipe and filter for message parsing and plotting. The compute elements lie on EC2 instance, contanarized and deployed from scripts where as thee storage component is setup separately. The requested data is generated/fetched and saved by the compute elements into the storage unit and then passed to the Mattermost server to be then pushed to the user interfacing via client
 
 ### High-level architecture  
 ![SE_archi](https://media.github.ncsu.edu/user/13071/files/625a3d80-e0be-11e9-9e92-e9e9de2252d8)
 
-### Architecture components  
+### Architecture components
 #### Mattermost server API endpoint: 
 The server endpoint parses incoming request calls, fetches metadata, identifies the user and sends this information to message parsing engine. When the message parsing engine returns a piece of data for the user, the MM endpoint API pushes it to the specidied user.
 #### Message parsing engine: 
-The message parsing engine, as the name suggests take the requests from the marttermost server endpoint, analyzes it and classifies the request in one of the three specified scenarios. Once classified, it sends the request either to the plotting service or to the datastore depending on the usecase. The output from either is then encoded into human readable message and sent back to the the Mattermost server endpoint 
+The message parsing engine, as the name suggests take the requests from the marttermost server endpoint, analyzes it and classifies the request in one of the three specified scenarios. Once classified, it sends the request either to the plotting service or to the datastore depending on the usecase. The output from either is then encoded into human readable message and sent back to the the Mattermost server endpoint.
+#### Poltter service:
+The Plotter service, takes graph type and graph data as input, normalizes it and plots the data. It then converts this data into an image and sends it back to the message parsing engine. While doing this, the plotting service also tags this data and plot with the userID (user token) and a timestamp and pushes it to the postgress and storage to be saved for future use.
+#### Postgress and storage unit:
+The postgress and storage unit, takes input from Plotter service and stores the data into DB. The input consists of data, timestamp and tags which identifies a particular plot asked by a specific user at a specific time. The Message Parsing engine can also request data back from the Storage unit where it replies back with the saved plot(s) as requested
+
 
 ### Additional patterns
 
