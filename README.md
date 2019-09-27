@@ -80,10 +80,10 @@ Use Case3: Provide user with the ability to view all his plots.
 
 
 ## Architecture Design
-![SE_archi](https://media.github.ncsu.edu/user/13071/files/625a3d80-e0be-11e9-9e92-e9e9de2252d8)
+PlotBot is a chat bot which helps in plotting graphs and viewing your history. The architecture follows a hybrid pattern, where repository pattern is used for storage section and pipe and filter for message parsing and plotting.
 
 ### High-level architecture  
-
+![SE_archi](https://media.github.ncsu.edu/user/13071/files/625a3d80-e0be-11e9-9e92-e9e9de2252d8)
 
 ### Architecture components  
 
