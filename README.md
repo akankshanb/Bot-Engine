@@ -99,7 +99,10 @@ The postgress and storage unit, takes input from Plotter service and stores the 
 
 ### Additional patterns
 
-#### Blackboard
+#### Repository 
+We intend to use the datastore as a repository pattern, where the Message parsing engine can talk to the postgress service to query and fetch data that is requested by user i.e the sample graphs or the history of plots. The Plotting service will push the data that is has generated to the Data mapper agent which will push in the plot to the specified location as per the tags provided. Thus, if the Query contains the correct tags, the subset of plots stored on the datastore can be identified, fetched and returned to the user.
+
+![image](https://media.github.ncsu.edu/user/13071/files/e4a12c80-e0d3-11e9-9425-a153a6294670)
 
 
 #### Object Oriented  
