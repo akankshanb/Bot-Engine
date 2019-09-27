@@ -18,19 +18,23 @@ This Library bot makes it easy for the users to choose the kind of plot and make
 Tagline: **Plotbot**
 
 ## Use cases
-This is an example use case:
+Below are some of the use cases for **PlotBot**
 ```
-Use Case1: Give the user the right plot name with code snippet.
+Use Case 1: Give the user the right plot name with code snippet.
 1 Preconditions
    User must have mattermost account.
 2 Main Flow
-   //User will request meeting and provide list of attendees [S1]. Bot will provide  possible meeting times and user confirms [S2]. Bot creates meeting and posts link [S3].
+  [S1] User provides the bot with the type of graph it requires.
+  [S2] Bot returns the appropriate library packages with a usage.
+  [S3] Bot asks the user if they need a sample visualization. User responds
+  [S4] Bot returns according to the response
 3 Subflows
-  //[S1] User provides /meeting command with @username,@username list.
-  //[S2] Bot will return list of meeting times. User will confirm time.
-  //[S3] Bot will create meeting and post link to google calendar event.
+  [S1] User tells bot the graph type @graph_type. e.g. Histogram
+  [S2] Bot returns the entire code snippet.
+  [S3] Bot asks for plotting sample code provided. User confirms.
+  [S4] Bot returns the sample plot.
 4 Alternative Flows
-  //[E1] No team members are available.
+  [E1] Requested graph data not available.
 ```
 ```
 Use Case2: Plot the graph for the user with their sample data.
@@ -38,19 +42,21 @@ Use Case2: Plot the graph for the user with their sample data.
    User must have mattermost account.
    User must give the data in the format required by the bot.
 2 Main Flow
-   //User will request meeting and provide list of attendees [S1]. Bot will provide  possible meeting times and user confirms [S2]. Bot creates meeting and posts link [S3].
+   User requests bot to generate a graph of a type for their data [S1]. Bot will provide a specific data format for the graph to be generated [S2]. User provides its data in the specified format [S3]. Bot generates the graph and returns it to the user[S4].
 3 Subflows
-  //[S1] User provides /meeting command with @username,@username list.
-  //[S2] Bot will return list of meeting times. User will confirm time.
-  //[S3] Bot will create meeting and post link to google calendar event.
+  [S1] User gives a /plot command with @graph_type.
+  [S2] Bot will return a sample data format, e.g. a comma separated list.
+  [S3] User provides the data in the requested format.
+  [S4] Bot returns the generated graph.
 4 Alternative Flows
-  //[E1] No team members are available.
+  [E1] Incorrect data format. Requested data format to be provided
+  [E2] Requested graph type not available.
 ```
 ```
 Use Case3: Provide admin with the ability to configure new plots into the server database.
 1 Preconditions
   The admin must have a mattermost account.
-  The admin must have permissions to configure the bot.
+  The admin should have proper authorization for bot access.
 2 Main Flow
    //User will request meeting and provide list of attendees [S1]. Bot will provide  possible meeting times and user confirms [S2]. Bot creates meeting and posts link [S3].
 3 Subflows
