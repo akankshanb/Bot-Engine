@@ -74,7 +74,7 @@ Use Case3: Provide user with the ability to view all his plots.
 
 #### Wireframe  
 ![Issue1](https://media.github.ncsu.edu/user/13256/files/f077f900-e0a9-11e9-9d30-c3348e7971da)
-
+![Issue2 and 3](https://media.github.ncsu.edu/user/13256/files/4e144180-e0ba-11e9-9578-6536d96073c3)
 #### Storyboard
 ![PlotBot-storyBoard](https://media.github.ncsu.edu/user/13110/files/587c0e80-e0ad-11e9-9317-2cd3607b8e27)
 
