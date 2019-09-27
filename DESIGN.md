@@ -1,4 +1,4 @@
-# CSC510-22
+# Design Milestone
 
 ## Problem Description
 
