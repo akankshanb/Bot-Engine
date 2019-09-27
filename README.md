@@ -101,11 +101,13 @@ The postgress and storage unit, takes input from Plotter service and stores the 
 
 #### Repository 
 We intend to use the datastore as a repository pattern, where the Message parsing engine can talk to the postgress service to query and fetch data that is requested by user i.e the sample graphs or the history of plots. The Plotting service will push the data that is has generated to the Data mapper agent which will push in the plot to the specified location as per the tags provided. Thus, if the Query contains the correct tags, the subset of plots stored on the datastore can be identified, fetched and returned to the user.
-
 ![image](https://media.github.ncsu.edu/user/13071/files/e4a12c80-e0d3-11e9-9425-a153a6294670)
 
+#### Pipe-filter
+We use a pipe and filter method to parse, analyze each component of the input message and respond accordingly.
+The input message is parsed and classified into the three categories that the bot offers, else it returns a error in request. Once classified, the metadata and input data (plot data points) are used to fetch plots from datastore or generate plots as per the classification. Once the output is generated and saved (if required) it is then encoded back using the user token to be sent back to the Mattermost server whic replies to the user
+![image](https://media.github.ncsu.edu/user/13071/files/0a323400-e0dc-11e9-846c-bf429df10f06)
 
-#### Object Oriented  
 
 
 #### Implicit and Explicit Invocation
