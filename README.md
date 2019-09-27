@@ -69,3 +69,32 @@ Use Case3: Provide admin with the ability to configure new plots into the server
 4 Alternative Flows
   //[E1] No team members are available.
 ```
+
+
+### Design Sketches
+
+#### Wireframe  
+
+
+#### Storyboard
+
+
+## Architecture Design
+
+
+### High-level architecture  
+
+
+### Architecture components  
+
+
+### Additional patterns
+
+#### Blackboard
+
+
+#### Object Oriented  
+
+
+#### Implicit and Explicit Invocation
+//TODO
