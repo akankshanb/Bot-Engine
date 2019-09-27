@@ -77,6 +77,7 @@ Use Case3: Provide admin with the ability to configure new plots into the server
 ![Issue1](https://media.github.ncsu.edu/user/13256/files/f077f900-e0a9-11e9-9d30-c3348e7971da)
 
 #### Storyboard
+![StoryBoard](https://media.github.ncsu.edu/user/13110/files/93ca0d80-e0ac-11e9-83e5-8bf718fdd4ff)
 
 
 ## Architecture Design
