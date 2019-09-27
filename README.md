@@ -56,18 +56,16 @@ Use Case2: Plot the graph for the user with their data.
   [E2] Requested graph type not available.
 ```
 ```
-Use Case3: Provide admin with the ability to configure new plots into the server database.
+Use Case3: Provide user with the ability to view all his plots.
 1 Preconditions
-  The admin must have a mattermost account.
-  The admin should have proper authorization for bot access.
+   User must have mattermost account.
 2 Main Flow
-   //User will request meeting and provide list of attendees [S1]. Bot will provide  possible meeting times and user confirms [S2]. Bot creates meeting and posts link [S3].
+   User requests to provide all his plotted graphs using this bot.
 3 Subflows
-  //[S1] User provides /meeting command with @username,@username list.
-  //[S2] Bot will return list of meeting times. User will confirm time.
-  //[S3] Bot will create meeting and post link to google calendar event.
+  [S1] User asks to give all the plotted graphs.
+  [S2] Bot will return the file of all user plotted graphs. 
 4 Alternative Flows
-  //[E1] No team members are available.
+  //[E1] No plots available.
 ```
 
 
