@@ -2,7 +2,7 @@
 
 ## Team
 + Akanksha Bhattacharyya: anbhatta
-+ Sai Mounika: snekkal
++ Sai Mounika Chowdhary Nekkalapudi: snekkal
 + Utsav Kopargaonkar: ukoparg
 + Yash Kamdar: yjkamdar
 
