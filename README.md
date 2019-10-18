@@ -8,3 +8,5 @@
 
 ## Milestones
 + [Milestone 1: Design](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/DESIGN.md)
++ [Milestone 2: Bot](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md)
+
