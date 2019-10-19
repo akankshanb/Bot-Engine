@@ -14,7 +14,7 @@ Therefore, to sum it up -
    * Histogram
    * Scatterplot
    * Box-plot
-   * Bar chart
+   * Bar chart with facets
  <br>
 
 Tagline: **Plotbot**
