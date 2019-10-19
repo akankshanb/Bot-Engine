@@ -13,9 +13,8 @@ Therefore, to sum it up -
    * Line graph
    * Histogram
    * Scatterplot
-   * Piechart
    * Box-plot
-   * 3D plot
+   * Bar chart
  <br>
 
 Tagline: **Plotbot**
