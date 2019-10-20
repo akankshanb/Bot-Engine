@@ -15,7 +15,7 @@ def plotbot():
     print("Request received...")
     request_json = request.get_json(force=True)
     text_input = str(request_json)
-    plotbot_result = 
+    plotbot_result = "Hi, I can help you with:\n *providing code snippet\n *plotting graph\n *give your previous graphs"
     plotbot_out = {"response_type": "ephemeral",  "username":"plotbot", "text": plotbot_result}
     response = app.response_class(response=json.dumps(plotbot_out) + '\n', status=200, mimetype="application/json")
     return response
