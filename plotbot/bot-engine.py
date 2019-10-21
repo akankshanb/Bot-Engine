@@ -7,6 +7,7 @@ import requests
 import os
 import json
 import subprocess
+import .controller.mmutil as mm
 from flask import send_file
 
 app = Flask(__name__)
@@ -17,9 +18,12 @@ def plotbot():
     # print("Greeting")
     request_json = request.get_json(force=True)
     resp_msg= parseRequest(request_json["trigger_word"],request_json["text"])
-    plotbot_out = {"response_type": "ephemeral",  "username":"plotbot", "text": resp_msg}
-    response = app.response_class(response=json.dumps(plotbot_out) + '\n', status=200, mimetype="application/json")
-    return response
+
+    post_message(request_json["trigger_word"],resp_msg,'framework/foo.png')
+
+    # plotbot_out = {"response_type": "ephemeral",  "username":"plotbot", "text": resp_msg}
+    # response = app.response_class(response=json.dumps(plotbot_out) + '\n', status=200, mimetype="application/json")
+    # return response
 
 def parseRequest(trigger,message):
      #print(request_json)
