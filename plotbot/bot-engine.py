@@ -20,7 +20,7 @@ def plotbot():
     # print("Greeting")
     request_json = request.get_json(force=True)
     resp_msg= parseRequest(request_json["trigger_word"],request_json["text"])
-    mm.post_message(request_json["channel_id"],resp_msg,'framework/foo.png')
+    mm.post_message_file(request_json["channel_id"],resp_msg,'framework/foo.png')
     return ''
 
 def parseRequest(trigger,message):
