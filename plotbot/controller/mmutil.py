@@ -1,15 +1,21 @@
 import os
+import yaml
 from mattermostdriver import Driver
 
-mm_url=os.getenv('MM_URL')
+mm_ip=os.getenv('MM_IP')
 bot_token=os.getenv('PLOT_BOT_TOKEN')
 
-if not mm_url or not bot_token:
-    raise Exception('Please add the environment variables for VM IP (MM_URL) and the bot token (PLOT_BOT_TOKEN)')
+with open('../config.yml') as f:
+    data = yaml.load(f, Loader=yaml.FullLoader)
+    if not mm_ip:
+        mm_ip=data['MM_IP']
+
+if not mm_ip or not bot_token:
+    raise Exception('Please add the environment variables for Mattermost server IP(MM_IP) and the bot token (PLOT_BOT_TOKEN)')
 
 def get_driver():
     my_driver = Driver({
-    'url': mm_url,
+    'url': mm_ip,
     'token': bot_token,
     'scheme': 'http',
     'port': 8065,
