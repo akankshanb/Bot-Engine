@@ -50,6 +50,11 @@ def post_message(channel_id,message,file_path):
     file_id=upload_file(channel_id,file_path)
     create_post_file(channel_id,message,[file_id])
 
+def post_message(channel_id,message):
+    get_driver().posts.create_post(options={
+        'channel_id': channel_id,
+        'message': message})
+
 def create_outgoing_webhook(team_id,channel_id,display_name,url,words):
     get_driver().webhooks.create_outgoing_hook(options={
         'team_id': team_id,
