@@ -22,7 +22,7 @@ def upload_file(channel_id,file_path):
     files={'files': (os.path.basename(file_path), open(file_path, 'rb'))}
     mm_file=get_driver().files.upload_file(channel_id,files)
     #mm_file=controller.files.get_file_metadata('bqgh91bhabd7ifm6ta4q7pu4bw')
-    print(mm_file)
+    #print(mm_file)
     file_id=mm_file["file_infos"][0]["id"]
     #file_id=mm_file["id"]
     return file_id
