@@ -2,8 +2,7 @@
 import string
 import random
 import pickle
-plotIDs = []
-userIDs = []
+import constants
 
 class ID(object):
     def __init__(self):
@@ -23,32 +22,45 @@ def gatherIDs(idtype):
     infile.close()
     return ids
 
-instanceIDs = ID()
-instanceIDs.plotIDs = gatherIDs('plot')
-
-
 def randomString(stringLength=10):
     letters = string.ascii_lowercase
     id= ''.join(random.choice(letters) for i in range(stringLength))
     return id
 
 def generateID(idtype):
-    global plotIDs
-    global userIDs
     if idtype=='plot':
         id = randomString()
-        if id in plotIDs:   generateID('plot')
-        plotIDs.append(id)
-        saveIDs('plot', plotIDs)
+        if id in constants.plotIDs:   generateID('plot')
+        constants.plotIDs.append(id)
+        saveIDs('plot', constants.plotIDs)
     elif idtype=='user':
         id = randomString()
-        if id in userIDs:   generateID('user')
-        userIDs.append(id)
-        saveIDs('user', userIDs)
+        if id in constants.userIDs:   generateID('user')
+        constants.userIDs.append(id)
+        saveIDs('user', constants.userIDs)
     return id
 
-def stop_services():
-    global instanceIDs
-    print(instanceIDs.plotIDs)
-    saveIDs('plot', instanceIDs.plotIDs)
-    
+instanceIDs = ID()
+instanceIDs.plotIDs = gatherIDs('plot')
+
+def fetchDB_path():
+    pass
+
+def fetchData(task):
+    graphtype = task[0]
+    action = task[1]
+    if action == 'plot':
+        newGraph = None
+        if graphtype == 'scatter':  newGraph = constants.plotter.scatter_plot(constants.dataset)
+        elif graphtype == 'box':  newGraph = constants.plotter.box_plot(constants.dataset)
+        elif graphtype == 'bar':  newGraph = constants.plotter.bar_plot(constants.dataset)
+        newGraph.plot_graph()
+        newGraph.saveimage()
+        return str(newGraph.plotID)+'.png'
+    elif action == 'snippet':
+        filename = ''
+        if graphtype == 'scatter': filename = constants.snippetter.scatter_plot()
+        elif graphtype == 'box': filename = constants.snippetter.box_plot()
+        elif graphtype == 'bar': filename = constants.snippetter.bar_plot()
+        return filename
+

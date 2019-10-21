@@ -25,22 +25,24 @@ class graph(object):
         return plotID
     
     def saveimage(self):
-        path = mixin.fetchDB_path()
-        self.plt.savefig(path+self.plotID+'.png')
+        self.plt.savefig('allplots/'+self.plotID+'.png')
         self.plt.clf()
+        pass
 
 class scatter_plot(graph):
     def __init__(self, dataset):
         super(scatter_plot, self).__init__()
         self.datasetID = dataset
-        self.x_axis = None
-        self.y_axis = None
 
     def load_dataset(self):
-        pass
+        # for mocks using in-built dataset, actual implementation will use mentioned dataset
+        self.data = self.sns.load_dataset(self.datasetID)
 
     def populate_axes_info(self):
-        pass
+        # for mocks using in-built dataset, actual implementation will use mentioned dataset
+        self.x_axis = 'species'
+        self.y_axis = 'petal_length'
+
 
     def plot_graph(self):
         self.load_dataset()
@@ -51,15 +53,14 @@ class box_plot(graph):
     def __init__(self, dataset):
         super(box_plot, self).__init__()
         self.datasetID = dataset
-        self.x_axis = None
-        self.y_axis = None
 
     def load_dataset(self):
-        pass
-
+        # for mocks using in-built dataset, actual implementation will use mentioned dataset
+        self.data = self.sns.load_dataset(self.datasetID)
+        
     def populate_axes_info(self):
         # for mocks using in-built dataset, actual implementation will use mentioned dataset
-        pass
+        self.x_axis = self.data["total_bill"]
 
     def plot_graph(self):
         self.load_dataset()
@@ -70,17 +71,16 @@ class bar_plot(graph):
     def __init__(self, dataset):
         super(bar_plot, self).__init__()
         self.datasetID = dataset
-        self.x_axis = None
-        self.y_axis = None
 
     def load_dataset(self):
         # for mocks using in-built dataset, actual implementation will use mentioned dataset
-        pass
-
+        self.data = self.sns.load_dataset(self.datasetID)
+        
     def populate_axes_info(self):
         # for mocks using in-built dataset, actual implementation will use mentioned dataset
-        pass
-
+        self.x_axis = 'species'
+        self.y_axis = 'petal_length'
+        
     def plot_graph(self):
         self.load_dataset()
         self.populate_axes_info()
