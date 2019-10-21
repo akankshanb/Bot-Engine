@@ -1,6 +1,6 @@
-# import controller as asd
+import mmutil as asd
 
-# channel_id = asd.get_driver().channels.get_channel_by_name_and_team_name('PlotBotTeam', 'YashBotTester')['id']
+channel_id = asd.get_driver().channels.get_channel_by_name_and_team_name('PlotBotTeam', 'YashBotTester')['id']
 
 # # file_id=asd.upload_file(channel_id,"/Users/ykamdar/Documents/sample.png")
 # # #file_id='q3p8bstfttrwur578sn7mdna7e'
@@ -10,7 +10,7 @@
 # asd.create_outgoing_webhook('PlotBotTeam',channel_id,'Auto hook')
 
 
-#print(channel_id)
+print(channel_id)
 
 #Create webhooks and slash commands
 # controller.webhooks.create_outgoing_hook(options={
