@@ -9,7 +9,8 @@ def retrieve_snippet(plottype):
 def fetch(input_txt):
     text_list = input_txt.lower().strip().split()
     files=[]
-
+    if len(text_list) ==1:
+        raise ValueError('Incorrect data format. Plase provide graph type') 
     snippets=retrieve_snippet(text_list[1])
     for name in snippets:
         path="sample_plots/"+name+".png"
