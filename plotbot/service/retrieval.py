@@ -10,7 +10,7 @@ def fetchTime(start_time, stop_time):
     return (date_time_obj_stop, date_time_obj_start)
 
 def fetch(message, user):
-    print("----")
+    #print("----")
     m = re.match('\S+\s+from\:\s*(\S+\s*\S+)\s+to\:\s*(\S+\s*\S+)', message)
     n = re.match('\S+\s+(\S+)', message)
     filenames = []

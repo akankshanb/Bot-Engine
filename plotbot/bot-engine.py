@@ -33,7 +33,7 @@ def parseRequest(trigger,message, file_ids, user):
     resp_msg=defaultreply()
     files= []
     try:
-        print(trigger)
+        print("--> requested action: "+trigger)
         if trigger == "@plotbot":
             resp_msg = checkgreeting(message)
         elif trigger == "sample":

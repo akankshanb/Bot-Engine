@@ -87,7 +87,7 @@ when(graphs).fetchAxisInfo('barplot', ...).thenReturn(responseAxisInfo['barplot_
 when(sampler).retrieve_snippet('scatterplot').thenReturn(responseSnippet['scatterplot'])
 when(sampler).retrieve_snippet('barplot').thenReturn(responseSnippet['barplot'])
 when(sampler).retrieve_snippet('boxplot').thenReturn(responseSnippet['boxplot'])
-when(sampler).retrieve_snippet(...).thenReturn(None)
+#when(sampler).retrieve_snippet(...).thenReturn(None)
 
 
 def randomplot():
@@ -97,12 +97,12 @@ def randomplot():
     for i in range(1,num_plots):
         img = ''+responseRetrive[randint(1,len(responseRetrive)-1)]
         imgs.append(img)
+    if(len(imgs)== 0):   randomplot()
     return imgs
 
 constants.mockPlots = generateMockPlots()
 responseRetrieve['datetime'] = randomplot()
 responseRetrieve['plot'] = randomplot()
-print(responseRetrieve)
 
 when(mixin).fetchplotfromDBtimed(..., ...).thenReturn(responseRetrieve['datetime'])
 when(mixin).fetchplotfromDB(..., ...).thenReturn(responseRetrieve['plot'])

@@ -13,7 +13,11 @@ def fetch(input_txt):
     files=[]
     if len(text_list) ==1:
         raise ValueError('Incorrect data format. Plase provide graph type') 
-    snippets=retrieve_snippet(text_list[1])
+    try:
+        snippets=retrieve_snippet(text_list[1])
+    except:
+        snippets = None
+    #print(snippets)
     if snippets is not None:
         for name in snippets:
             path="sample_plots/"+name+".png"

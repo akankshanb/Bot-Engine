@@ -3,7 +3,7 @@ import framework.constants as constants
 import framework.mocking_agent
 
 def scatterplotfunc(msg_arr, dataset_filename):
-    print('in scatter')
+    #print('in scatter')
     axis_info = graphs.fetchAxisInfo('scatterplot', msg_arr)
     dataset = graphs.load_dataset('scatterplot', dataset_filename)
     newGraph = graphs.scatter_plot(dataset, axis_info)
@@ -12,7 +12,7 @@ def scatterplotfunc(msg_arr, dataset_filename):
     return newGraph.plotLocation
 
 def barplotfunc(msg_arr, dataset_filename):
-    print('in bar')
+    #print('in bar')
     axis_info = graphs.fetchAxisInfo('barplot', msg_arr)
     dataset = graphs.load_dataset('barplot', dataset_filename)
     newGraph = graphs.bar_plot(dataset, axis_info)
@@ -22,7 +22,7 @@ def barplotfunc(msg_arr, dataset_filename):
 
 
 def boxplotfunc(msg_arr, dataset_filename):
-    print('in box')
+    #print('in box')
     axis_info = graphs.fetchAxisInfo('boxplot', msg_arr)
     dataset = graphs.load_dataset('boxplot', dataset_filename)
     newGraph = graphs.box_plot(dataset, axis_info)
@@ -35,9 +35,9 @@ def plot(input_txt, fileId):
     if len(text_list[1]) ==1:
         raise ValueError('Please give a plot type and file name')
     if text_list[1] in graph_dict.keys():
-        print(text_list)
+        #print(text_list)
         filename = graph_dict[text_list[1]](text_list[2:], fileId)
-        print(filename)
+        #print(filename)
         return_msg = "Here is your plots for **{}**".format(text_list[1])
         return return_msg, [filename]
     else: 
