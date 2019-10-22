@@ -179,7 +179,7 @@ In order to run the tests:
 <a name="mocking"></a>
 ### Mocking Service Component
 
-We implemented mock services for each use case and data to support service integration. The code for mock data is in [service](https://github.ncsu.edu/csc510-fall2019/CSC510-22/tree/master/plotbot/service)
+We implemented mock services for each use case and data to support service integration. The code for mock data is in MatterMost[framework](https://github.ncsu.edu/csc510-fall2019/CSC510-22/tree/master/plotbot/framework)
 
 ### Screencast
 Link to screencast [Link]()
