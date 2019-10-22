@@ -68,14 +68,3 @@ def fetchplotfromDB(plot, user):
 def fetchplotfromDBtimed(plot, user):
     pass
 
-def randomplot():
-    print("++++++")
-    a = subprocess.check_output("ls").decode()
-    responseRetrive = re.findall('(\S+png)', a)
-    num_plots = randint(0,len(responseRetrive))
-    imgs = []
-    for i in range(1,num_plots):
-        img = 'framework/allplots/'+responseRetrive[randint(0,len(responseRetrive)-1)]
-        imgs.append(img)
-    print(imgs)
-    return imgs

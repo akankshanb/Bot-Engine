@@ -87,6 +87,8 @@ when(graphs).fetchAxisInfo('barplot', ...).thenReturn(responseAxisInfo['barplot_
 when(sampler).retrieve_snippet('scatterplot').thenReturn(responseSnippet['scatterplot'])
 when(sampler).retrieve_snippet('barplot').thenReturn(responseSnippet['barplot'])
 when(sampler).retrieve_snippet('boxplot').thenReturn(responseSnippet['boxplot'])
+when(sampler).retrieve_snippet(...).thenReturn(None)
+
 
 def randomplot():
     responseRetrive = constants.mockPlots
@@ -100,6 +102,7 @@ def randomplot():
 constants.mockPlots = generateMockPlots()
 responseRetrieve['datetime'] = randomplot()
 responseRetrieve['plot'] = randomplot()
+print(responseRetrieve)
 
 when(mixin).fetchplotfromDBtimed(..., ...).thenReturn(responseRetrieve['datetime'])
 when(mixin).fetchplotfromDB(..., ...).thenReturn(responseRetrieve['plot'])

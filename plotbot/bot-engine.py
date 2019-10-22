@@ -67,7 +67,6 @@ def defaultreply():
 if __name__ == "__main__":
     try:
         setup.load()
-        constants.mockPlots = setupMockdata()
         app.run(host='0.0.0.0')
     except KeyboardInterrupt:
         mixin.saveIDs('plot', constants.plotIDs)
