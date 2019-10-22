@@ -109,10 +109,32 @@ Use Case3: Provide user with the ability to view all his plots.
 ### Puppeteer Testing
 *** tokens are required for mattermost_email and mattermost_pwd***
 *** User has to do 'npm install' before starting the test
-*** the user has to run npm test and it shows the pass/fail status for each test*** 
-#Testcase for Usecase-1
-#Testcase for Usecase-2
-#Testcase for Usecase-3
+*** the user has to run npm test and it shows the pass/fail status for each test*** <br>
+###### Sample Use Case
+```javascript
+  it('It should greet back', async () => {
+        var list = [,]
+
+        await page.waitForSelector('#post_textbox');
+        await page.focus('#post_textbox')
+        await page.keyboard.type( "@plotbot hi" );
+        await page.keyboard.press('Enter');
+        let promise = new Promise((res, rej) => {
+          setTimeout(() => res("Waiting for the Response!"), 10000)
+        });
+        let waiting = await promise;
+        await page.waitForSelector('.post__body');
+        const output = await page.evaluate(() => Array.from(
+          document.getElementsByClassName('post__body'), e => e.innerText));
+        var result = output[output.length-1];
+        expect(result).to.match(/^Hi*/);
+
+        await browser.close();
+    });
+ ```
+##### Testcase for Usecase-1
+##### Testcase for Usecase-2
+##### Testcase for Usecase-3
 
 ### Mocking Service Component
 
