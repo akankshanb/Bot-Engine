@@ -106,29 +106,13 @@ Use Case3: Provide user with the ability to view all his plots.
 **Trigger words corresponding to different tasks**
 **Flask Framework**
 
-
-### Selenium Testing
-
-To support testing of your bot, you will use Selenium to verify that the bot is returning the correct response based on a input message.
-
-[See full example Selenium test for Slack](https://gist.github.com/chrisparnin/e3ee1a96c681f12ae11246cfe3225182)
-
-```java
-@Test
-public void postMessage()
-{
-	driver.get("https://csc510-fall16.slack.com/");
-
-   ...
-
-	// Find email and password fields.
-	WebElement email = driver.findElement(By.id("email"));
-	WebElement pw = driver.findElement(By.id("password"));
-
-   ...
-```
-
-Create a selenium test that demonstrates each use case. Demonstrate at least one "happy path" and one "alternative" path for each use case.
+### Puppeteer Testing
+*** tokens are required for mattermost_email and mattermost_pwd***
+*** User has to do 'npm install' before starting the test
+*** the user has to run npm test and it shows the pass/fail status for each test*** 
+#Testcase for Usecase-1
+#Testcase for Usecase-2
+#Testcase for Usecase-3
 
 ### Mocking Service Component
 
