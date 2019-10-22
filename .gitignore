@@ -3,4 +3,5 @@ env_vars.sh
 __pycache__
 .vscode
 node_modules
-plotbot/framework/allplots/
+plotbot/framework/plot_ids.db
+plotbot/framework/user_ids.db
