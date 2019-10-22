@@ -28,12 +28,12 @@ async function postMessage(page, msg)
   await page.focus('#post_textbox')
   await page.keyboard.type( msg );
   await page.keyboard.press('Enter');
-  await page.waitForSelector('#post_textbox');
+  await page.waitForSelector('.post__body');
 
   const tweets = await page.evaluate(() => Array.from(document.getElementsByClassName('post__body'), e => e.innerText));
 
 var len = tweets.length
-console.log(tweets[len-2]);
+console.log(tweets[len-1]);
 console.log("***************************");
 
 tweets.forEach(tweet => {
