@@ -41,6 +41,8 @@ pip3 install -U PyYAML
 Below are **refined** use cases for **PlotBot**
 
 ### important!! - please refer to make changes in the end
+
+<a name="usecase1"></a>
 ```
 Use Case 1: Give the user with code snippet for the required type of graph.
 1 Preconditions
@@ -58,6 +60,7 @@ Use Case 1: Give the user with code snippet for the required type of graph.
 4 Alternative Flows
   [E1] Requested graph data not available.
 ```
+<a name="usecase2"></a>
 ```
 Use Case2: Plot the graph for the user with their data.
 1 Preconditions
@@ -77,6 +80,7 @@ Use Case2: Plot the graph for the user with their data.
   [E1] Incorrect data format. Requested data format to be provided
   [E2] Requested graph type not available.
 ```
+<a name="usecase3"></a>
 ```
 Use Case3: Provide user with the ability to view all his plots.
 1 Preconditions
