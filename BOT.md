@@ -1,18 +1,35 @@
-Steps:
-sudo apt-get update
-sudo apt-get -y install python3-pip
-pip3 install flask
-pip3 install mattermostdriver
-pip3 install -U PyYAML
+# MILESTONE: Library BOT
 
+## Index
+1. [Installation Steps] (#install)
+1. [Use Cases](#usecase)
+	* [Use Case 1](#usecase1)
+	* [Use Case 2](#usecase2)
+	* [Use Case 3](#usecase3)
+2. [Mocking](#mocking)
+3. [Bot Implementation](#implement)
+	* [Bot Platform](#platform)
+	* [Bot Integration](#integration)
+4. [Selenium Testing](#test)
+	* [Use Case 1](#test1)
+	* [Use Case 2](#test2)
+	* [Use Case 3](#test3)
+5. [Task Tracking](#track)
+6. [Screencast](#screencast)
 
-
-## Bot
-
+## <a name="install"></a> INSTALLATION STEPS:
+* sudo apt-get update
+* sudo apt-get -y install python3-pip
+* pip3 install flask
+* pip3 install mattermostdriver
+* pip3 install -U PyYAML
 In this milestone, you will begin developing your bot based on your accepted design proposal.
 
+# PLotBot
 The primary focus of this milestone will be to integrate with the bot platform for your bot and develop the interaction component of your bot.
 There are also several techniques (such as testing and mocking) that you will be required to perform as part of this milestone.
+
+## <a name="usecase"></a> USECASES
 
 ### Bot Implementation
 
