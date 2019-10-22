@@ -46,6 +46,12 @@ describe('Testing PlotBot usecases', function () {
         await page.focus('#post_textbox')
         await page.keyboard.type( "@plotbot hi" );
         await page.keyboard.press('Enter');
+        let promise = new Promise((res, rej) => {
+          setTimeout(() => res("Waiting for the Response!"), 10000)
+        });
+        console.log("waiting...");
+        let waiting = await promise;
+        console.log("Done waiting");
         await page.waitForSelector('.post__body');
 
         //await page.waitForSelector('h2 a');

@@ -28,6 +28,12 @@ async function postMessage(page, msg)
   await page.focus('#post_textbox')
   await page.keyboard.type( msg );
   await page.keyboard.press('Enter');
+  let promise = new Promise((res, rej) => {
+    setTimeout(() => res("Waiting for the Response!"), 10000)
+  });
+  console.log("waiting...");
+  let waiting = await promise;
+  console.log("Done waiting");
   await page.waitForSelector('.post__body');
 
   const tweets = await page.evaluate(() => Array.from(document.getElementsByClassName('post__body'), e => e.innerText));
