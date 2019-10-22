@@ -1,10 +1,12 @@
-def retrieve_snippet(plottype):
+def retrieve_snippet(type):
+    '''
     snippet_dict={"scatterplot": ["scatterplot_code","scatterplot_graph"],
          "barplot": ["barplot_code","barplot_graph"], "boxplot": ["boxplot_code","boxplot_graph"]} 
     if plottype in snippet_dict:
         return snippet_dict[plottype]
     else:
-        raise ValueError('Requested plot sample not available')
+        raise ValueError('Requested plot sample not available')'''
+    pass
 
 def fetch(input_txt):
     text_list = input_txt.lower().strip().split()

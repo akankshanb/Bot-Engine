@@ -2,11 +2,12 @@ import framework.mocking_agent
 import framework.mixin as mixin
 import framework.constants as constants
 
-def fetchplotfromDB(message, user):
+
+def fetch(message, user):
+    print("----")
     text_list = message.lower().strip().split()
     plot = text_list[len(text_list)-1]
-    return filename
-
-def fetchgraphs(id):
-    pass
+    filenames = mixin.fetchplotfromDB(plot, user)
+    print(filenames)
+    return "here are you plots", filenames
     # for each user id, filename of the graphs

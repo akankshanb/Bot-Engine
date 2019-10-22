@@ -17,11 +17,20 @@ def saveIDs(idtype, ids):
     outfile.close()
 
 def gatherIDs(idtype):
-    filename = 'framework/'+idtype+'_ids.db'
-    infile = open(filename,'rb')
-    ids = pickle.load(infile)
-    infile.close()
-    return ids
+    try:
+        filename = 'framework/'+idtype+'_ids.db'
+        infile = open(filename,'rb')
+        ids = pickle.load(infile)
+        infile.close()
+        return ids
+    except EOFError:
+        ids = {}
+        filename = 'framework/'+idtype+'_ids.db'
+        outfile = open(filename,'wb')
+        pickle.dump(ids,outfile)
+        outfile.close()
+        return ids
+    
 
 def randomString(stringLength=10):
     letters = string.ascii_lowercase

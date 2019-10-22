@@ -48,8 +48,12 @@ def plot(input_txt, file_ids):
 >>>>>>> mocking with retrive, sample and plot
         print(filename)
         return_msg = "Here is you plot for **{}**".format(text_list[1])
+<<<<<<< HEAD
         return return_msg, filename
 >>>>>>> resolved mixin conflicts
+=======
+        return return_msg, [filename]
+>>>>>>> working mocking for sample, plot
     else:
         if text_list[1] in graph_dict.keys():
             filename = graph_dict[text_list[1]]()

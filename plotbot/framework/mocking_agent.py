@@ -2,6 +2,7 @@ from mockito import when, mock, unstub
 import framework.graphs as graphs
 import service.sampler as sampler
 import framework.mixin as mixin
+import service.retrieval as retrieval
 import seaborn as sns; sns.set()
 from random import randint
 responseDataSet = {
@@ -28,19 +29,26 @@ responseAxisInfo = {
 }
 
 responseSnippet={
-    "scatterplot": ["scatterplot_code","scatter_graph"],
-    "barplot": ["barplotplot_code","barplot_graph"], 
-    "boxplot": ["boxplotplot_code","boxplot_graph"]
+    "scatterplot": ["scatterplot_code","scatterplot_graph"],
+    "barplot": ["barplot_code","barplot_graph"], 
+    "boxplot": ["boxplot_code","boxplot_graph"]
 }
 
+
 def randomplot():
+    print("mocking random")
     responseRetrive=['dutsfgnahw.png', 'dwshuugwer.png', 'glslcehgje.png']
-    img = 'framework/allplots/'+responseRetrive[randint(0,len(responseRetrive)-1)]
-    return img
+    num_plots = randint(0,5)
+    imgs = []
+    for i in range(1,num_plots):
+        img = 'framework/allplots/'+responseRetrive[randint(0,len(responseRetrive)-1)]
+        imgs.append(img)
+    return imgs
+
+responseRetrival = randomplot()
 
 
-
-when(mixin).fetchDB().thenReturn('framework/allplots/')
+when(mixin).fetchDB_path().thenReturn('framework/allplots/')
 when(graphs).load_dataset('scatterplot', ...).thenReturn(responseDataSet['scatter_data'])
 when(graphs).load_dataset('boxplot', ...).thenReturn(responseDataSet['boxplot_data'])
 when(graphs).load_dataset('barplot', ...).thenReturn(responseDataSet['barplot_data'])
@@ -53,4 +61,4 @@ when(sampler).retrieve_snippet('scatterplot').thenReturn(responseSnippet['scatte
 when(sampler).retrieve_snippet('barplot').thenReturn(responseSnippet['barplot'])
 when(sampler).retrieve_snippet('boxplot').thenReturn(responseSnippet['boxplot'])
 
-when(retrieval).fetchplotfromDB(...).thenReturn(randomplot())
+when(mixin).fetchplotfromDB(..., ...).thenReturn(responseRetrival)
