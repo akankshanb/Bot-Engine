@@ -39,11 +39,10 @@ describe('Testing PlotBot usecases', function () {
     //});
 
     it('It should greet back', async () => {
-        var list = [,]
 
         await page.waitForSelector('#post_textbox');
         await page.focus('#post_textbox')
-        await page.keyboard.type( "@plotbot hi" );
+        await page.keyboard.type( "@plotbot" );
         await page.keyboard.press('Enter');
         let promise = new Promise((res, rej) => {
           setTimeout(() => res("Waiting for the Response!"), 5000)
@@ -94,7 +93,7 @@ describe('Testing PlotBot usecases', function () {
         await browser.close();
     });
 
-    it('happy flow when user asks to plot a graph by giving dataset', async () => {
+    it('Happy flow when user asks to plot a graph by giving dataset', async () => {
         await page.waitForSelector('#post_textbox');
         await page.focus('#post_textbox')
         await page.keyboard.type( "plot scatterplot" );
@@ -148,23 +147,58 @@ describe('Testing PlotBot usecases', function () {
       expect(result).to.match(/Please provide the correct/);
       await browser.close();
     });
-/*
-    it('Happy flow when user requests for all his plotted graphs', async () => {
+
+    it('Happy flow when user requests for his graphs plotted during a time period', async () => {
         await page.waitForSelector('#post_textbox');
         await page.focus('#post_textbox')
-        await page.keyboard.type( "retrieve plots" );
+        await page.keyboard.type( "retrieve from:2019-10-19 13:0:0.0 to:2019-10-19 14:0:0.0" );
         await page.keyboard.press('Enter');
         let promise = new Promise((res, rej) => {
-          setTimeout(() => res("Waiting for the Response!"), 10000)
+          setTimeout(() => res("Waiting for the Response!"), 5000)
         });
         let waiting = await promise;
         await page.waitForSelector('.post__body');
         const output = await page.evaluate(() => Array.from(
           document.getElementsByClassName('post__body'), e => e.innerText));
         var result = output[output.length-1];
-        expect(result).to.match(/scatter.png/);
+        expect(result).to.match(/\.png/);
 
         await browser.close();
     });
-*/
+    it('Happy flow when user requests for all his plotted graphs', async () => {
+        await page.waitForSelector('#post_textbox');
+        await page.focus('#post_textbox')
+        await page.keyboard.type("retrieve all");
+        await page.keyboard.press('Enter');
+        let promise = new Promise((res, rej) => {
+          setTimeout(() => res("Waiting for the Response!"), 5000)
+        });
+        let waiting = await promise;
+        await page.waitForSelector('.post__body');
+        const output = await page.evaluate(() => Array.from(
+          document.getElementsByClassName('post__body'), e => e.innerText));
+        var result = output[output.length-1];
+        expect(result).to.match(/\.png/);
+
+        await browser.close();
+    });
+
+    it('Alternate flow when user requests for his plotted graphs but there are no plots available', async () => {
+        await page.waitForSelector('#post_textbox');
+        await page.focus('#post_textbox')
+        await page.keyboard.type( "retrieve" );
+        await page.keyboard.press('Enter');
+        let promise = new Promise((res, rej) => {
+          setTimeout(() => res("Waiting for the Response!"), 5000)
+        });
+        let waiting = await promise;
+        await page.waitForSelector('.post__body');
+        const output = await page.evaluate(() => Array.from(
+          document.getElementsByClassName('post__body'), e => e.innerText));
+        var result = output[output.length-1];
+        expect(result).to.match(/No plots/);
+
+        await browser.close();
+    });
+
 });
