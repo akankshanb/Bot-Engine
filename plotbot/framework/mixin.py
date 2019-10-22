@@ -4,6 +4,7 @@ import random
 import pickle
 import constants
 
+
 class ID(object):
     def __init__(self):
         self.plotIDs = []
@@ -40,31 +41,7 @@ def generateID(idtype):
         saveIDs('user', constants.userIDs)
     return id
 
-instanceIDs = ID()
-instanceIDs.plotIDs = gatherIDs('plot')
+constants.plotIDs = gatherIDs('plot')
 
 def fetchDB_path():
     pass
-
-def fetchData(task):
-    graphtype = task[0]
-    action = task[1]
-    if action == 'plot':
-        newGraph = None
-        if graphtype == 'scatter':  newGraph = constants.plotter.scatter_plot(constants.dataset)
-        elif graphtype == 'box':  newGraph = constants.plotter.box_plot(constants.dataset)
-        elif graphtype == 'bar':  newGraph = constants.plotter.bar_plot(constants.dataset)
-        newGraph.plot_graph()
-        newGraph.saveimage()
-<<<<<<< HEAD
-        @patch('plotter.graph.plotID', return_value='sadwdw')
-=======
->>>>>>> mocking trail 3
-        return str(newGraph.plotID)+'.png'
-    elif action == 'snippet':
-        filename = ''
-        if graphtype == 'scatter': filename = constants.snippetter.scatter_plot()
-        elif graphtype == 'box': filename = constants.snippetter.box_plot()
-        elif graphtype == 'bar': filename = constants.snippetter.bar_plot()
-        return filename
-
