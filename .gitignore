@@ -2,3 +2,4 @@
 env_vars.sh
 __pycache__
 node_modules
+plotbot/framework/allplots/
