@@ -11,12 +11,13 @@ def load_config():
         for entry in data: 
             mm.params[entry]=data[entry]
     mm.params['TEAM_ID']=mm.get_driver().teams.get_team_by_name(mm.params['TEAM_NAME'])['id']
+    mm.params['DEFAULT_CHANNEL_ID']=mm.get_driver().channels.get_channel_by_name(mm.params['TEAM_ID'],mm.params['DEFAULT_CHANNEL'])['id']
        
 
 def load():
     print('Setting up system...')
     load_config() 
     #Create primary bot webhook if not exist
-    mm.save_outgoing_webhook(mm.params['TEAM_ID'],'','plotbot-hook',mm.params['HOOK_URL'],
+    mm.save_outgoing_webhook(mm.params['TEAM_ID'],mm.params['DEFAULT_CHANNEL_ID'],'plotbot-hook',mm.params['HOOK_URL'],
                 ['@plotbot','sample','plot','retrieve'])
     print('Setup complete...')
