@@ -108,14 +108,19 @@ We created AWS instance for mattermost server. To make our bot independent of th
 
 #### Bot Integration: 
 The bot is integrated in a Flask framework which gets activated on certain trigger-words. 
+
+**Flask Framework**
+This python based application was used to make HTTP requests. The outgoing webhooks created on Mattermost were integrated with the responder functions of our basic chatbot.
+
 **Trigger words corresponding to different tasks**
-cmds:
+
+Run Commands:
 @plotbot - Activates the PlotBot
 sample - Covers usecase 1
 plot - Covers usecase 2 
 retrieve - Covers usecase3
 
-***Example Usecase**
+**Example Usecase**
 ```
 @plotbot Hey!
 sample [boxplot/scatterplot/barplot]
@@ -123,13 +128,14 @@ plot [scatterplot/boxplot/barplot] "iris.csv(upload file on Matternost)"
 retrieve from:05/06/2018 to:08/07/2019 OR can be a particular file name the use wants(say iris.csv)
 ```
 
-**Flask Framework**
-
 ### Puppeteer Testing
-*** tokens are required for mattermost_email and mattermost_pwd***
-*** User has to do 'npm install' before starting the test
-*** the user has to run npm test and it shows the pass/fail status for each test*** <br>
-###### Sample Use Case
+To test and automate our BOT, we used Pupeteer Node library for testing responses on headless Chromium. 
+In order to run the tests:
+* Do ```npm install```
+* Export your MATTERMOST_EMAIL and MATTERMOST_PWD
+* Do npm test. We add a total of 7 Test Cases covering our use cases.
+
+###### Use Case 0: Basic conversation on @plotbot trigger
 ```javascript
   it('It should greet back', async () => {
         var list = [,]
@@ -151,13 +157,13 @@ retrieve from:05/06/2018 to:08/07/2019 OR can be a particular file name the use 
         await browser.close();
     });
  ```
-##### Testcase for Usecase-1
-##### Testcase for Usecase-2
-##### Testcase for Usecase-3
+##### Use Case 1: 
+##### Use Case 2: 
+##### Use Case 3: 
 
 ### Mocking Service Component
 
-Because the focus on your milestone is platform integration and bot interaction, you will not yet have a working service implementation. Implement mock services and data to support service integration. For example, if you were implementing a meeting bot that helps set up meetings, use mock calendar data to determine available meeting time, rather than integrate with a user's Google calendar. A proper mocking infrastructure would allow you to swap real and testing information in a single place, instead of hard-coded throughout your code base.
+We implemented mock services for each use case and data to support service integration. 
 
 **Failure to use appropriate mocking/injection techniques will result in 0 credit**. Do not do this:
 
