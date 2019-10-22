@@ -13,6 +13,8 @@ import service.plotter as plotter
 import service.sampler as sampler
 import service.retrieval as retrieval
 from flask import send_file
+from framework.mocking_agent import generateMockPlots as setupMockdata
+import framework.constants as constants
 
 app = Flask(__name__)
 
@@ -65,8 +67,8 @@ def defaultreply():
 if __name__ == "__main__":
     try:
         setup.load()
+        constants.mockPlots = setupMockdata()
         app.run(host='0.0.0.0')
-
     except KeyboardInterrupt:
         mixin.saveIDs('plot', constants.plotIDs)
         mixin.saveIDs('user', constants.userIDs)

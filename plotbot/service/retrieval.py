@@ -1,12 +1,27 @@
 import framework.mocking_agent
 import framework.mixin as mixin
 import framework.constants as constants
+import re
+import datetime
+
+def fetchTime(start_time, stop_time):
+    date_time_obj_start = datetime.datetime.strptime(start_time, '%Y-%m-%d %H:%M:%S.%f')
+    date_time_obj_stop = datetime.datetime.strptime(stop_time, '%Y-%m-%d %H:%M:%S.%f')
+    return (date_time_obj_stop, date_time_obj_start)
 
 def fetch(message, user):
     print("----")
-    text_list = message.lower().strip().split()
-    plot = text_list[len(text_list)-1]
-    filenames = mixin.fetchplotfromDB(plot, user)
-    print(filenames)
-    return "Here are your plots", filenames
-    # for each user id, filename of the graphs
+    m = re.match('\S+\s+from\:\s*(\S+\s*\S+)\s+to\:\s*(\S+\s*\S+)', message)
+    n = re.match('\S+\s+(\S+)', message)
+    filenames = []
+    if n is not None:
+        plot = n.group(1)
+        filenames = mixin.fetchplotfromDB(plot, user)
+    if m is not None:
+        time_range = fetchTime(m.group(1), m.group(2))
+        filenames = mixin.fetchplotfromDBtimed(time_range, user)
+    if len(filenames) > 0:
+        return_msg = "Here are your plots"
+    else:
+        return_msg = "No plots available"
+    return return_msg, filenames

@@ -7,6 +7,7 @@ import seaborn as sns; sns.set()
 from random import randint
 import subprocess
 import re
+import framework.constants as constants
 
 responseDataSet = {
     'scatter_data': sns.load_dataset("iris"),
@@ -30,6 +31,7 @@ responseAxisInfo = {
     'boxplot_axis': boxplot_axis,
     'barplot_axis': barplot_axis
 }
+responseRetrieve = {}
 
 responseSnippet={
     "scatterplot": ["scatterplot_code","scatterplot_graph"],
@@ -37,21 +39,41 @@ responseSnippet={
     "boxplot": ["boxplot_code","boxplot_graph"]
 }
 
+def generateScatterMockPlot():
+    axis_info = graphs.fetchAxisInfo('scatterplot', '')
+    dataset = graphs.load_dataset('scatterplot', '')
+    newGraph = graphs.scatter_plot(dataset, axis_info)
+    newGraph.plot_graph()
+    newGraph.saveimage()
+    return newGraph.plotLocation
 
-def randomplot():
-    print("mocking random")
-    a = subprocess.check_output("ls").decode()
-    responseRetrive = re.findall('(\S+png)', a)
-    # responseRetrive=['dutsfgnahw.png', 'dwshuugwer.png', 'glslcehgje.png']
-    num_plots = randint(0,len(responseRetrive))
-    imgs = []
-    for i in range(1,num_plots):
-        img = 'framework/allplots/'+responseRetrive[randint(0,len(responseRetrive)-1)]
-        imgs.append(img)
-    return imgs
+def generateBarMockPlot():
+    axis_info = graphs.fetchAxisInfo('barplot', '')
+    dataset = graphs.load_dataset('barplot', '')
+    newGraph = graphs.bar_plot(dataset, axis_info)
+    newGraph.plot_graph()
+    newGraph.saveimage()
+    return newGraph.plotLocation
 
-responseRetrival = randomplot()
+def generateBoxMockPlot():
+    axis_info = graphs.fetchAxisInfo('boxplot', '')
+    dataset = graphs.load_dataset('boxplot', '')
+    newGraph = graphs.box_plot(dataset, axis_info)
+    newGraph.plot_graph()
+    newGraph.saveimage()
+    return newGraph.plotLocation
 
+def generateMockPlots():
+    numScatter, numBar, numBox = randint(0,10), randint(0,10), randint(0,10)
+    plots = []
+    for i in range(0, numScatter):
+        plots.append(generateScatterMockPlot())
+    for i in range(0,numBar):
+        plots.append(generateBarMockPlot())
+    for i in range(0,numBox):
+        plots.append(generateBoxMockPlot())
+    print("Mock data generation complete...")
+    return plots
 
 when(mixin).fetchDB_path().thenReturn('framework/allplots/')
 when(graphs).load_dataset('scatterplot', ...).thenReturn(responseDataSet['scatter_data'])
@@ -66,4 +88,18 @@ when(sampler).retrieve_snippet('scatterplot').thenReturn(responseSnippet['scatte
 when(sampler).retrieve_snippet('barplot').thenReturn(responseSnippet['barplot'])
 when(sampler).retrieve_snippet('boxplot').thenReturn(responseSnippet['boxplot'])
 
-when(mixin).fetchplotfromDB(..., ...).thenReturn(responseRetrival)
+def randomplot():
+    responseRetrive = constants.mockPlots
+    num_plots = randint(1,5)
+    imgs = []
+    for i in range(1,num_plots):
+        img = ''+responseRetrive[randint(1,len(responseRetrive)-1)]
+        imgs.append(img)
+    return imgs
+
+constants.mockPlots = generateMockPlots()
+responseRetrieve['datetime'] = randomplot()
+responseRetrieve['plot'] = randomplot()
+
+when(mixin).fetchplotfromDBtimed(..., ...).thenReturn(responseRetrieve['datetime'])
+when(mixin).fetchplotfromDB(..., ...).thenReturn(responseRetrieve['plot'])
