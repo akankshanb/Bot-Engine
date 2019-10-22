@@ -43,7 +43,7 @@ class scatter_plot(graph):
 
     def plot_graph(self):
         self.populate_axes_info()
-        self.sns.stripplot(x=self.x_axis, y=self.y_axis, data=self.data)
+        self.sns.scatterplot(x=self.x_axis, y=self.y_axis, data=self.data)
 
 class box_plot(graph):
     def __init__(self, dataset, axis_info):
@@ -55,8 +55,8 @@ class box_plot(graph):
 
 
     def plot_graph(self):
-        self.populate_axes_info(self.axis_info)
-        self.sns.boxplot(x=self.x_axis)
+        self.populate_axes_info()
+        self.sns.boxplot(x=self.x_axis,y = self.y_axis, data=self.data)
 
 class bar_plot(graph):
     def __init__(self, dataset, axis_info):
@@ -67,5 +67,5 @@ class bar_plot(graph):
         self.y_axis = axis_info['y-axis']
 
     def plot_graph(self):
-        self.populate_axes_info(self.axis_info)
-        self.sns.stripplot(x=self.x_axis, y=self.y_axis, data=self.data)
+        self.populate_axes_info()
+        self.sns.barplot(x=self.x_axis, y=self.y_axis, data=self.data)

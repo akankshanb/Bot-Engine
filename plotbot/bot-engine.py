@@ -20,28 +20,14 @@ app = Flask(__name__)
 def plotbot():
     print("Greeting")
     request_json = request.get_json(force=True)
-<<<<<<< HEAD
-<<<<<<< HEAD
-    print(request_json)
-    resp_msg,files= parseRequest(request_json["trigger_word"],request_json["text"])
-    mm.post_message_file(request_json["channel_id"],resp_msg,files)
-    return ''
 
-
-def parseRequest(trigger,message):
-=======
-<<<<<<< HEAD
-    resp_msg,files= parseRequest(request_json["trigger_word"],request_json["text"], request_json['file_ids'])
-=======
     resp_msg,files= parseRequest(request_json["trigger_word"],request_json["text"], request_json['file_ids'], request_json['user_id'])
->>>>>>> working mocking for sample, plot
     mm.post_message_file(request_json["channel_id"],resp_msg,files)
 
     return ''
 
 def parseRequest(trigger,message, file_ids, user):
->>>>>>> mocking with retrive, sample and plot
-     #print(request_json)
+    #print(request_json)
     resp_msg=defaultreply()
     files= []
     try:
@@ -53,21 +39,10 @@ def parseRequest(trigger,message, file_ids, user):
             resp_msg,files = sampler.fetch(message)
         elif trigger == "plot":
             #resp_msg = checkplotgraph(message)
-<<<<<<< HEAD
-<<<<<<< HEAD
-            resp_msg = plotter.plot(message)
-=======
-            resp_msg, img_name = plotter.plot(message, file_ids)
-            mixin.allocate(user, img_name)
->>>>>>> mocking with retrive, sample and plot
-        elif trigger =="retreive":
-            resp_msg = retrieval.fetch(message, user)
-=======
             resp_msg, files = plotter.plot(message, file_ids)
             #mixin.allocate(user, img_name)
         elif trigger =="retrieve":
             resp_msg, files = retrieval.fetch(message, user)
->>>>>>> working mocking for sample, plot
     except ValueError as err:
         print(err.args)
         resp_msg=err.args[0]
@@ -85,10 +60,6 @@ def defaultreply():
     return "Sorry, I did not understand"
 
 if __name__ == "__main__":
-<<<<<<< HEAD
-    setup.load()
-    app.run(host='0.0.0.0')
-=======
     try:
         setup.load()
         app.run(host='0.0.0.0')
@@ -97,4 +68,3 @@ if __name__ == "__main__":
         mixin.saveIDs('plot', constants.plotIDs)
         mixin.saveIDs('user', constants.userIDs)
 
->>>>>>> mocking with retrive, sample and plot
