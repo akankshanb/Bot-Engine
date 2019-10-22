@@ -1,7 +1,7 @@
 # MILESTONE: Library BOT
 
 ## Index
-1. [Installation Steps](<a id=install https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md>) 
+1. [Installation Steps](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#install) 
 1. [Use Cases](#usecase)
 	* [Use Case 1](#usecase1)
 	* [Use Case 2](#usecase2)
