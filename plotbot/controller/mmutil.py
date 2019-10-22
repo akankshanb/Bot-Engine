@@ -36,9 +36,11 @@ def create_post_url(channel_id,message):
         "props": {"attachments": [{"image_url": "https://file-examples.com/wp-content/uploads/2017/10/file_example_JPG_100kB.jpg"}]}
         })
 
-def post_message_file(channel_id,message,file_path):
-    file_id=upload_file(channel_id,file_path)
-    create_post_file(channel_id,message,[file_id])
+def post_message_file(channel_id,message,files):
+    file_ids=[]
+    for path in files:
+        file_ids.append[upload_file(channel_id,path)]
+    create_post_file(channel_id,message,file_ids)
 
 def post_message(channel_id,message):
     get_driver().posts.create_post(options={
