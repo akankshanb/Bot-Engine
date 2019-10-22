@@ -39,7 +39,7 @@ def create_post_url(channel_id,message):
 def post_message_file(channel_id,message,files):
     file_ids=[]
     for path in files:
-        file_ids.append[upload_file(channel_id,path)]
+        file_ids.append(upload_file(channel_id,path))
     create_post_file(channel_id,message,file_ids)
 
 def post_message(channel_id,message):
