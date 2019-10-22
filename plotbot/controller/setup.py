@@ -1,5 +1,8 @@
 import mmutil as mm
 
+def load():
+    pass
+
 #Sample code to create the webhooks
 team_id=mm.get_driver().teams.get_team_by_name('PlotBotTeam')['id']
 print(team_id)

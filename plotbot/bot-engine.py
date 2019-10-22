@@ -8,6 +8,7 @@ import os
 import json
 import subprocess
 import controller.mmutil as mm
+import controller.setup as setup
 import service.plotter as plotter
 import service.sampler as sampler
 import service.retrieval as retrieval
@@ -22,6 +23,7 @@ def plotbot():
     resp_msg= parseRequest(request_json["trigger_word"],request_json["text"])
     mm.post_message_file(request_json["channel_id"],resp_msg,'framework/foo.png')
     return ''
+
 
 def parseRequest(trigger,message):
      #print(request_json)
@@ -54,4 +56,5 @@ def defaultreply():
     return "Sorry, I did not understand"
 
 if __name__ == "__main__":
+    setup.load()
     app.run(host='0.0.0.0')
