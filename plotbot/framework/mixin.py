@@ -3,7 +3,6 @@ import string
 import random
 import pickle
 import constants
-from unittest.mock import patch
 
 class ID(object):
     def __init__(self):
@@ -57,7 +56,10 @@ def fetchData(task):
         elif graphtype == 'bar':  newGraph = constants.plotter.bar_plot(constants.dataset)
         newGraph.plot_graph()
         newGraph.saveimage()
+<<<<<<< HEAD
         @patch('plotter.graph.plotID', return_value='sadwdw')
+=======
+>>>>>>> mocking trail 3
         return str(newGraph.plotID)+'.png'
     elif action == 'snippet':
         filename = ''

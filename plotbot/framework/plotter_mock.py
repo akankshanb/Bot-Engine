@@ -70,7 +70,7 @@ class box_plot(graph):
 class bar_plot(graph):
     def __init__(self, dataset):
         super(bar_plot, self).__init__()
-        self.datasetID = iiris
+
 
     def load_dataset(self):
         # for mocks using in-built dataset, actual implementation will use mentioned dataset

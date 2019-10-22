@@ -28,9 +28,7 @@ class graph(object):
         path = mixin.fetchDB_path()
         self.plt.savefig(path+self.plotID+'.png')
         self.plt.clf()
-        
-    def load_dataset(self):
-        pass
+
 
 
 class scatter_plot(graph):
@@ -39,6 +37,7 @@ class scatter_plot(graph):
         self.datasetID = dataset
         self.x_axis = None
         self.y_axis = None
+<<<<<<< HEAD
 
     def populate_axes_info(self):
         # for mocks using in-built dataset, actual implementation will use mentioned dataset
@@ -56,6 +55,30 @@ class box_plot(graph):
         self.x_axis = None
         self.y_axis = None
 
+=======
+
+    def load_dataset(self):
+        pass
+
+    def populate_axes_info(self):
+        pass
+
+    def plot_graph(self):
+        self.load_dataset()
+        self.populate_axes_info()
+        self.sns.stripplot(x=self.x_axis, y=self.y_axis, data=self.data)
+
+class box_plot(graph):
+    def __init__(self, dataset):
+        super(box_plot, self).__init__()
+        self.datasetID = dataset
+        self.x_axis = None
+        self.y_axis = None
+
+    def load_dataset(self):
+        pass
+
+>>>>>>> mocking trail 3
     def populate_axes_info(self):
         # for mocks using in-built dataset, actual implementation will use mentioned dataset
         pass
@@ -71,6 +94,13 @@ class bar_plot(graph):
         self.datasetID = dataset
         self.x_axis = None
         self.y_axis = None
+<<<<<<< HEAD
+=======
+
+    def load_dataset(self):
+        # for mocks using in-built dataset, actual implementation will use mentioned dataset
+        pass
+>>>>>>> mocking trail 3
 
     def populate_axes_info(self):
         # for mocks using in-built dataset, actual implementation will use mentioned dataset
