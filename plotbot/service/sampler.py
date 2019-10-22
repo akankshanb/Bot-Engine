@@ -1,14 +1,8 @@
 def retrieve_snippet(plottype):
     snippet_dict={"scatterplot": ["scatterplot_code","scatterplot_graph"],
-<<<<<<< HEAD
          "barplot": ["barplot_code","barplot_graph"], "boxplot": ["boxplot_code","boxplot_graph"]} 
     if plottype in snippet_dict:
         return snippet_dict[plottype]
-=======
-         "barplot": ["barplot_code","barplot_graph"], "boxplot": ["boxplot_code","boxplot_graph"]}
-    if type in snippet_dict:
-        return snippet_dict[type]
->>>>>>> 586e0ede01853fb21c441313b98bbcdc4e68a9d7
     else:
         raise ValueError('Requested plot sample not available')
 

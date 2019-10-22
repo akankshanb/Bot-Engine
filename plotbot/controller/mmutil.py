@@ -52,8 +52,8 @@ def save_outgoing_webhook(team_id,channel_id,display_name,url,words):
     options={'team_id': team_id,'channel_id': channel_id,'display_name': display_name,
         'trigger_words': words,'trigger_when': 0,'callback_urls': [url],'content_type':'application/json'}
     hooks=my_driver.webhooks.list_outgoing_hooks({})
-    my_hook=next((hook for hook in hooks if hook['display_name'] == display_name), None)
-    print(my_hook)
+    my_hook=next((hook for hook in hooks if hook['display_name'] == display_name and hook['channel_id'] == channel_id), None)
+    #print(my_hook)
     if my_hook:
         my_driver.webhooks.delete_outgoing_hook(my_hook['id'])
     my_driver.webhooks.create_outgoing_hook(options)
