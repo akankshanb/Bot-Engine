@@ -1,13 +1,12 @@
 import os
-import yaml
 from mattermostdriver import Driver
 
 params={}
 
 def get_driver():
     my_driver = Driver({
-    'url': params['mm_ip'],
-    'token': params['bot_token'],
+    'url': params['MM_IP'],
+    'token': params['PLOT_BOT_TOKEN'],
     'scheme': 'http',
     'port': 8065,
     'basepath': '/api/v4',
@@ -49,12 +48,10 @@ def post_message(channel_id,message):
 def save_outgoing_webhook(team_id,channel_id,display_name,url,words):
     my_driver=get_driver()
     options={'team_id': team_id,'channel_id': channel_id,'display_name': display_name,
-        'trigger_words': words,'trigger_when': 0,'callback_urls': [url]}
+        'trigger_words': words,'trigger_when': 0,'callback_urls': [url],'content_type':'application/json'}
     hooks=my_driver.webhooks.list_outgoing_hooks({})
     my_hook=next((hook for hook in hooks if hook['display_name'] == display_name), None)
-    if not my_hook:
-        my_driver.webhooks.create_outgoing_hook(options)
-    else:
-        pass
-        # options['hook_id']=my_hook['id']
-        # res=my_driver.webhooks.update_outgoing_hook(my_hook['id'],options)
+    print(my_hook)
+    if my_hook:
+        my_driver.webhooks.delete_outgoing_hook(my_hook['id'])
+    my_driver.webhooks.create_outgoing_hook(options)

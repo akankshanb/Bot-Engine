@@ -1,8 +1,10 @@
+import os
+import yaml
 import controller.mmutil as mm
 
 def load_config():
-    bot_token=os.getenv('PLOT_BOT_TOKEN')
-    if not bot_token:
+    mm.params['PLOT_BOT_TOKEN']=os.getenv('PLOT_BOT_TOKEN')
+    if not mm.params['PLOT_BOT_TOKEN']:
         raise Exception('Please add the environment variables for the bot token (PLOT_BOT_TOKEN)')
     with open('../config.yml') as f:
         data = yaml.load(f, Loader=yaml.FullLoader)
