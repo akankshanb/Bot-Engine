@@ -30,7 +30,7 @@ describe('Testing PlotBot usecases', function () {
 
     beforeEach(async () => {
         browser = await puppeteer.launch({headless:true});
-        mattermost_url = "http://ec2-18-217-150-234.us-east-2.compute.amazonaws.com:8065/plotbotteam/channels/mounika_trials";
+        mattermost_url = "http://ec2-18-217-150-234.us-east-2.compute.amazonaws.com:8065/plotbotteam/channels/off-topic";
         page = await login( browser, `${mattermost_url}/login` );
         //await page.goto(`${mattermost_url}`, {waitUntil: 'networkidle0'});
     });
@@ -47,23 +47,107 @@ describe('Testing PlotBot usecases', function () {
         await page.keyboard.type( "@plotbot hi" );
         await page.keyboard.press('Enter');
         let promise = new Promise((res, rej) => {
-          setTimeout(() => res("Waiting for the Response!"), 10000)
+          setTimeout(() => res("Waiting for the Response!"), 5000)
         });
-
-        console.log("waiting...");
         let waiting = await promise;
-        console.log("Done waiting");
         await page.waitForSelector('.post__body');
-
-        //await page.waitForSelector('h2 a');
         const output = await page.evaluate(() => Array.from(
           document.getElementsByClassName('post__body'), e => e.innerText));
-        console.log(output[output.length-1]);
         var result = output[output.length-1];
-        //console.log(expect(result).to.match(/^Hi*|^Sorry*/|));
-        expect(result).to.match(/^Sorry*|^Hi*/);
+        expect(result).to.match(/^Hi/);
 
         await browser.close();
     });
 
+    it('Happy flow when users asks for sample scatter plot', async () => {
+        await page.waitForSelector('#post_textbox');
+        await page.focus('#post_textbox')
+        await page.keyboard.type( "sample scatterplot" );
+        await page.keyboard.press('Enter');
+        let promise = new Promise((res, rej) => {
+          setTimeout(() => res("Waiting for the Response!"), 5000)
+        });
+        let waiting = await promise;
+        await page.waitForSelector('.post__body');
+        const output = await page.evaluate(() => Array.from(
+          document.getElementsByClassName('post__body'), e => e.innerText));
+        var result = output[output.length-1];
+        console.log(result)
+        expect(result).to.match(/scatterplot_code\.png\n.*\nscatterplot_graph\.png/);
+
+        await browser.close();
+    });
+/*
+    it('Alternate flow when user requests for sample countplot which is not understood by PlotBot', async () => {
+        await page.waitForSelector('#post_textbox');
+        await page.focus('#post_textbox')
+        await page.keyboard.type( "sample countplot" );
+        await page.keyboard.press('Enter');
+        let promise = new Promise((res, rej) => {
+          setTimeout(() => res("Waiting for the Response!"), 10000)
+        });
+        let waiting = await promise;
+        await page.waitForSelector('.post__body');
+        const output = await page.evaluate(() => Array.from(
+          document.getElementsByClassName('post__body'), e => e.innerText));
+        var result = output[output.length-1];
+        expect(result).to.match(/not available/);
+
+        await browser.close();
+    });
+
+    it('happy flow when user asks to plot a graph by giving dataset', async () => {
+        await page.waitForSelector('#post_textbox');
+        await page.focus('#post_textbox')
+        await page.keyboard.type( "plot scatterplot iris dataset" );
+        await page.keyboard.press('Enter');
+        let promise = new Promise((res, rej) => {
+          setTimeout(() => res("Waiting for the Response!"), 10000)
+        });
+        let waiting = await promise;
+        await page.waitForSelector('.post__body');
+        const output = await page.evaluate(() => Array.from(
+          document.getElementsByClassName('post__body'), e => e.innerText));
+        var result = output[output.length-1];
+        expect(result).to.match(/scatter.png/);
+
+        await browser.close();
+    });
+
+    it('Alternate flow when user requests to plot countplot which is not understood by PlotBot', async () => {
+        await page.waitForSelector('#post_textbox');
+        await page.focus('#post_textbox')
+        await page.keyboard.type( "plot countplot user data");
+        await page.keyboard.press('Enter');
+        let promise = new Promise((res, rej) => {
+          setTimeout(() => res("Waiting for the Response!"), 10000)
+        });
+        let waiting = await promise;
+        await page.waitForSelector('.post__body');
+        const output = await page.evaluate(() => Array.from(
+          document.getElementsByClassName('post__body'), e => e.innerText));
+        var result = output[output.length-1];
+        expect(result).to.match(/^Sorry/);
+
+        await browser.close();
+    });
+
+    it('Happy flow when user requests for all his plotted graphs', async () => {
+        await page.waitForSelector('#post_textbox');
+        await page.focus('#post_textbox')
+        await page.keyboard.type( "retrieve plots" );
+        await page.keyboard.press('Enter');
+        let promise = new Promise((res, rej) => {
+          setTimeout(() => res("Waiting for the Response!"), 10000)
+        });
+        let waiting = await promise;
+        await page.waitForSelector('.post__body');
+        const output = await page.evaluate(() => Array.from(
+          document.getElementsByClassName('post__body'), e => e.innerText));
+        var result = output[output.length-1];
+        expect(result).to.match(/scatter.png/);
+
+        await browser.close();
+    });
+*/
 });
