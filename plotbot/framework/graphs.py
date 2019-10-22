@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 import framework.mixin as mixin
+import framework.mocking_agent
 
 def load_dataset(datasetname, plot_type):
     pass
 
-def fetchAxisInfo(msg_arr):
+def fetchAxisInfo(msg_arr, plot_type):
     pass
 
 class graph(object):
@@ -16,6 +17,7 @@ class graph(object):
         self.plotID = self.generatePlotID()
         self.sns.set(style="darkgrid")
         self.axis_info = None
+        self.plotLocation= ''
     
     def generatePlotID(self):
         plotID = mixin.generateID('plot')
@@ -23,7 +25,8 @@ class graph(object):
     
     def saveimage(self):
         path = mixin.fetchDB_path()
-        self.plt.savefig(path+self.plotID+'.png')
+        self.plotLocation=path+self.plotID+'.png'
+        self.plt.savefig(self.plotLocation)
         self.plt.clf()
     
     def populate_axes_info(self):
@@ -35,8 +38,8 @@ class scatter_plot(graph):
         super(scatter_plot, self).__init__()
         self.data = dataset
         self.axis_info = axis_info
-        self.x_axis = None
-        self.y_axis = None
+        self.x_axis = axis_info['x-axis']
+        self.y_axis = axis_info['y-axis']
 
     def plot_graph(self):
         self.populate_axes_info()
@@ -47,8 +50,8 @@ class box_plot(graph):
         super(box_plot, self).__init__()
         self.data = dataset
         self.axis_info = axis_info
-        self.x_axis = None
-        self.y_axis = None
+        self.x_axis = axis_info['x-axis']
+        self.y_axis = axis_info['y-axis']
 
 
     def plot_graph(self):
@@ -60,8 +63,8 @@ class bar_plot(graph):
         super(bar_plot, self).__init__()
         self.data = dataset
         self.axis_info = axis_info
-        self.x_axis = None
-        self.y_axis = None
+        self.x_axis = axis_info['x-axis']
+        self.y_axis = axis_info['y-axis']
 
     def plot_graph(self):
         self.populate_axes_info(self.axis_info)

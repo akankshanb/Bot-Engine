@@ -1,4 +1,3 @@
 plotIDs = []
-userIDs = []
-greeting_list = ['hi', 'hey', 'hello']
-graph_dict = {"scatterplot":  scatterplotfunc, "barplot": barplotfunc, "boxplot": boxplotfunc} 
+userIDs = {}
+greetinglist = ['hi', 'hey', 'hello']

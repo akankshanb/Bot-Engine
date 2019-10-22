@@ -11,13 +11,13 @@ class ID(object):
         self.userIDs = []
 
 def saveIDs(idtype, ids):
-    filename = idtype+'_ids.db'
+    filename = 'framework/'+idtype+'_ids.db'
     outfile = open(filename,'wb')
     pickle.dump(ids,outfile)
     outfile.close()
 
 def gatherIDs(idtype):
-    filename = idtype+'_ids.db'
+    filename = 'framework/'+idtype+'_ids.db'
     infile = open(filename,'rb')
     ids = pickle.load(infile)
     infile.close()
@@ -34,14 +34,17 @@ def generateID(idtype):
         if id in constants.plotIDs:   generateID('plot')
         constants.plotIDs.append(id)
         saveIDs('plot', constants.plotIDs)
-    elif idtype=='user':
-        id = randomString()
-        if id in constants.userIDs:   generateID('user')
-        constants.userIDs.append(id)
-        saveIDs('user', constants.userIDs)
     return id
 
+def allocate(user, plot):
+    constants.userIDs[user].append(plot)
+    saveIDs('user', constants.userIDs)
+
 constants.plotIDs = gatherIDs('plot')
+constants.userIDs = gatherIDs('user')
 
 def fetchDB_path():
+    pass
+
+def fetchplotfromDB(plot, user):
     pass

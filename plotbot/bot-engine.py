@@ -18,8 +18,9 @@ app = Flask(__name__)
 
 @app.route('/plotbot', methods = ['POST'])
 def plotbot():
-    # print("Greeting")
+    print("Greeting")
     request_json = request.get_json(force=True)
+<<<<<<< HEAD
     print(request_json)
     resp_msg,files= parseRequest(request_json["trigger_word"],request_json["text"])
     mm.post_message_file(request_json["channel_id"],resp_msg,files)
@@ -27,6 +28,19 @@ def plotbot():
 
 
 def parseRequest(trigger,message):
+=======
+<<<<<<< HEAD
+    resp_msg,files= parseRequest(request_json["trigger_word"],request_json["text"], request_json['file_ids'])
+    mm.post_message_file(request_json["channel_id"],resp_msg,files)
+
+=======
+    resp_msg= parseRequest(request_json["trigger_word"],request_json["text"], request_json['file_ids'], request_json['user_id'])
+    mm.post_message(request_json["channel_id"],resp_msg,'framework/foo.png')
+>>>>>>> mocking with retrive, sample and plot
+    return ''
+
+def parseRequest(trigger,message, file_ids, user):
+>>>>>>> mocking with retrive, sample and plot
      #print(request_json)
     resp_msg=defaultreply()
     files= []
@@ -38,9 +52,14 @@ def parseRequest(trigger,message):
             resp_msg,files = sampler.fetch(message)
         elif trigger == "plot":
             #resp_msg = checkplotgraph(message)
+<<<<<<< HEAD
             resp_msg = plotter.plot(message)
+=======
+            resp_msg, img_name = plotter.plot(message, file_ids)
+            mixin.allocate(user, img_name)
+>>>>>>> mocking with retrive, sample and plot
         elif trigger =="retreive":
-            resp_msg = retrieval.fetch(message)
+            resp_msg = retrieval.fetch(message, user)
     except ValueError as err:
         print(err.args)
         resp_msg=err.args[0]
@@ -58,5 +77,16 @@ def defaultreply():
     return "Sorry, I did not understand"
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     setup.load()
     app.run(host='0.0.0.0')
+=======
+    try:
+        setup.load()
+        app.run(host='0.0.0.0')
+
+    except KeyboardInterrupt:
+        mixin.saveIDs('plot', constants.plotIDs)
+        mixin.saveIDs('user', constants.userIDs)
+
+>>>>>>> mocking with retrive, sample and plot
