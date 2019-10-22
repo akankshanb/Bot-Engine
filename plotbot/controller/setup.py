@@ -6,7 +6,7 @@ def load_config():
     mm.params['PLOT_BOT_TOKEN']=os.getenv('PLOT_BOT_TOKEN')
     if not mm.params['PLOT_BOT_TOKEN']:
         raise Exception('Please add the environment variables for the bot token (PLOT_BOT_TOKEN)')
-    with open('../config.yml') as f:
+    with open('config.yml') as f:
         data = yaml.load(f, Loader=yaml.FullLoader)
         for entry in data: 
             mm.params[entry]=data[entry]

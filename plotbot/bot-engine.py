@@ -39,7 +39,10 @@ def parseRequest(trigger,message, file_ids, user):
             resp_msg,files = sampler.fetch(message)
         elif trigger == "plot":
             #resp_msg = checkplotgraph(message)
-            resp_msg, files = plotter.plot(message, file_ids)
+            fileId=None
+            if len(file_ids)>0:
+                fileId=file_ids[0]
+            resp_msg, files = plotter.plot(message, fileId)
             #mixin.allocate(user, img_name)
         elif trigger =="retrieve":
             resp_msg, files = retrieval.fetch(message, user)

@@ -30,7 +30,7 @@ def boxplotfunc(msg_arr, dataset_filename):
     newGraph.saveimage()
     return newGraph.plotLocation
 
-def plot(input_txt, file_ids):
+def plot(input_txt, fileId):
     text_list = input_txt.lower().strip().split()
 
     if len(text_list) ==1:
@@ -40,7 +40,7 @@ def plot(input_txt, file_ids):
 
     if text_list[1] in graph_dict.keys():
         print(text_list)
-        filename = graph_dict[text_list[1]](text_list[2:], file_ids)
+        filename = graph_dict[text_list[1]](text_list[2:], fileId)
         print(filename)
         return_msg = "Here is you plot for **{}**".format(text_list[1])
         return return_msg, [filename]
