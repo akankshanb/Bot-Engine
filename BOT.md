@@ -44,7 +44,6 @@ pip3 install mockito
 
 Below are **refined** use cases for **PlotBot**
 
-### important!! - please refer to make changes in the end
 
 <a name="usecase1"></a>
 ```
@@ -96,6 +95,7 @@ Use Case3: Provide user with the ability to view all his plots.
 
 1 Preconditions
    User must have mattermost account.
+
 2 Main Flow
    User requests to provide all his plotted graphs using this bot[S1]
    User can also request the bot to provide with specific graphs within a time frame[S2]
