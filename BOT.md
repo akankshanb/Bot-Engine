@@ -101,7 +101,7 @@ Use Case3: Provide user with the ability to view all his plots.
 
 <a name="implement"></a>
 
-### Bot Implementation
+### BOT IMPLEMENTATION
 
 <a name="platform"></a>
 #### Bot Platform: 
@@ -168,30 +168,9 @@ In order to run the tests:
 <a name="mocking"></a>
 ### Mocking Service Component
 
-We implemented mock services for each use case and data to support service integration. 
-
-**Failure to use appropriate mocking/injection techniques will result in 0 credit**. Do not do this:
-
-```javascript
-bot.hears("command", function(){ bot.replys("fake answer");});
-```
+We implemented mock services for each use case and data to support service integration. The code for mock data is in [service](https://github.ncsu.edu/csc510-fall2019/CSC510-22/tree/master/plotbot/service)
 
 ### Screencast
-
+Link to screencast [Link]()
 Create a screencast of your bot performing your three primary use cases. Demonstrate your selenium tests being executed.
 
-## Deliverables
-
-Add your code, and BOT.md document describing the following materials.
-
-* Bot Platform Implementation (20%)
-* Use Cases Refinement (10%)
-* Mocking infrastructure (30%)
-* Selenium testing of each use case (30%)
-* Screencast (10%)
-
-**Contribution requirements**: Each team member must make contributions on a milestone (e.g., committing code, being assigned and completing tasks). Failure to perform any work will result in no credit for a team member for the milestone.
-
-**Secrets**: Including secrets (passwords, tokens, etc.) in your source code or checked into repository, will result in significant deductions to your grade.
-
-DUE: Tuesday, October 22, before midnight.
