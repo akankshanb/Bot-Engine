@@ -239,6 +239,7 @@ it('Happy flow when user requests for his graphs plotted during a time period', 
 ```
 
 The following screenshot shows that all testcases for happy and alternate flows for each use case pass.
+
 ![Image all the testcases passing](https://media.github.ncsu.edu/user/13110/files/134cd000-f4e5-11e9-9c75-99c6a05b0882)
 
 <a name="mocking"></a>
