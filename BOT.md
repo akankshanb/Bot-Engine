@@ -260,9 +260,8 @@ The following screenshot shows that all testcases for happy and alternate flows 
 
 ### Mocking Service Component
 
-We implemented mock services for each use case and data to support service integration. The code for mock data is in MatterMost[framework](https://github.ncsu.edu/csc510-fall2019/CSC510-22/tree/master/plotbot/framework)
+We implemented mock services for each use case and data to support service integration. The code for mock data is in MatterMost. [framework](https://github.ncsu.edu/csc510-fall2019/CSC510-22/tree/master/plotbot/framework)
 
 ### Screencast
 Link to screencast [Link]()
-Create a screencast of your bot performing your three primary use cases. Demonstrate your selenium tests being executed.
 
