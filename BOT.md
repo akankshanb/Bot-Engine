@@ -138,7 +138,8 @@ To test and automate our BOT, we used Pupeteer Node library for testing response
 In order to run the tests:
 * Do ```npm install```
 * Export your MATTERMOST_EMAIL and MATTERMOST_PWD
-* Do npm test. We add a total of 7 Test Cases covering our use cases.
+* Do npm test. We add a total of 8 Test Cases covering our use cases.
+* Below we have shown code snippets for happy flows of our usecases and a screenshot of all testcases(happy and alternate flows) passing is provided.
 
 ###### Use Case 0: Basic conversation on @plotbot trigger
 ```javascript
@@ -163,20 +164,86 @@ In order to run the tests:
     });
  ```
 <a name="test1"></a>
-##### Use Case 1: 
+##### Use Case 1: Bot provides sample code and graph when user requests
+```javascript
+  it('Happy flow when users asks for sample scatter plot', async () => {
+        await page.waitForSelector('#post_textbox');
+        await page.focus('#post_textbox')
+        await page.keyboard.type( "sample scatterplot" );
+        await page.keyboard.press('Enter');
+        let promise = new Promise((res, rej) => {
+          setTimeout(() => res("Waiting for the Response!"), 5000)
+        });
+        let waiting = await promise;
+        await page.waitForSelector('.post__body');
+        const output = await page.evaluate(() => Array.from(
+          document.getElementsByClassName('post__body'), e => e.innerText));
+        var result = output[output.length-1];
+        expect(result).to.match(/scatterplot_code\.png\n.*\nscatterplot_graph\.png/);
 
-
-
-
+        await browser.close();
+    });
+   ```
 <a name="tes2"></a>
-##### Use Case 2: 
+##### Use Case 2: Bot plots a graph when user requests and provides dataset
+```javascript
+it('Happy flow when user asks to plot a graph by giving dataset', async () => {
+        await page.waitForSelector('#post_textbox');
+        await page.focus('#post_textbox')
+        await page.keyboard.type( "plot scatterplot" );
 
+        const example = await page.$('#fileUploadButton');
+        const attach = await page.evaluateHandle(el => el.nextElementSibling, example);
+        await attach.uploadFile('test/dataset.csv')
+        let promise1 = new Promise((res, rej) => {
+          setTimeout(() => res("Waiting for the Response!"), 5000)
+        });
+        let waiting1 = await promise1;
 
+        await page.keyboard.press('Enter');
+        let promise = new Promise((res, rej) => {
+          setTimeout(() => res("Waiting for the Response!"), 5000)
+        });
+        let waiting = await promise;
+
+        await page.waitForSelector('.post__body');
+        const output = await page.evaluate(() => Array.from(
+          document.getElementsByClassName('post__body'), e => e.innerText));
+        var result = output[output.length-1];
+        expect(result).to.match(/\.png/);
+
+        await browser.close();
+    });
+   ```
 
 <a name="test3"></a>
-##### Use Case 3: 
+##### Use Case 3: Bot gives all the user plotted plots during a time period when user requests
+```javascript
+it('Happy flow when user requests for his graphs plotted during a time period', async () => {
+        await page.waitForSelector('#post_textbox');
+        await page.focus('#post_textbox')
+        await page.keyboard.type( "retrieve from:2019-10-19 13:0:0.0 to:2019-10-19 14:0:0.0" );
+        await page.keyboard.press('Enter');
+        let promise = new Promise((res, rej) => {
+          setTimeout(() => res("Waiting for the Response!"), 5000)
+        });
+        let waiting = await promise;
+        await page.waitForSelector('.post__body');
+        const output = await page.evaluate(() => Array.from(
+          document.getElementsByClassName('post__body'), e => e.innerText));
+        var result = output[output.length-1];
+        expect(result).to.match(/\.png/);
+
+        await browser.close();
+    });
+```
+
+The following screenshot shows that all testcases for happy and alternate flows for each use case pass.
+![Image all the testcases passing](https://media.github.ncsu.edu/user/13110/files/134cd000-f4e5-11e9-9c75-99c6a05b0882)
 
 <a name="mocking"></a>
+
+
 ### Mocking Service Component
 
 We implemented mock services for each use case and data to support service integration. The code for mock data is in MatterMost[framework](https://github.ncsu.edu/csc510-fall2019/CSC510-22/tree/master/plotbot/framework)
