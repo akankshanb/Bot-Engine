@@ -6,10 +6,10 @@
 	* [Use Case 1](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#usecase1)
 	* [Use Case 2](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#usecase2)
 	* [Use Case 3](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#usecase3)
-2. [Mocking](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#mocking)
 3. [Bot Implementation](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#implement)
 	* [Bot Platform](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#platform)
 	* [Bot Integration](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#integration)
+4. [Mocking](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#mocking)
 4. [Selenium Testing](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#test)
 	* [Use Case 1](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#test1)
 	* [Use Case 2](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#test2)
@@ -99,15 +99,19 @@ Use Case3: Provide user with the ability to view all his plots.
   [E1] No plots available.
 ```
 
+<a name="implement"></a>
 
 ### Bot Implementation
 
+<a name="platform"></a>
 #### Bot Platform: 
 **AWS instance creation, instance1 mattermost server - Deployable**
 We created AWS instance for mattermost server. To make our bot independent of the server location of mattermost, we created another instance for out bot on AWS. Our bot is deployable and only requires **BOTTOKEN** from user after they make an account on MatterMost
 
+<a name="integration"></a>
 #### Bot Integration: 
 The bot is integrated in a Flask framework which gets activated on certain trigger-words. 
+
 
 **Flask Framework**
 This python based application was used to make HTTP requests. The outgoing webhooks created on Mattermost were integrated with the responder functions of our basic chatbot.
@@ -161,6 +165,7 @@ In order to run the tests:
 ##### Use Case 2: 
 ##### Use Case 3: 
 
+<a name="mocking"></a>
 ### Mocking Service Component
 
 We implemented mock services for each use case and data to support service integration. 
