@@ -32,6 +32,57 @@ There are also several techniques (such as testing and mocking) that you will be
 
 ## <a name="usecase"></a> USECASES
 
+Below are refined use cases for **PlotBot**
+```
+Use Case 1: Give the user with code snippet for the required type of graph.
+1 Preconditions
+   User must have mattermost account.
+2 Main Flow
+  User provides the bot with the type of graph it requires [S1].
+  Bot returns the appropriate library packages with a usage [S2].
+  Bot asks the user if they need a sample visualization. User responds [S3].
+  Bot returns according to the response [S4].
+3 Subflows
+  [S1] User tells bot the graph type @graph_type. e.g. Histogram
+  [S2] Bot returns the entire code snippet.
+  [S3] Bot asks for plotting sample code provided. User confirms.
+  [S4] Bot returns the sample plot.
+4 Alternative Flows
+  [E1] Requested graph data not available.
+```
+```
+Use Case2: Plot the graph for the user with their data.
+1 Preconditions
+   User must have mattermost account.
+   User must give the data in the format required by the bot.
+2 Main Flow
+   User requests bot to generate a graph of a type for their data [S1].
+   Bot will provide a specific data format for the graph to be generated [S2].
+   User provides its data in the specified format [S3].
+   Bot generates the graph and returns it to the user [S4].
+3 Subflows
+  [S1] User gives a /plot command with @graph_type.
+  [S2] Bot will return a sample data format, e.g. a comma separated list.
+  [S3] User provides the data in the requested format.
+  [S4] Bot returns the generated graph.
+4 Alternative Flows
+  [E1] Incorrect data format. Requested data format to be provided
+  [E2] Requested graph type not available.
+```
+```
+Use Case3: Provide user with the ability to view all his plots.
+1 Preconditions
+   User must have mattermost account.
+2 Main Flow
+   User requests to provide all his plotted graphs using this bot.
+3 Subflows
+  [S1] User asks to give all the plotted graphs.
+  [S2] Bot will return the file of all user plotted graphs. 
+4 Alternative Flows
+  [E1] No plots available.
+```
+
+
 ### Bot Implementation
 
 In implementing your bot, you will have to primary tasks:
