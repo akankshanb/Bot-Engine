@@ -1,5 +1,6 @@
 *.pem
 env_vars.sh
 __pycache__
+.vscode
 node_modules
 plotbot/framework/allplots/
