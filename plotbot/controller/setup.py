@@ -1,9 +1,20 @@
-import mmutil as mm
+import controller.mmutil as mm
 
-#Sample code to create the webhooks
-team_id=mm.get_driver().teams.get_team_by_name('PlotBotTeam')['id']
-print(team_id)
-channel_id=mm.get_driver().channels.get_channel_by_name(team_id, 'YashBotTester')['id']
-my_url='http://ec2-18-223-119-47.us-east-2.compute.amazonaws.com:5000/plotbot'
-channel_id=''
-mm.create_outgoing_webhook(team_id,channel_id,'Auto hook 1',my_url,['test1'])
+def load_config():
+    bot_token=os.getenv('PLOT_BOT_TOKEN')
+    if not bot_token:
+        raise Exception('Please add the environment variables for the bot token (PLOT_BOT_TOKEN)')
+    with open('../config.yml') as f:
+        data = yaml.load(f, Loader=yaml.FullLoader)
+        for entry in data: 
+            mm.params[entry]=data[entry]
+    mm.params['TEAM_ID']=mm.get_driver().teams.get_team_by_name(mm.params['TEAM_NAME'])['id']
+       
+
+def load():
+    print('Setting up system...')
+    load_config() 
+    #Create primary bot webhook if not exist
+    mm.save_outgoing_webhook(mm.params['TEAM_ID'],'','plotbot-hook',mm.params['HOOK_URL'],
+                ['@plotbot','sample','plot','retrieve'])
+    print('Setup complete...')

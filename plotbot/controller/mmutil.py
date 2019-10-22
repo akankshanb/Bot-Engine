@@ -2,21 +2,12 @@ import os
 import yaml
 from mattermostdriver import Driver
 
-mm_ip=os.getenv('MM_IP')
-bot_token=os.getenv('PLOT_BOT_TOKEN')
-
-with open('../config.yml') as f:
-    data = yaml.load(f, Loader=yaml.FullLoader)
-    if not mm_ip:
-        mm_ip=data['MM_IP']
-
-if not mm_ip or not bot_token:
-    raise Exception('Please add the environment variables for Mattermost server IP(MM_IP) and the bot token (PLOT_BOT_TOKEN)')
+params={}
 
 def get_driver():
     my_driver = Driver({
-    'url': mm_ip,
-    'token': bot_token,
+    'url': params['mm_ip'],
+    'token': params['bot_token'],
     'scheme': 'http',
     'port': 8065,
     'basepath': '/api/v4',
@@ -46,7 +37,7 @@ def create_post_url(channel_id,message):
         "props": {"attachments": [{"image_url": "https://file-examples.com/wp-content/uploads/2017/10/file_example_JPG_100kB.jpg"}]}
         })
 
-def post_message(channel_id,message,file_path):
+def post_message_file(channel_id,message,file_path):
     file_id=upload_file(channel_id,file_path)
     create_post_file(channel_id,message,[file_id])
 
@@ -55,12 +46,15 @@ def post_message(channel_id,message):
         'channel_id': channel_id,
         'message': message})
 
-def create_outgoing_webhook(team_id,channel_id,display_name,url,words):
-    get_driver().webhooks.create_outgoing_hook(options={
-        'team_id': team_id,
-        'channel_id': channel_id,
-        'display_name': display_name,
-        'trigger_words': words,
-        'trigger_when': 0,
-        'callback_urls': [url]
-        })
+def save_outgoing_webhook(team_id,channel_id,display_name,url,words):
+    my_driver=get_driver()
+    options={'team_id': team_id,'channel_id': channel_id,'display_name': display_name,
+        'trigger_words': words,'trigger_when': 0,'callback_urls': [url]}
+    hooks=my_driver.webhooks.list_outgoing_hooks({})
+    my_hook=next((hook for hook in hooks if hook['display_name'] == display_name), None)
+    if not my_hook:
+        my_driver.webhooks.create_outgoing_hook(options)
+    else:
+        pass
+        # options['hook_id']=my_hook['id']
+        # res=my_driver.webhooks.update_outgoing_hook(my_hook['id'],options)
