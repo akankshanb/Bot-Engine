@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import mixin
+import framework.mixin as mixin
 
 def load_dataset(datasetname, plot_type):
     pass

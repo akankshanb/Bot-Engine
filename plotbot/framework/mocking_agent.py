@@ -1,7 +1,17 @@
 from mockito import when, mock, unstub
-import graphs
+import framework.graphs as graphs
+import seaborn as sns; sns.set()
 
-when(graphs).loadDataset('scatterplot', ...).thenReturn(response['scatter_data'])
-when(graphs).loadDataset('boxplot', ...).thenReturn(response['scatter_data'])
-when(graphs).loadDataset('barplot', ...).thenReturn(response['scatter_data'])
+responseDataSet = {
+    'scatter_data': sns.load_dataset("iris"),
+    'boxplot_data': sns.load_dataset("tips"),
+    'barplot_data': sns.load_dataset("tips")
+}
+
+
+when(graphs).loadDataset('scatterplot', ...).thenReturn(responseDataSet['scatter_data'])
+when(graphs).loadDataset('boxplot', ...).thenReturn(responseDataSet['scatter_data'])
+when(graphs).loadDataset('barplot', ...).thenReturn(responseDataSet['scatter_data'])
+
+when(graphs).fetchAxisInfo('barplot', ...).thenReturn(responseDataSet['scatter_data'])
 

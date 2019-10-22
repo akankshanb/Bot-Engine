@@ -2,7 +2,7 @@
 import string
 import random
 import pickle
-import constants
+import framework.constants as constants
 
 
 class ID(object):
