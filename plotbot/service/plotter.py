@@ -13,11 +13,16 @@ def boxplotfunc():
 
 def plot(input_txt):
     text_list = input_txt.lower().strip().split()
-    if text_list[1] in graph_dict.keys():
-        filename = graph_dict[text_list[1]]()
-        print(filename)
-        return "Here is you plot for **{}**".format(text_list[1])
+    if len(text_list) ==1:
+        raise ValueError('Please give a plot type and file name')
+    elif len(text_list) ==2:
+        raise ValueError('Please give a file name')
     else:
-        raise ValueError('A very specific bad thing happened')
+        if text_list[1] in graph_dict.keys():
+            filename = graph_dict[text_list[1]]()
+            return "Here is your plot for **{}**".format(text_list[1])
+        else:
+            raise ValueError('Please provide the correct plot type')
+    
 
 graph_dict = {"scatterplot":  scatterplotfunc, "barplot": barplotfunc, "boxplot": boxplotfunc} 

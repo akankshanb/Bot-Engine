@@ -20,6 +20,7 @@ app = Flask(__name__)
 def plotbot():
     # print("Greeting")
     request_json = request.get_json(force=True)
+    print(request_json)
     resp_msg,files= parseRequest(request_json["trigger_word"],request_json["text"])
     mm.post_message_file(request_json["channel_id"],resp_msg,files)
     return ''
@@ -48,7 +49,7 @@ def parseRequest(trigger,message):
 def checkgreeting(input_txt):
     text_list = input_txt.lower().strip().split()
     greeting_list = ['hi', 'hey', 'hello']
-    if text_list[1] is None or text_list[1] in greeting_list:
+    if len(text_list)==1 or text_list[1] in greeting_list:
         return "Hi"
     else:
         return defaultreply()
