@@ -20,20 +20,21 @@ app = Flask(__name__)
 def plotbot():
     # print("Greeting")
     request_json = request.get_json(force=True)
-    resp_msg= parseRequest(request_json["trigger_word"],request_json["text"])
-    mm.post_message_file(request_json["channel_id"],resp_msg,'framework/foo.png')
+    resp_msg,files= parseRequest(request_json["trigger_word"],request_json["text"])
+    mm.post_message_file(request_json["channel_id"],resp_msg,files)
     return ''
 
 
 def parseRequest(trigger,message):
      #print(request_json)
     resp_msg=defaultreply()
+    files= []
     try:
         if trigger == "@plotbot":
             resp_msg = checkgreeting(message)
         elif trigger == "sample":
             #resp_msg =  checksample(message)
-            resp_msg = sampler.fetch(message)
+            resp_msg,files = sampler.fetch(message)
         elif trigger == "plot":
             #resp_msg = checkplotgraph(message)
             resp_msg = plotter.plot(message)
@@ -42,7 +43,7 @@ def parseRequest(trigger,message):
     except ValueError as err:
         print(err.args)
         resp_msg=err.args[0]
-    return resp_msg
+    return resp_msg,files
 
 def checkgreeting(input_txt):
     text_list = input_txt.lower().strip().split()

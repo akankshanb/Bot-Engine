@@ -1,9 +1,18 @@
-snippet_dict={"scatterplot": "<file_path>", "barplot": "<file_path>", "boxplot": "<file_path>"} 
+def retrieve_snippet(type):
+    snippet_dict={"scatterplot": ["scatterplot_code","scatterplot_graph"],
+         "barplot": ["barplot_code","barplot_graph"], "boxplot": ["boxplot_code","boxplot_graph"]}
+    if type in snippet_dict:
+        return snippet_dict[type]
+    else:
+        raise ValueError('Requested plot sample not available')
 
 def fetch(input_txt):
     text_list = input_txt.lower().strip().split()
-    if text_list[1] in snippet_dict.keys():
-        file_name = snippet_dict[text_list[1]]
-        return "Here is you code snippet for **{}**".format(text_list[1])
-    else:
-        raise ValueError('A very specific bad thing happened')
+    files=[]
+
+    snippets=retrieve_snippet(text_list[1])
+    for name in snippets:
+        path="sample_plots/"+name+".png"
+        files.append(path)
+    return "Here is you code snippet for **{}**".format(text_list[1]),files
+    
