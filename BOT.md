@@ -6,6 +6,8 @@
 
 
 Steps:
+sudo apt-get update
+sudo apt-get -y install python3-pip
 pip3 install flask
 pip3 install mattermostdriver
-pip install -U PyYAML
+pip3 install -U PyYAML
