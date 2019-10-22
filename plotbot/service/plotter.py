@@ -32,17 +32,13 @@ def boxplotfunc(msg_arr, dataset_filename):
 
 def plot(input_txt, file_ids):
     text_list = input_txt.lower().strip().split()
-
-    if len(text_list) ==1:
+    if len(text_list[1]) ==1:
         raise ValueError('Please give a plot type and file name')
-    elif len(text_list) ==2:
-        raise ValueError('Please give a file name')
-
     if text_list[1] in graph_dict.keys():
         print(text_list)
         filename = graph_dict[text_list[1]](text_list[2:], file_ids)
         print(filename)
-        return_msg = "Here is you plot for **{}**".format(text_list[1])
+        return_msg = "Here is your plots for **{}**".format(text_list[1])
         return return_msg, [filename]
     else: 
         raise ValueError('Please provide the correct plot type')

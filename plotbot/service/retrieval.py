@@ -9,5 +9,5 @@ def fetch(message, user):
     plot = text_list[len(text_list)-1]
     filenames = mixin.fetchplotfromDB(plot, user)
     print(filenames)
-    return "here are you plots", filenames
+    return "Here are your plots", filenames
     # for each user id, filename of the graphs
