@@ -3,7 +3,9 @@ import string
 import random
 import pickle
 import framework.constants as constants
-
+import subprocess
+import re
+from random import randint
 
 class ID(object):
     def __init__(self):
@@ -24,13 +26,18 @@ def gatherIDs(idtype):
         infile.close()
         return ids
     except EOFError:
-        ids = {}
+        if idtype =='plot': ids = []
+        elif idtype =='user':   ids = {}
         filename = 'framework/'+idtype+'_ids.db'
         outfile = open(filename,'wb')
         pickle.dump(ids,outfile)
         outfile.close()
         return ids
-    
+    except FileNotFoundError:
+        filename = 'framework/'+idtype+'_ids.db'
+        outfile = open(filename,'wb')
+        outfile.close()
+        gatherIDs(idtype)
 
 def randomString(stringLength=10):
     letters = string.ascii_lowercase
@@ -57,3 +64,7 @@ def fetchDB_path():
 
 def fetchplotfromDB(plot, user):
     pass
+
+def fetchplotfromDBtimed(plot, user):
+    pass
+

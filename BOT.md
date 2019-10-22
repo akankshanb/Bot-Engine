@@ -6,16 +6,15 @@
 	* [Use Case 1](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#usecase1)
 	* [Use Case 2](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#usecase2)
 	* [Use Case 3](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#usecase3)
-2. [Mocking](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#mocking)
 3. [Bot Implementation](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#implement)
 	* [Bot Platform](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#platform)
 	* [Bot Integration](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#integration)
-4. [Selenium Testing](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#test)
+4. [Mocking](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#mocking)
+4. [Pupeteer Testing](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#test)
 	* [Use Case 1](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#test1)
 	* [Use Case 2](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#test2)
 	* [Use Case 3](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#test3)
-5. [Task Tracking](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#track)
-6. [Screencast]
+5. [Screencast]
 
 ## <a name="install"></a> INSTALLATION STEPS:
 ```
@@ -99,23 +98,49 @@ Use Case3: Provide user with the ability to view all his plots.
   [E1] No plots available.
 ```
 
+<a name="implement"></a>
 
-### Bot Implementation
+### BOT IMPLEMENTATION
 
+<a name="platform"></a>
 #### Bot Platform: 
 **AWS instance creation, instance1 mattermost server - Deployable**
-**Instance2 for bot**
-**Bottoken**
+We created AWS instance for mattermost server. To make our bot independent of the server location of mattermost, we created another instance for out bot on AWS. Our bot is deployable and only requires **BOTTOKEN** from user after they make an account on MatterMost
 
+<a name="integration"></a>
 #### Bot Integration: 
-**Trigger words corresponding to different tasks**
+The bot is integrated in a Flask framework which gets activated on certain trigger-words. 
+
+
 **Flask Framework**
+This python based application was used to make HTTP requests. The outgoing webhooks created on Mattermost were integrated with the responder functions of our basic chatbot.
+
+**Trigger words corresponding to different tasks**
+
+Run Commands:
+@plotbot - Activates the PlotBot
+sample - Covers usecase 1
+plot - Covers usecase 2 
+retrieve - Covers usecase3
+
+**Example Usecase**
+```
+@plotbot Hey!
+sample [boxplot/scatterplot/barplot]
+plot [scatterplot/boxplot/barplot] "iris.csv(upload file on Matternost)"
+retrieve from:05/06/2018 to:08/07/2019 OR can be a particular file name the use wants(say iris.csv)
+```
+
+<a name="test"></a>
 
 ### Puppeteer Testing
-*** tokens are required for mattermost_email and mattermost_pwd***
-*** User has to do 'npm install' before starting the test
-*** the user has to run npm test and it shows the pass/fail status for each test*** <br>
-###### Sample Use Case
+To test and automate our BOT, we used Pupeteer Node library for testing responses on headless Chromium. 
+In order to run the tests:
+* Do ```npm install```
+* Export your MATTERMOST_EMAIL and MATTERMOST_PWD
+* Do npm test. We add a total of 7 Test Cases covering our use cases.
+
+###### Use Case 0: Basic conversation on @plotbot trigger
 ```javascript
   it('It should greet back', async () => {
         var list = [,]
@@ -137,36 +162,26 @@ Use Case3: Provide user with the ability to view all his plots.
         await browser.close();
     });
  ```
-##### Testcase for Usecase-1
-##### Testcase for Usecase-2
-##### Testcase for Usecase-3
+<a name="test1"></a>
+##### Use Case 1: 
 
+
+
+
+<a name="tes2"></a>
+##### Use Case 2: 
+
+
+
+<a name="test3"></a>
+##### Use Case 3: 
+
+<a name="mocking"></a>
 ### Mocking Service Component
 
-Because the focus on your milestone is platform integration and bot interaction, you will not yet have a working service implementation. Implement mock services and data to support service integration. For example, if you were implementing a meeting bot that helps set up meetings, use mock calendar data to determine available meeting time, rather than integrate with a user's Google calendar. A proper mocking infrastructure would allow you to swap real and testing information in a single place, instead of hard-coded throughout your code base.
-
-**Failure to use appropriate mocking/injection techniques will result in 0 credit**. Do not do this:
-
-```javascript
-bot.hears("command", function(){ bot.replys("fake answer");});
-```
+We implemented mock services for each use case and data to support service integration. The code for mock data is in MatterMost[framework](https://github.ncsu.edu/csc510-fall2019/CSC510-22/tree/master/plotbot/framework)
 
 ### Screencast
-
+Link to screencast [Link]()
 Create a screencast of your bot performing your three primary use cases. Demonstrate your selenium tests being executed.
 
-## Deliverables
-
-Add your code, and BOT.md document describing the following materials.
-
-* Bot Platform Implementation (20%)
-* Use Cases Refinement (10%)
-* Mocking infrastructure (30%)
-* Selenium testing of each use case (30%)
-* Screencast (10%)
-
-**Contribution requirements**: Each team member must make contributions on a milestone (e.g., committing code, being assigned and completing tasks). Failure to perform any work will result in no credit for a team member for the milestone.
-
-**Secrets**: Including secrets (passwords, tokens, etc.) in your source code or checked into repository, will result in significant deductions to your grade.
-
-DUE: Tuesday, October 22, before midnight.
