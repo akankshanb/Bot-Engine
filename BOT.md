@@ -104,11 +104,25 @@ Use Case3: Provide user with the ability to view all his plots.
 
 #### Bot Platform: 
 **AWS instance creation, instance1 mattermost server - Deployable**
-**Instance2 for bot**
-**Bottoken**
+We created AWS instance for mattermost server. To make our bot independent of the server location of mattermost, we created another instance for out bot on AWS. Our bot is deployable and only requires **BOTTOKEN** from user after they make an account on MatterMost
 
 #### Bot Integration: 
+The bot is integrated in a Flask framework which gets activated on certain trigger-words. 
 **Trigger words corresponding to different tasks**
+cmds:
+@plotbot - Activates the PlotBot
+sample - Covers usecase 1
+plot - Covers usecase 2 
+retrieve - Covers usecase3
+
+***Example Usecase**
+```
+@plotbot Hey!
+sample [boxplot/scatterplot/barplot]
+plot [scatterplot/boxplot/barplot] "iris.csv(upload file on Matternost)"
+retrieve from:05/06/2018 to:08/07/2019 OR can be a particular file name the use wants(say iris.csv)
+```
+
 **Flask Framework**
 
 ### Puppeteer Testing
