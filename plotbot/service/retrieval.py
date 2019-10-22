@@ -2,7 +2,6 @@ import framework.mocking_agent
 import framework.mixin as mixin
 import framework.constants as constants
 
-
 def fetch(message, user):
     print("----")
     text_list = message.lower().strip().split()

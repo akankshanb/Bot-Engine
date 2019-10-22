@@ -5,6 +5,9 @@ import framework.mixin as mixin
 import service.retrieval as retrieval
 import seaborn as sns; sns.set()
 from random import randint
+import subprocess
+import re
+
 responseDataSet = {
     'scatter_data': sns.load_dataset("iris"),
     'boxplot_data': sns.load_dataset("tips"),
@@ -37,8 +40,10 @@ responseSnippet={
 
 def randomplot():
     print("mocking random")
-    responseRetrive=['dutsfgnahw.png', 'dwshuugwer.png', 'glslcehgje.png']
-    num_plots = randint(0,5)
+    a = subprocess.check_output("ls").decode()
+    responseRetrive = re.findall('(\S+png)', a)
+    # responseRetrive=['dutsfgnahw.png', 'dwshuugwer.png', 'glslcehgje.png']
+    num_plots = randint(0,len(responseRetrive))
     imgs = []
     for i in range(1,num_plots):
         img = 'framework/allplots/'+responseRetrive[randint(0,len(responseRetrive)-1)]
