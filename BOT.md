@@ -10,12 +10,11 @@
 	* [Bot Platform](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#platform)
 	* [Bot Integration](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#integration)
 4. [Mocking](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#mocking)
-4. [Selenium Testing](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#test)
+4. [Pupeteer Testing](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#test)
 	* [Use Case 1](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#test1)
 	* [Use Case 2](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#test2)
 	* [Use Case 3](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#test3)
-5. [Task Tracking](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#track)
-6. [Screencast]
+5. [Screencast]
 
 ## <a name="install"></a> INSTALLATION STEPS:
 ```
@@ -132,6 +131,8 @@ plot [scatterplot/boxplot/barplot] "iris.csv(upload file on Matternost)"
 retrieve from:05/06/2018 to:08/07/2019 OR can be a particular file name the use wants(say iris.csv)
 ```
 
+<a name="test"></a>
+
 ### Puppeteer Testing
 To test and automate our BOT, we used Pupeteer Node library for testing responses on headless Chromium. 
 In order to run the tests:
@@ -161,8 +162,18 @@ In order to run the tests:
         await browser.close();
     });
  ```
+<a name="test1"></a>
 ##### Use Case 1: 
+
+
+
+
+<a name="tes2"></a>
 ##### Use Case 2: 
+
+
+
+<a name="test3"></a>
 ##### Use Case 3: 
 
 <a name="mocking"></a>
