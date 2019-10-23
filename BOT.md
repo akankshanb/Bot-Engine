@@ -118,7 +118,7 @@ Use Case3: Provide user with the ability to view all his plots.
 <a name="platform"></a>
 #### Bot Platform: 
 **AWS instance creation, instance1 mattermost server - Deployable**
-We created AWS instance for mattermost server. To make our bot independent of the server location of mattermost, we created another instance for out bot on AWS. Our bot is deployable and only requires **BOTTOKEN** from user after they make an account on MatterMost
+We created AWS instance for mattermost server. To make our bot independent of the server location of mattermost, we created another instance for out bot on AWS. Our bot is deployable and only requires a bot account token called **PLOT_BOT_TOKEN** from user after they make an account on MatterMost
 
 <a name="integration"></a>
 #### Bot Integration: 
