@@ -275,5 +275,5 @@ Usecase   | Services required  | service API| Mocked up | mocking API |
 3 | Retrieve graphs from a particular time interval | service. retrieval. fetchplotfromDBtimed|Fetches a set of graphs at random from mock graphs | mocking_agent. responseRetrieve['datetime'] |
 
 ### Screencast
-Link to screencast [Link]()
+Link to screencast [Link](https://drive.google.com/open?id=1iuf93uHJ18pUoIYcB0WfxOJZwO5TiGyv)
 
