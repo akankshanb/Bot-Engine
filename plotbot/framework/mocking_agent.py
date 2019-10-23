@@ -64,7 +64,7 @@ def generateBoxMockPlot():
     return newGraph.plotLocation
 
 def generateMockPlots():
-    numScatter, numBar, numBox = randint(0,10), randint(0,10), randint(0,10)
+    numScatter, numBar, numBox = 1, 1, 2
     plots = []
     for i in range(0, numScatter):
         plots.append(generateScatterMockPlot())
@@ -92,17 +92,17 @@ when(sampler).retrieve_snippet('boxplot').thenReturn(responseSnippet['boxplot'])
 
 def randomplot():
     responseRetrive = constants.mockPlots
-    num_plots = randint(1,5)
+    num_plots = 4
     imgs = []
-    for i in range(1,num_plots):
-        img = ''+responseRetrive[randint(1,len(responseRetrive)-1)]
+    for i in range(0,num_plots):
+        img = ''+responseRetrive[i]
         imgs.append(img)
     if(len(imgs)== 0):   randomplot()
     return imgs
 
 constants.mockPlots = generateMockPlots()
-responseRetrieve['datetime'] = randomplot()
 responseRetrieve['plot'] = randomplot()
+responseRetrieve['datetime'] = responseRetrieve['plot'][:2]
 
 when(mixin).fetchplotfromDBtimed(..., ...).thenReturn(responseRetrieve['datetime'])
 when(mixin).fetchplotfromDB(..., ...).thenReturn(responseRetrieve['plot'])
