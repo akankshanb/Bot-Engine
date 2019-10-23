@@ -14,7 +14,7 @@
 	* [Use Case 1](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#test1)
 	* [Use Case 2](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#test2)
 	* [Use Case 3](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#test3)
-5. [Screencast]
+5. [Screencast](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/BOT.md/#screencast)
 
 ## <a name="install"></a> INSTALLATION STEPS:
 ```
@@ -275,5 +275,5 @@ Usecase   | Services required  | service API| Mocked up | mocking API |
 3 | Retrieve graphs from a particular time interval | service. retrieval. fetchplotfromDBtimed|Fetches a set of graphs at random from mock graphs | mocking_agent. responseRetrieve['datetime'] |
 
 ### Screencast
-Link to screencast [Link](https://drive.google.com/open?id=1iuf93uHJ18pUoIYcB0WfxOJZwO5TiGyv)
+[Link to screencast](https://drive.google.com/open?id=1iuf93uHJ18pUoIYcB0WfxOJZwO5TiGyv)
 
