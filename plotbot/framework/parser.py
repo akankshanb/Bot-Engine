@@ -19,7 +19,7 @@ def check_params(input):
             return True
 
 #check the uploaded file
-def check_axis(input,loc):
+def check_dataset_axis(input,loc):
     input = input.lower().split(" ")
     df = pd.read_csv(loc)
     headers = list(df.head(1))
@@ -30,15 +30,23 @@ def check_axis(input,loc):
         raise ValueError("Provided column for x-axis is not present in the dataset.Please provide valid column.")
     if y_axis not in headers:
         raise ValueError("Provided column for y-axis is not present in the dataset.Please provide valid column.")
-    return True 
+    return True
 
 
 def check_plot_params(input):
     input = input.lower().split(" ")
-    if (len_input == 5):
+    if (len(input) == 5):
         file = input[2]
         loc = '../tmp/'+file
         if (path.exists(loc)):
-            check_axis(input,loc)
+            check_dataset_axis(input,loc)
         else:
-            raise ValueError("Please request by uploading the dataset. The mentioned dataset doesn't exist in our databse.")
+            raise ValueError("Please request by uploading the dataset. The mentioned dataset doesn't exist in our databse."
+    else:
+        ##check uploaded file
+
+
+
+params = check_params(input)
+if (params):
+    check_plot_params(input)
