@@ -15,7 +15,7 @@
          "context_set": ""
         },
         {"tag": "sample",
-         "patterns": ["I need a code snippet", "give me a sample plot for", "How do I draw"],
+         "patterns": ["I need a code snippet", "give me a sample plot for", "How do I draw", "plot something for me"],
          "responses": ["Please provide a graph type", "Please provide a plot type", "What kind of plot do you want","Choose between scatterplot, boxplot and barplot"],
          "context_set": ""
         },
