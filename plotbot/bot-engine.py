@@ -28,6 +28,12 @@ def plotbot():
 
     return ''
 
+def loadDataset(dsName,dsFileId,userId):
+    
+    # if userId not in constants.userIDs:
+
+    # else:
+
 def parseRequest(trigger,message, file_ids, user):
     #print(request_json)
     resp_msg=defaultreply()
@@ -41,9 +47,8 @@ def parseRequest(trigger,message, file_ids, user):
             resp_msg,files = sampler.fetch(message)
         elif trigger == "plot":
             #resp_msg = checkplotgraph(message)
-            fileId=None
             if len(file_ids)>0:
-                fileId=file_ids[0]
+                loadDataset(dsName,file_ids[0],user)
             resp_msg, files = plotter.plot(message, fileId)
             #mixin.allocate(user, img_name)
         elif trigger =="retrieve":

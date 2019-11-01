@@ -1,6 +1,7 @@
 import framework.graphs as graphs
 import framework.constants as constants
 import framework.mocking_agent
+import controller.mmutil as mm
 
 def scatterplotfunc(msg_arr, dataset_filename):
     #print('in scatter')
@@ -30,12 +31,8 @@ def boxplotfunc(msg_arr, dataset_filename):
     newGraph.saveimage()
     return newGraph.plotLocation
 
-def handleDataset:
-    pass
-
 def plot(input_txt, fileId):
     text_list = input_txt.lower().strip().split()
-    handleDataset(text_list[2],fileId)
     if len(text_list[1]) ==1:
         raise ValueError('Please give a plot type and file name')
     if text_list[1] in graph_dict.keys():
