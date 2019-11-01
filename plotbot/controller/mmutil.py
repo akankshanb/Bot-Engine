@@ -1,5 +1,6 @@
 import os
 from mattermostdriver import Driver
+import re
 
 params={}
 
@@ -43,9 +44,7 @@ def post_message_file(channel_id,message,files):
     create_post_file(channel_id,message,file_ids)
 
 def fetchFile(file_id):
-    file_obj=get_driver().files.get_file(file_id)
-    print(file_obj)
-    return file_obj
+    return get_driver().files.get_file(file_id)
 
 def post_message(channel_id,message):
     get_driver().posts.create_post(options={
