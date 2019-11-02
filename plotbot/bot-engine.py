@@ -22,17 +22,23 @@ app = Flask(__name__)
 def plotbot():
     print("Greeting")
     request_json = request.get_json(force=True)
-
-    resp_msg,files= parseRequest(request_json["trigger_word"],request_json["text"], request_json['file_ids'], request_json['user_id'])
+    print(request_json)
+    resp_msg,files= parseRequest(request_json["trigger_word"],request_json["text"], request_json['file_ids'].split(','), request_json['user_id'])
     mm.post_message_file(request_json["channel_id"],resp_msg,files)
 
     return ''
 
 def loadDataset(dsName,dsFileId,userId):
-    
-    # if userId not in constants.userIDs:
-
-    # else:
+    if not userId in constants.userIDs:
+        constants.userIDs[userId]={}
+    constants.userIDs[userId][dsName]={}
+    print(constants.userIDs)
+    print(dsFileId)
+    file_resp=mm.fetchFile(dsFileId)
+    filename=constants.baseStorage+userId+'/'+dsName+'/'+dsName+'.csv'
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
+    with open(filename, 'wb') as w:
+        w.write(file_resp.content)
 
 def parseRequest(trigger,message, file_ids, user):
     #print(request_json)
@@ -47,9 +53,15 @@ def parseRequest(trigger,message, file_ids, user):
             resp_msg,files = sampler.fetch(message)
         elif trigger == "plot":
             #resp_msg = checkplotgraph(message)
-            if len(file_ids)>0:
-                loadDataset(dsName,file_ids[0],user)
-            resp_msg, files = plotter.plot(message, fileId)
+            text_list= message.strip().split()
+            if len(text_list)>2:
+                dsname=text_list[2]
+                print(file_ids)
+                if len(file_ids)>0:
+                    loadDataset(dsname,file_ids[0],user)
+                resp_msg, files = plotter.plot(message, dsname)
+            else:
+                raise ValueError('Dataset name not found')
             #mixin.allocate(user, img_name)
         elif trigger =="retrieve":
             resp_msg, files = retrieval.fetch(message, user)

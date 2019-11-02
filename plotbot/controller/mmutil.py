@@ -1,6 +1,5 @@
 import os
 from mattermostdriver import Driver
-import re
 
 params={}
 

@@ -31,13 +31,13 @@ def boxplotfunc(msg_arr, dataset_filename):
     newGraph.saveimage()
     return newGraph.plotLocation
 
-def plot(input_txt, fileId):
+def plot(input_txt, dsname):
     text_list = input_txt.lower().strip().split()
     if len(text_list[1]) ==1:
         raise ValueError('Please give a plot type and file name')
     if text_list[1] in graph_dict.keys():
         #print(text_list)
-        filename = graph_dict[text_list[1]](text_list[2:], fileId)
+        filename = graph_dict[text_list[1]](text_list[2:], dsname)
         #print(filename)
         return_msg = "Here is your plots for **{}**".format(text_list[1])
         return return_msg, [filename]
