@@ -32,8 +32,6 @@ def loadDataset(dsName,dsFileId,userId):
     if not userId in constants.userIDs:
         constants.userIDs[userId]={}
     constants.userIDs[userId][dsName]={}
-    print(constants.userIDs)
-    print(dsFileId)
     file_resp=mm.fetchFile(dsFileId)
     filename=constants.baseStorage+userId+'/'+dsName+'/'+dsName+'.csv'
     os.makedirs(os.path.dirname(filename), exist_ok=True)
@@ -56,7 +54,6 @@ def parseRequest(trigger,message, file_ids, user):
             text_list= message.strip().split()
             if len(text_list)>2:
                 dsname=text_list[2]
-                print(file_ids)
                 if len(file_ids)>0:
                     loadDataset(dsname,file_ids[0],user)
                 resp_msg, files = plotter.plot(message, dsname)
