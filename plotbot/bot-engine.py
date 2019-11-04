@@ -28,9 +28,10 @@ def plotbot():
     return ''
 
 def loadDataset(dsName,dsFileId,userId):
-    if not userId in constants.userIDs:
-        constants.userIDs[userId]={}
-    constants.userIDs[userId][dsName]={}
+    if userId not in constants.metadata:
+        constants.metadata[userId]={}
+    if dsName not in constants.metadata[userId]:
+        constants.metadata[userId][dsName]={}
     file_resp=mm.fetchFile(dsFileId)
     filename=constants.baseStorage+userId+'/'+dsName+'/'+dsName+'.csv'
     os.makedirs(os.path.dirname(filename), exist_ok=True)

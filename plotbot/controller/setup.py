@@ -1,6 +1,7 @@
 import os
 import yaml
 import controller.mmutil as mm
+import framework.constants as constants
 
 def load_config():
     mm.params['PLOT_BOT_TOKEN']=os.getenv('PLOT_BOT_TOKEN')
@@ -20,4 +21,12 @@ def load():
     #Create primary bot webhook if not exist
     mm.save_outgoing_webhook(mm.params['TEAM_ID'],mm.params['DEFAULT_CHANNEL_ID'],'plotbot-hook',mm.params['HOOK_URL'],
                 ['@plotbot','sample','plot','retrieve'])
+
+    # Configuring metadata and file storage
+    os.makedirs(os.path.dirname(constants.baseStorage), exist_ok=True)
+
+    if os.path.exists('mydirectory/myfile.txt'):
+        infile = os.open(constants.baseStorage+constants.dbFile, os.O_RDONLY)
+        constants.metadata=pickle.load(infile)
+
     print('Setup complete...')
