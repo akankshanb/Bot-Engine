@@ -22,7 +22,6 @@ app = Flask(__name__)
 def plotbot():
     print("Greeting")
     request_json = request.get_json(force=True)
-    print(request_json)
     resp_msg,files= parseRequest(request_json["trigger_word"],request_json["text"], request_json['file_ids'].split(','), request_json['user_id'])
     mm.post_message_file(request_json["channel_id"],resp_msg,files)
 
