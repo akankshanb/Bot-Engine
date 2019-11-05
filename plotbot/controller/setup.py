@@ -1,6 +1,7 @@
 import os
 import yaml
 import controller.mmutil as mm
+import pickle
 import framework.constants as constants
 
 def load_config():
@@ -14,6 +15,13 @@ def load_config():
     mm.params['TEAM_ID']=mm.get_driver().teams.get_team_by_name(mm.params['TEAM_NAME'])['id']
     mm.params['DEFAULT_CHANNEL_ID']=mm.get_driver().channels.get_channel_by_name(mm.params['TEAM_ID'],mm.params['DEFAULT_CHANNEL'])['id']
        
+def unload():
+    filename = constants.baseStorage+constants.dbFile
+    outfile = open(filename,'wb')
+    print("Metadata: "+str(constants.metadata))
+    pickle.dump(constants.metadata,outfile)
+    outfile.close()
+
 
 def load():
     print('Setting up system...')
@@ -25,8 +33,8 @@ def load():
     # Configuring metadata and file storage
     os.makedirs(os.path.dirname(constants.baseStorage), exist_ok=True)
 
-    if os.path.exists('mydirectory/myfile.txt'):
-        infile = os.open(constants.baseStorage+constants.dbFile, os.O_RDONLY)
+    if os.path.exists(constants.baseStorage+constants.dbFile):
+        infile = open(constants.baseStorage+constants.dbFile, 'rb')
         constants.metadata=pickle.load(infile)
-
+    print(constants.metadata)
     print('Setup complete...')

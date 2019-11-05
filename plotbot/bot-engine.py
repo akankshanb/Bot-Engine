@@ -15,6 +15,7 @@ import service.retrieval as retrieval
 from flask import send_file
 from framework.mocking_agent import generateMockPlots as setupMockdata
 import framework.constants as constants
+import atexit
 
 app = Flask(__name__)
 
@@ -28,10 +29,12 @@ def plotbot():
     return ''
 
 def loadDataset(dsName,dsFileId,userId):
+    print(constants.metadata)
     if userId not in constants.metadata:
         constants.metadata[userId]={}
     if dsName not in constants.metadata[userId]:
         constants.metadata[userId][dsName]={}
+    print("Metadata curr: "+str(constants.metadata))
     file_resp=mm.fetchFile(dsFileId)
     filename=constants.baseStorage+userId+'/'+dsName+'/'+dsName+'.csv'
     os.makedirs(os.path.dirname(filename), exist_ok=True)
@@ -79,11 +82,10 @@ def checkgreeting(input_txt):
 def defaultreply():
     return "Sorry, I did not understand"
 
-if __name__ == "__main__":
-    try:
-        setup.load()
-        app.run(host='0.0.0.0')
-    except KeyboardInterrupt:
-        mixin.saveIDs('plot', constants.plotIDs)
-        mixin.saveIDs('user', constants.userIDs)
+def exit_handler():
+    setup.unload()
 
+if __name__ == "__main__":
+    atexit.register(exit_handler)
+    setup.load()
+    app.run(host='0.0.0.0')
