@@ -1,7 +1,7 @@
 # Message Sanitization
 from os import path
 import pandas as pd
-import constants as constants
+import framework.constants as constants
 
 #check the uploaded file
 
@@ -9,7 +9,7 @@ def data_validation(response):
     if (response["plot_type"] not in ["scatterplot", "barplot","boxplot"]) :
         raise ValueError("Please provide correct plot type.")
     file = response["dataset"]
-    loc = constants.baseStorage+user+'/'+file+'/'+file+'.csv'
+    loc = constants.baseStorage+response['user']+'/'+file+'/'+file+'.csv'
     if (path.exists(loc)):
         result = check_dataset_axis(response,loc)
     else:
@@ -36,7 +36,7 @@ def parse_plot_request(message,file_ids,user):
     response = {}
     if (check_params(input)):
         response["plot_type"],response["dataset"],file_id,response["x_axis"],response["y_axis"] = parse_message(input,file_ids)
-    if file_id ! = None:
+    if file_id != None:
         response["mm_file_id"] = file_id
     response["user"] = user
     return response
@@ -57,11 +57,11 @@ def parse_message(input,file_ids):
         y_axis = input[4].lower().split(",")
         file_id = None
     else:
-	   if len(file_ids)>0 and file_ids[0]!='':
-           dataset = file_ids[0]
-           file_id = file_ids[0]
-       else:
-           raise ValueError("Please upload the dataset to plot")
-       x_axis = input[2].lower().split(",")
-       y_axis = input[3].lower().split(",")
+        if len(file_ids)>0 and file_ids[0] != '':
+            dataset = file_ids[0]
+            file_id = file_ids[0]
+        else:
+            raise ValueError("Please upload the dataset to plot")
+        x_axis = input[2].lower().split(",")
+        y_axis = input[3].lower().split(",")
     return plot_type,dataset, file_id, x_axis, y_axis
