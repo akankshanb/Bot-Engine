@@ -15,8 +15,13 @@ import service.retrieval as retrieval
 from flask import send_file
 from framework.mocking_agent import generateMockPlots as setupMockdata
 import framework.constants as constants
+<<<<<<< HEAD
+import framework.parser as parser
+=======
 from nlp.analyze import *
+>>>>>>> master
 import atexit
+import pprint
 
 app = Flask(__name__)
 
@@ -51,12 +56,15 @@ def parseRequest(trigger,message, file_ids, user):
             resp_msg,files = sampler.fetch(message)
         elif trigger == "plot":
             #resp_msg = checkplotgraph(message)
+            response = parser.parse_plot_request(message,file_ids,user)
+            pprint.pprint(response)
             text_list= message.strip().split()
             if len(text_list)>2:
                 dsname=text_list[2]
                 print(file_ids,len(file_ids))
                 if len(file_ids)>0 and file_ids[0]!='':
                     loadDataset(dsname,file_ids[0],user)
+                res = parser.data_validation(response)
                 resp_msg, files = plotter.plot(message, dsname)
             else:
                 raise ValueError('Dataset name not found')
