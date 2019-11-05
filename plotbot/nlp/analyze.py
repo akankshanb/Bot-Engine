@@ -2,12 +2,27 @@ import numpy
 import random
 import string
 import nltk
+import nltk.corpus
+import nltk.tokenize.punkt
+import string
 from nltk.stem.lancaster import LancasterStemmer
-stemmer = LancasterStemmer()
 import json
 import pickle
 import requests
 import re
+from collections import Counter
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+nltk.download('punkt')
+nltk.download('stopwords')
+
+# Create tokenizer
+stemmer = LancasterStemmer()
+stopwords = nltk.corpus.stopwords.words('english')
+stopwords.extend(string.punctuation)
+stopwords.append('')
+tokenizer = nltk.tokenize.WordPunctTokenizer()
+
 def train(inp):
     with open("intents.json") as file:
         data = json.load(file)
@@ -64,31 +79,33 @@ def train(inp):
             pickle.dump((words, labels, training, output), f)
 
 def eventhandle(inp):
-    message = inp["text"]
-    with open("intents.json",'rb') as f:
+    message = inp
+    with open("nlp/intents.json",'rb') as f:
         data = json.load(f)
+    maxi = 0
+    response_item = None
     for items in data["intents"]:
-        regex = ''
-        maxi = 0
-        response_item = None
+        # regex = ''
         for b in items["patterns"]:
             match = get_jaccard_sim(b,message)
             print(match)
+            # print("maxi : ", maxi)
             if(match > maxi):
                 maxi = match
                 response_item = items
-    if(response_item is None):
-        print("Sorry I do not understand")
-    responses = response_item['responses']
-    print("That is my anser: ", random.choice(responses))
+                # print("maxi changes : ", maxi)
+    if response_item is None:
+        return "Sorry I do not understand"
+    else: 
+        responses = response_item['responses']
+        return random.choice(responses)
 
-from collections import Counter
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+
 def get_cosine_sim(*strs): 
     vectors = [t for t in get_vectors(*strs)]
     return cosine_similarity(vectors)
-    
+
+
 def get_vectors(*strs):
     text = [t for t in strs]
     print(text)
@@ -98,23 +115,11 @@ def get_vectors(*strs):
     return vectorizer.transform(text).toarray()
 
 
-
-import nltk.corpus
-import nltk.tokenize.punkt
-import string
-# nltk.download('punkt') 
-# nltk.download('stopwords')
-# nltk.download('wordnet')
-# Get default English stopwords and extend with punctuation
-stopwords = nltk.corpus.stopwords.words('english')
-stopwords.extend(string.punctuation)
-stopwords.append('')
-
-# Create tokenizer
-tokenizer = nltk.tokenize.WordPunctTokenizer()
 def get_jaccard_sim(str1, str2): 
-    a = set(str1.split()) 
-    b = set(str2.split())
+    a = set(str1.lower().split()) 
+    # print("intent: ", a)
+    b = set(str2.lower().split())
+    # print("input :", b)
     c = a.intersection(b)
     return float(len(c)) / (len(a) + len(b) - len(c))
 
@@ -134,9 +139,4 @@ def bag_of_words(s,words):
     print("before: ",s_words)
     s_words1 = [stemmer.stem(word.lower()) for word in s_words if word!="?"]
     print("final: ", s_words1)
-
-if __name__ == "__main__":
-    inpt = {'token': 'nx3mp3xph3yz5ecwkskzi1ntcc', 'team_id': 'wtpx8yiowtbs5nes6adqcdco1e', 'team_domain': 'plotbotteam', 'channel_id': '85i3du788tgadqtz8mao6ctqma', 'channel_name': 'off-topic', 'timestamp': 1572374487583, 'user_id': '69i1gy344tygdychdcmppf658h', 'user_name': 'akankshanb', 'post_id': 'f38grtj7ut8fuqoaw4w6stexdw', 'text': '@plotbot I need to retrieve my plots from this to that', 'trigger_word': 'plot', 'file_ids': ''}
-    eventhandle(inpt)
-
 
