@@ -37,7 +37,7 @@ def check_plot_params(input):
         file = input[2]
         loc = '../tmp/'+file
         if (path.exists(loc)):
-            check_dataset_axis(input,loc)
+            result =  check_dataset_axis(input,loc)
         else:
             raise ValueError("Please request by uploading the dataset. The mentioned dataset doesn't exist in our database.")
     else:
@@ -46,9 +46,14 @@ def check_plot_params(input):
         if ("," in input[2]) or (',' in input[3]) :
             x_axis = input[2].split(",")
             y_axis = input[2].split(",")
+    return result
 
-
-
-params = check_params(input)
-if (params):
-    check_plot_params(input)
+def message_sanitize(input):
+    try:
+        params = check_params(input)
+        if (params):
+            result = check_plot_params(input)
+    except ValueError as err:
+            print(err.args)
+            result = err.args[0]
+    return result
