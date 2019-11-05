@@ -42,6 +42,9 @@ def post_message_file(channel_id,message,files):
         file_ids.append(upload_file(channel_id,path))
     create_post_file(channel_id,message,file_ids)
 
+def fetchFile(file_id):
+    return get_driver().files.get_file(file_id)
+
 def post_message(channel_id,message):
     get_driver().posts.create_post(options={
         'channel_id': channel_id,
