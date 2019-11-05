@@ -1,59 +1,67 @@
 # Message Sanitization
 from os import path
 import pandas as pd
+import constants as constants
 
-#input = "plot scatterplot dataset.csv xaxis yaxis"
-input = "plot scatterplot x1,x2,x3,x4 y1,y2,y3,y4"
-input = input.lower().split(" ")
-plots = ["scatterplot","barplot","boxplot"]
+#check the uploaded file
+
+def data_validation(response):
+    if (response["plot_type"] not in ["scatterplot", "barplot","boxplot"]) :
+        raise ValueError("Please provide correct plot type.")
+    file = response["dataset"]
+    loc = constants.baseStorage+user+'/'+file+'/'+file+'.csv'
+    if (path.exists(loc)):
+        result = check_dataset_axis(response,loc)
+    else:
+        raise ValueError("Please request by uploading the dataset. The mentioned dataset doesn't exist in our database.")
+    return result
+
+def check_dataset_axis(response,loc):
+    df = pd.read_csv(loc)
+    headers = list(df.head(1))
+    headers = [each.lower() for each in headers]
+    x_axis = response["x_axis"]
+    y_axis = response["y_axis"]
+    for each in x_axis:
+        if each not in headers:
+            raise ValueError(each + " is not a valid column in the dataset. Please provide valid columns.")
+    for each in y_axis:
+        if each not in headers:
+            raise ValueError(each + " is not a valid column in the dataset. Please provide valid columns.")
+    return True
+
+
+def parse_plot_request(message,file_ids,user):
+    input = message.strip().lower().split(" ")
+    response = {}
+    if (check_params(input)):
+        response["plot_type"],response["dataset"],file_id,response["x_axis"],response["y_axis"] = parse_message(input,file_ids)
+    if file_id ! = None:
+        response["mm_file_id"] = file_id
+    response["user"] = user
+    return response
 
 def check_params(input):
+    #plots = ["scatterplot","barplot","boxplot"]
     if (len(input) < 4):
         raise ValueError("Please provide all the required parameters for plotting graph.")
     elif (len(input) >= 6):
         raise ValueError("Please provide only the required parameters in the proper format.")
-    else:
-        if input[1] not in plots:
-                raise ValueError("Please provide correct plot type.")
-        else:
-            return True
-
-#check the uploaded file
-def check_dataset_axis(input,loc):
-    df = pd.read_csv(loc)
-    headers = list(df.head(1))
-    headers = [each.lower() for each in headers]
-    x_axis = input[3]
-    y_axis = input[4]
-    if x_axis not in headers:
-        raise ValueError("Provided column for x-axis is not present in the dataset.Please provide valid column.")
-    if y_axis not in headers:
-        raise ValueError("Provided column for y-axis is not present in the dataset.Please provide valid column.")
     return True
 
-
-def check_plot_params(input):
+def parse_message(input,file_ids):
+    plot_type = input[1]
     if (len(input) == 5):
-        file = input[2]
-        loc = '../tmp/'+file
-        if (path.exists(loc)):
-            result =  check_dataset_axis(input,loc)
-        else:
-            raise ValueError("Please request by uploading the dataset. The mentioned dataset doesn't exist in our database.")
+        dataset = input[2]
+        x_axis = input[3].lower().split(",")
+        y_axis = input[4].lower().split(",")
+        file_id = None
     else:
-	    print("need to check uploaded file")
-        ##check uploaded file
-        if ("," in input[2]) or (',' in input[3]) :
-            x_axis = input[2].split(",")
-            y_axis = input[2].split(",")
-    return result
-
-def message_sanitize(input):
-    try:
-        params = check_params(input)
-        if (params):
-            result = check_plot_params(input)
-    except ValueError as err:
-            print(err.args)
-            result = err.args[0]
-    return result
+	   if len(file_ids)>0 and file_ids[0]!='':
+           dataset = file_ids[0]
+           file_id = file_ids[0]
+       else:
+           raise ValueError("Please upload the dataset to plot")
+       x_axis = input[2].lower().split(",")
+       y_axis = input[3].lower().split(",")
+    return plot_type,dataset, file_id, x_axis, y_axis
