@@ -54,7 +54,8 @@ def parseRequest(trigger,message, file_ids, user):
             text_list= message.strip().split()
             if len(text_list)>2:
                 dsname=text_list[2]
-                if len(file_ids)>0:
+                print(file_ids,len(file_ids))
+                if len(file_ids)>0 and file_ids[0]!='':
                     loadDataset(dsname,file_ids[0],user)
                 resp_msg, files = plotter.plot(message, dsname)
             else:
