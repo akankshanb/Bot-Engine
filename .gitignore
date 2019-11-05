@@ -5,3 +5,4 @@ __pycache__
 node_modules
 plotbot/framework/plot_ids.db
 plotbot/framework/user_ids.db
+plotbot/storage
