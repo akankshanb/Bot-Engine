@@ -5,6 +5,8 @@ import pickle
 import framework.constants as constants
 import subprocess
 import re
+import datetime
+import os
 from random import randint
 
 class ID(object):
@@ -17,6 +19,10 @@ def saveIDs(idtype, ids):
     outfile = open(filename,'wb')
     pickle.dump(ids,outfile)
     outfile.close()
+
+def getCurrentTimeStamp():
+    ts = datetime.datetime.now()
+    return ts
 
 def gatherIDs(idtype):
     try:
@@ -63,8 +69,34 @@ def fetchDB_path():
     pass
 
 def fetchplotfromDB(plot, user):
-    pass
+    userDir = constants.cwd+'/'+constants.baseStorage+user+'/'
+    files = []
+    for r, d, f in os.walk(userDir):
+        for file in f:
+            files.append(os.path.join(r, file))
+    for plotLoc in files:
+        m = re.search(plot, plotLoc)
+        if m is not None:
+            return plotLoc
 
-def fetchplotfromDBtimed(plot, user):
-    pass
-
+def fetchplotfromDBtimed(time_range, user):
+    userDir = constants.cwd+'/'+constants.baseStorage+user+'/'
+    files = []
+    for r, d, f in os.walk(userDir):
+        for file in f:
+            files.append(os.path.join(r, file))
+    
+    return_files = []
+    for plotLoc in files:
+        dataset = plotLoc.split('/')[-2]
+        try:
+            timeStamp = constants.metadata[user][dataset][plotLoc]
+            #print(timeStamp.timestamp(), time_range[1].timestamp(), time_range[0].timestamp())
+            if timeStamp.timestamp() <= time_range[0].timestamp() and timeStamp.timestamp() >= time_range[1].timestamp():
+                #print("-----+++++0-0000")
+                return_files.append(plotLoc)
+        except KeyError:
+            pass
+    #print(return_files)
+    if len(return_files) > 5:   return  return_files[:5]
+    else:   return return_files
