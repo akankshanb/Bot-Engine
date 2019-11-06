@@ -1,4 +1,4 @@
-import framework.mocking_agent
+#import framework.mocking_agent
 import framework.mixin as mixin
 import framework.constants as constants
 import re
@@ -10,13 +10,14 @@ def fetchTime(start_time, stop_time):
     return (date_time_obj_stop, date_time_obj_start)
 
 def fetch(message, user):
-    #print("----")
+    print("---->>>>")
     m = re.match('\S+\s+from\:\s*(\S+\s*\S+)\s+to\:\s*(\S+\s*\S+)', message)
     n = re.match('\S+\s+(\S+)', message)
     filenames = []
     if n is not None:
         plot = n.group(1)
-        filenames = mixin.fetchplotfromDB(plot, user)
+        plotFile = mixin.fetchplotfromDB(plot, user)
+        filenames =[plotFile]
     if m is not None:
         time_range = fetchTime(m.group(1), m.group(2))
         filenames = mixin.fetchplotfromDBtimed(time_range, user)
