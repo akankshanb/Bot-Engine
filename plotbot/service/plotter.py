@@ -1,48 +1,52 @@
 import framework.graphs as graphs
 import framework.constants as constants
-# import framework.mocking_agent
+#import framework.mocking_agent
 import controller.mmutil as mm
+import framework.mixin as mixin
 
-def scatterplotfunc(msg_arr, dataset_filename):
+
+def scatterplotfunc(plot_details, dataset_filename):
     #print('in scatter')
-    axis_info = graphs.fetchAxisInfo('scatterplot', msg_arr)
-    dataset = graphs.load_dataset('scatterplot', dataset_filename)
+    axis_info = graphs.fetchAxisInfo(plot_details)
+    dataset = graphs.load_dataset('scatterplot', plot_details, dataset_filename)
     newGraph = graphs.scatter_plot(dataset, axis_info)
     newGraph.plot_graph()
-    newGraph.saveimage()
+    newGraph.saveimage(plot_details['user'], plot_details['dataset'])
     return newGraph.plotLocation
 
-def barplotfunc(msg_arr, dataset_filename):
+def barplotfunc(plot_details, dataset_filename):
     #print('in bar')
-    axis_info = graphs.fetchAxisInfo('barplot', msg_arr)
-    dataset = graphs.load_dataset('barplot', dataset_filename)
+    axis_info = graphs.fetchAxisInfo(plot_details)
+    dataset = graphs.load_dataset('barplot', plot_details, dataset_filename)
     newGraph = graphs.bar_plot(dataset, axis_info)
     newGraph.plot_graph()
-    newGraph.saveimage()
+    newGraph.saveimage(plot_details['user'], plot_details['dataset'])
     return newGraph.plotLocation
 
 
-def boxplotfunc(msg_arr, dataset_filename):
+def boxplotfunc(plot_details, dataset_filename):
     #print('in box')
-    axis_info = graphs.fetchAxisInfo('boxplot', msg_arr)
-    dataset = graphs.load_dataset('boxplot', dataset_filename)
+    axis_info = graphs.fetchAxisInfo(plot_details)
+    dataset = graphs.load_dataset('boxplot', plot_details, dataset_filename)
     newGraph = graphs.box_plot(dataset, axis_info)
     newGraph.plot_graph()
-    newGraph.saveimage()
+    newGraph.saveimage(plot_details['user'], plot_details['dataset'])
     return newGraph.plotLocation
 
-def plot(input_txt, dsname):
-    text_list = input_txt.lower().strip().split()
-    if len(text_list[1]) ==1:
+def plot(response, dsname):
+    #text_list = input_txt.lower().strip().split()
+    '''if len(text_list[1]) ==1:
         raise ValueError('Please give a plot type and file name')
-    if text_list[1] in graph_dict.keys():
-        #print(text_list)
-        filename = graph_dict[text_list[1]](text_list[2:], dsname)
-        #print(filename)
-        return_msg = "Here is your plots for **{}**".format(text_list[1])
+    '''
+    if response['plot_type'] in graph_dict.keys():
+        filename = graph_dict[response['plot_type']](response, dsname)
+        return_msg = "Here is your plots for **{}**".format(response['plot_type'])
+        timestamp = mixin.getCurrentTimeStamp()
+        print(filename)
+        file_dict = {filename: timestamp}
+        constants.metadata[response['user']][response['dataset']].update(file_dict)
         return return_msg, [filename]
     else: 
         raise ValueError('Please provide the correct plot type')
     
-
 graph_dict = {"scatterplot":  scatterplotfunc, "barplot": barplotfunc, "boxplot": boxplotfunc} 
