@@ -74,10 +74,14 @@ def fetchplotfromDB(plot, user):
     for r, d, f in os.walk(userDir):
         for file in f:
             files.append(os.path.join(r, file))
+    return_plots = []
     for plotLoc in files:
+        print(plotLoc)
         m = re.search(plot, plotLoc)
+        print(m)
         if m is not None:
-            return plotLoc
+            return_plots.append(plotLoc)
+    return return_plots
 
 def fetchplotfromDBtimed(time_range, user):
     userDir = constants.cwd+'/'+constants.baseStorage+user+'/'

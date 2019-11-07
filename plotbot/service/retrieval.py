@@ -16,8 +16,10 @@ def fetch(message, user):
     filenames = []
     if n is not None:
         plot = n.group(1)
+        if plot =='all':
+            plot = '.*?\.png'
         plotFile = mixin.fetchplotfromDB(plot, user)
-        filenames =[plotFile]
+        filenames =plotFile
     if m is not None:
         time_range = fetchTime(m.group(1), m.group(2))
         filenames = mixin.fetchplotfromDBtimed(time_range, user)
