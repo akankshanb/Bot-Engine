@@ -13,13 +13,10 @@ import service.plotter as plotter
 import service.sampler as sampler
 import service.retrieval as retrieval
 from flask import send_file
-from framework.mocking_agent import generateMockPlots as setupMockdata
+#from framework.mocking_agent import generateMockPlots as setupMockdata
 import framework.constants as constants
-<<<<<<< HEAD
 import framework.parser as parser
-=======
 from nlp.analyze import *
->>>>>>> master
 import atexit
 import pprint
 
@@ -27,12 +24,14 @@ app = Flask(__name__)
 
 @app.route('/plotbot', methods = ['POST'])
 def plotbot():
+    print("------------")
     request_json = request.get_json(force=True)
     resp_msg,files= parseRequest(request_json["trigger_word"],request_json["text"], request_json['file_ids'].split(','), request_json['user_id'])
     mm.post_message_file(request_json["channel_id"],resp_msg,files)
     return ''
 
 def loadDataset(dsName,dsFileId,userId):
+    print("Loading dataset call ....")
     print(constants.metadata)
     if userId not in constants.metadata:
         constants.metadata[userId]={}
@@ -48,7 +47,7 @@ def loadDataset(dsName,dsFileId,userId):
 def parseRequest(trigger,message, file_ids, user):
     files= []
     try:
-        # print("--> requested action: "+trigger)
+        print("--> requested action: "+trigger)
         if trigger == "@plotbot":
             resp_msg = eventhandle(message)
             # print(resp_msg)
@@ -65,7 +64,13 @@ def parseRequest(trigger,message, file_ids, user):
                 if len(file_ids)>0 and file_ids[0]!='':
                     loadDataset(dsname,file_ids[0],user)
                 res = parser.data_validation(response)
-                resp_msg, files = plotter.plot(message, dsname)
+                if res:
+                    resp_msg, files = plotter.plot(response, dsname)
+                    print("===>")
+                    pprint.pprint(constants.metadata)
+                else:
+                    raise ValueError("Dataset has no axes information.")
+                #resp_msg, files = plotter.plot(message, dsname)
             else:
                 raise ValueError('Dataset name not found')
             #mixin.allocate(user, img_name)
@@ -93,4 +98,5 @@ def exit_handler():
 if __name__ == "__main__":
     atexit.register(exit_handler)
     setup.load()
+    print("-----")
     app.run(host='0.0.0.0')

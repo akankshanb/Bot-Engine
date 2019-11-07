@@ -65,3 +65,4 @@ def parse_message(input,file_ids):
         x_axis = input[2].lower().split(",")
         y_axis = input[3].lower().split(",")
     return plot_type,dataset, file_id, x_axis, y_axis
+
