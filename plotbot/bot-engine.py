@@ -70,6 +70,7 @@ def parseRequest(trigger,message, file_ids, user):
                     pprint.pprint(constants.metadata)
                 else:
                     raise ValueError("Dataset has no axes information.")
+                #resp_msg, files = plotter.plot(message, dsname)
             else:
                 raise ValueError('Dataset name not found')
             #mixin.allocate(user, img_name)
