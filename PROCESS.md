@@ -38,6 +38,10 @@ This sprint was aimed at completing the remaining tasks for the POC and assignat
 For the second iteration, the main objective was to integrate individual contibutions and resolve conflicts, if present with our main application. Whenever a team member's tasks got completed, him/her were merging their code to the master and resolving conflicts. After a succesful merge, a different team member was assigned to review their merges and suggest any fixes, if required. This helped in code refinement and also prevented severe program crashes or bugs in the application with the help of a second pair of eyes. 
 Testing the code with the bot on server and checking for any latency in response were main focuses in this sprint.
 
+By the end of this iteration, we have completed all the tasks that we committed to at the beginning of this sprint. 
+[Status of all tasks at the end of the iteration](https://github.ncsu.edu/csc510-fall2019/CSC510-22/projects/1#column-3598)
+![Task Completion](https://media.github.ncsu.edu/user/13110/files/ac087d00-0253-11ea-8633-8dc962550dc8)
+
 ### Practices
 
 #### Core practice: Scrumban methodology
