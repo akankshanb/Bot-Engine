@@ -23,6 +23,7 @@ In this Sprint, we aimed at replacing our mocking functionality with the actual 
 ##### Description of Tasks
 The tasks were divided equally among the students. Each member of the team created their branch and pushed their commits. The first iteration was aimed to be able to complete individual tasks as dicussed in the scrum meeting and documented in kanban. All the bugs and errors were being fixed in individual branch before integration into the main Flask app for the bot. The tasks were assigned with points where each member was allowed to subdivide their 8 points into sub tasks according to their anticipation of time needed for each subtask within the main task. The areas of concentration were - 
 * Ability to have basic conversations with bot and let the bot know intent of user
+* Designing workflows and deciding on datapath for each usecase.
 * Ability to correctly parse the data from the commands assigned by the user for each use case
 * Store and access data for each user (plot images for each plot type)
 * Generate plots, samples from the parsed data and return to user
