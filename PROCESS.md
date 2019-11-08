@@ -33,6 +33,10 @@ This sprint was aimed at completing the remaining tasks for the POC and assignat
 
 <img width="370" alt="Screen Shot 2019-11-08 at 4 17 07 PM" src="https://media.github.ncsu.edu/user/13256/files/6774e580-0243-11ea-9753-1e7451ea3005">
 
+##### Tasks
+For the second iteration, the main objective was to integrate individual contibutions and resolve conflicts, if present with our main application. Whenever a team member's tasks got completed, him/her were mergind their code to the master and resolvinf conflicts. After a succesful merge, a different team member was assigned to review their merges and suggest any fixes, if required. This helped in code refinement and also prevented severe program crashes or bugs in the application with the help of a second pair of eyes. 
+Testing the code with the bot on server and checking for any latency in response were main focuses in this sprint.
+
 ### Practices
 
 #### Core practice: Scrumban methodology
