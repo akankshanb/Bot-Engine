@@ -20,7 +20,7 @@ In this Sprint, we aimed at replacing our mocking functionality with the actual 
 
 <img width="365" alt="Screen Shot 2019-11-08 at 4 17 02 PM" src="https://media.github.ncsu.edu/user/13256/files/5a57f680-0243-11ea-9162-0e3986f47f90">
 
-##### Tasks
+##### Description of Tasks
 The tasks were divided equally among the students. Each member of the team created their branch and pushed their commits. The first iteration was aimed to be able to complete individual tasks as dicussed in the scrum meeting and documented in kanban. All the bugs and errors were being fixed in individual branch before integration into the main Flask app for the bot. The tasks were assigned with points where each member was allowed to subdivide their 8 points into sub tasks according to their anticipation of time needed for each subtask within the main task. The areas of concentration were - 
 * Ability to have basic conversations with bot and let the bot know intent of user
 * Ability to correctly parse the data from the commands assigned by the user for each use case
@@ -33,7 +33,7 @@ This sprint was aimed at completing the remaining tasks for the POC and assignat
 
 <img width="370" alt="Screen Shot 2019-11-08 at 4 17 07 PM" src="https://media.github.ncsu.edu/user/13256/files/6774e580-0243-11ea-9753-1e7451ea3005">
 
-##### Tasks
+##### Description of Tasks
 For the second iteration, the main objective was to integrate individual contibutions and resolve conflicts, if present with our main application. Whenever a team member's tasks got completed, him/her were mergind their code to the master and resolvinf conflicts. After a succesful merge, a different team member was assigned to review their merges and suggest any fixes, if required. This helped in code refinement and also prevented severe program crashes or bugs in the application with the help of a second pair of eyes. 
 Testing the code with the bot on server and checking for any latency in response were main focuses in this sprint.
 
