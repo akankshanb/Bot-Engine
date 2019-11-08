@@ -39,7 +39,7 @@ For the second iteration, the main objective was to integrate individual contibu
 Testing the code with the bot on server and checking for any latency in response were main focuses in this sprint.
 
 By the end of this iteration, we have completed all the tasks that we committed to at the beginning of this sprint. 
-[Status of all tasks at the end of the iteration](https://github.ncsu.edu/csc510-fall2019/CSC510-22/projects/1#column-3598)
+[Status of all tasks at the end of the iteration](https://github.ncsu.edu/csc510-fall2019/CSC510-22/projects/1#column-3432)
 ![Task Completion](https://media.github.ncsu.edu/user/13110/files/ac087d00-0253-11ea-8633-8dc962550dc8)
 
 ### Practices
