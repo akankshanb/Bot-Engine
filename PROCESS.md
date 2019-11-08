@@ -47,17 +47,21 @@ By the end of this iteration, we have completed all the tasks that we committed 
 
 ### Practices
 
-#### Core practice: Scrumban methodology
+#### Scrumban methodology
 For our software process, we followed a "scrumban" methodology, that is a blend of kanban and scrum practices.
 We did this by holding biweekly scrum meetings and maintaining a Kanban board for our tasks.
 ![Kanban board](https://media.github.ncsu.edu/user/10383/files/490ceb00-023f-11ea-862f-0e6fd21d335c)
+
+#### Core practice: Pair Programming
+We conducted pair programming sessions to complete our taskss. The driver in this case was the assignee and another navigator who would watch over the driver's implementations. These roles were rotated for each task
+
+#### Corollary practice: Shared Code
+We made our code available to the entire team by creating branches for each task. With this other team members were able to verify and improve upon any part of the system they felt necessary
 
 #### Corollary practice: Code Reviews (Pull Requests)
 Another practice we followed were code reviews. Each of us created a seperate branch for our tasks, and once those tasks were complete, we created a PR and assigned it to one of our team members for review. Once the reviewer reviews the code, they will merge the code into the master branch.
 ![Pull Requests](https://media.github.ncsu.edu/user/10383/files/1bc03d00-023f-11ea-9b2f-48770d2a05dc)
 
-#### Corollary practice: Poker sizing
-Another practice we followed for each iteration is poker sizing of tasks. We used chits to maintain anonimity.
 
 ### Consistency
 
@@ -70,9 +74,3 @@ And these tasks were assigned at the beginning of each sprint
 ![Scrum notes 1](https://media.github.ncsu.edu/user/10383/files/a9e8f300-0240-11ea-9752-10949b34b05e)
 
 
-
-In your markdown, include:
-
-* Documentation on story creation and assignment at EACH iteration (one option is to include screenshots of kanban board).
-* Any scrum meeting notes/process notes
-* Include documentation of EACH iteration end. Include status of completed and incomplete tasks, and a process reflection.
