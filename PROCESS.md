@@ -48,6 +48,8 @@ We did this by holding biweekly scrum meetings and maintaining a Kanban board fo
 Another practice we followed were code reviews. Each of us created a seperate branch for our tasks, and once those tasks were complete, we created a PR and assigned it to one of our team members for review. Once the reviewer reviews the code, they will merge the code into the master branch.
 ![Pull Requests](https://media.github.ncsu.edu/user/10383/files/1bc03d00-023f-11ea-9b2f-48770d2a05dc)
 
+#### Corollary practice: Poker sizing
+Another practice we followed for each iteration is poker sizing of tasks. We used chits to maintain anonimity.
 
 ### Consistency
 
