@@ -31,12 +31,12 @@ We found the [SMART](https://www.mindtools.com/pages/article/smart-goals.htm) me
 
 ### Practices
 
-Core practice: Scrumban methodology
+#### Core practice: Scrumban methodology
 For our software process, we followed a "scrumban" methodology, that is a blend of kanban and scrum practices.
 We did this by holding biweekly scrum meetings and maintaining a Kanban board for our tasks.
 ![Kanban board](https://media.github.ncsu.edu/user/10383/files/490ceb00-023f-11ea-862f-0e6fd21d335c)
 
-Corollary practice: Code Reviews (Pull Requests)
+#### Corollary practice: Code Reviews (Pull Requests)
 Another practice we followed were code reviews. Each of us created a seperate branch for our tasks, and once those tasks were complete, we created a PR and assigned it to one of our team members for review. Once the reviewer reviews the code, they will merge the code into the master branch.
 ![Pull Requests](https://media.github.ncsu.edu/user/10383/files/1bc03d00-023f-11ea-9b2f-48770d2a05dc)
 
