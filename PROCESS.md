@@ -30,7 +30,7 @@ We found the [SMART](https://www.mindtools.com/pages/article/smart-goals.htm) me
 
 ### Practices
 
-For your software process, follow a "scrumban" methodology, that is a blend of kanban and scrum practices. 
+For our software process, we followed a "scrumban" methodology, that is a blend of kanban and scrum practices. 
 
 Furthermore, identify at least one core practice and collary practice not already part of your software process. Integrate those practices in your software development.
 
@@ -44,22 +44,7 @@ Creating tasks on the last day of submission **will not receive credit**. Comple
 
 Plan ahead.
 
-### TA Demo
 
-You must demonstrate your completed use cases with a TA before the final deadline. Plan ahead.
-
-### Evalution
-
-* Process (25%)
-* Practices (25%)
-* Consistency (25%)
-* TA Demo (25%)
-
-### Submission
-
-Due Friday, Nov 8th before midnight.
-
-Create a markdown file, PROCESS.md, which provides the necessary documentation to describe how your team followed your process.
 
 In your markdown, include:
 
