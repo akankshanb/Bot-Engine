@@ -17,32 +17,35 @@ We utilized the kanban board (Github project). We used notes to indicate the sto
 #### Sprint 1:
 * Wed Oct 23-- Fri Nov 1
 In this Sprint, we aimed at replacing our mocking functionality with the actual service and divided the tasks accordingly. 
-<Discussion screenshot here>
+
+[Assignation meeting notes] https://github.ncsu.edu/csc510-fall2019/CSC510-22/projects/1#column-3515
 
 #### Sprint 2:
 * Sat Nov 2--Fri Nov 8th
 This sprint was aimed at completing the remaining tasks for the POC and assignations accordingly.
-<Discussion screenshot here>
 
+[Assignation meeting notes] https://github.ncsu.edu/csc510-fall2019/CSC510-22/projects/1#column-3598
 
-We found the [SMART](https://www.mindtools.com/pages/article/smart-goals.htm) method a good way plan tasks.
+We found the [SMART](https://www.mindtools.com/pages/article/smart-goals.htm) method to plan our tasks.
 
 
 ### Practices
 
-For our software process, we followed a "scrumban" methodology, that is a blend of kanban and scrum practices. 
+Core practice: Scrumban methodology
+For our software process, we followed a "scrumban" methodology, that is a blend of kanban and scrum practices.
+We did this by holding biweekly scrum meetings and maintaining a Kanban board for our tasks.
+![Kanban board](https://media.github.ncsu.edu/user/10383/files/490ceb00-023f-11ea-862f-0e6fd21d335c)
 
-Furthermore, identify at least one core practice and collary practice not already part of your software process. Integrate those practices in your software development.
+Corollary practice: Code Reviews (Pull Requests)
+Another practice we followed were code reviews. Each of us created a seperate branch for our tasks, and once those tasks were complete, we created a PR and assigned it to one of our team members for review. Once the reviewer reviews the code, they will merge the code into the master branch.
+![Pull Requests](https://media.github.ncsu.edu/user/10383/files/1bc03d00-023f-11ea-9b2f-48770d2a05dc)
 
-Keep meeting notes and documentation of following these practices and include in your submission.
 
 ### Consistency
 
-Work must be equally divided among the team. Furthermore, the work should be completed uniformly.
-
-Creating tasks on the last day of submission **will not receive credit**. Completing a story on the last day of an iteration will not (generally) receive credit. Teams with uneven contributions, will not receive credit.
-
-Plan ahead.
+Work was equally divided among the team. Also, the work was completed uniformly.
+Each of the team member had approximately 12 Story points worth of work.
+And these tasks were assigned at the beginning of each sprint
 
 
 
