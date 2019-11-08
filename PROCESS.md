@@ -28,6 +28,9 @@ The tasks were divided equally among the students. Each member of the team creat
 * Store and access data for each user (plot images for each plot type)
 * Generate plots, samples from the parsed data and return to user
 
+By the end of the sprint, we have completed all the tasks that we committed at the beginning of the sprint. We have created 8 user stories at the beginning of the sprint and all of them were completed.
+![Tasks at the end of iteration1](https://media.github.ncsu.edu/user/13110/files/8def4c80-0254-11ea-86f5-f0f11889ef8b)
+
 #### Sprint 2:
 * Sat Nov 2--Fri Nov 8th --> [Second Iteration start meeting notes](https://github.ncsu.edu/csc510-fall2019/CSC510-22/projects/1#column-3598) <br/>
 This sprint was aimed at completing the remaining tasks for the POC and assignations accordingly.
