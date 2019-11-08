@@ -46,6 +46,11 @@ Another practice we followed were code reviews. Each of us created a seperate br
 Work was equally divided among the team. Also, the work was completed uniformly.
 Each of the team member had approximately 12 Story points worth of work.
 And these tasks were assigned at the beginning of each sprint
+![Pull Requests](https://media.github.ncsu.edu/user/10383/files/1bc03d00-023f-11ea-9b2f-48770d2a05dc)
+
+
+#### Scrum meeting notes:
+![Scrum notes 1](https://media.github.ncsu.edu/user/10383/files/a9e8f300-0240-11ea-9752-10949b34b05e)
 
 
 
