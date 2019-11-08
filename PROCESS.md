@@ -15,16 +15,13 @@ For both the sprints,
 We utilized the kanban board (Github project). We used notes to indicate the story points and developer assigned for each tasks
 
 #### Sprint 1:
-* Wed Oct 23-- Fri Nov 1
+* Wed Oct 23-- Fri Nov 1 --> [Iteration start meeting notes](https://github.ncsu.edu/csc510-fall2019/CSC510-22/projects/1#column-3515) <br/>
 In this Sprint, we aimed at replacing our mocking functionality with the actual service and divided the tasks accordingly. 
 
-[Iteration start meeting notes] (https://github.ncsu.edu/csc510-fall2019/CSC510-22/projects/1#column-3515)
 
 #### Sprint 2:
-* Sat Nov 2--Fri Nov 8th
+* Sat Nov 2--Fri Nov 8th --> [Iteration start meeting notes](https://github.ncsu.edu/csc510-fall2019/CSC510-22/projects/1#column-3598) <br/>
 This sprint was aimed at completing the remaining tasks for the POC and assignations accordingly.
-
-[Iteration start meeting notes] (https://github.ncsu.edu/csc510-fall2019/CSC510-22/projects/1#column-3598)
 
 We found the [SMART](https://www.mindtools.com/pages/article/smart-goals.htm) method to plan our tasks.
 
