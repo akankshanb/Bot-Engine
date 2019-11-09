@@ -53,7 +53,7 @@ We did this by holding biweekly scrum meetings and maintaining a Kanban board fo
 ![Kanban board](https://media.github.ncsu.edu/user/10383/files/490ceb00-023f-11ea-862f-0e6fd21d335c)
 
 #### Core practice: Pair Programming
-We conducted pair programming sessions to complete our taskss. The driver in this case was the assignee and another navigator who would watch over the driver's implementations. These roles were rotated for each task
+We conducted pair programming sessions to complete our tasks. The driver in this case was the assignee and another navigator who would watch over the driver's implementations. These roles were rotated for each task
 
 #### Corollary practice: Shared Code
 We made our code available to the entire team by creating branches for each task. With this other team members were able to verify and improve upon any part of the system they felt necessary
