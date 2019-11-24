@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  gather_facts: no
+  vars:
+      instance_type: t2.micro
+      image: ami-0d5d9d301c853a04a                         # Ubuntu Server 16.04 LTS (HVM), SSD Volume Type
+      region: us-east-2b
+      keypair: plotbot
+      subnet: subnet-92d08ce8
+      user: "ubuntu"
+  tasks:
+    - name: Create an EC2 key
+      ec2_key:
+        name: "{{ keypair }}"
+        region: "{{ region }}"
+      register: ec2_key
