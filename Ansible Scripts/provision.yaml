@@ -7,20 +7,26 @@
       region: us-east-2
       keypair: plotbot
       subnet: subnet-92d08ce8
+      sg_group: sg-0c097f91462118199
   vars_files:
     - plotbot_vault.yml
 
   tasks:
     - name: Launch the new EC2 Instance
-      ec2:
+      ec2_instance:
+        name: plotbot-base2
         aws_access_key: "{{ aws_access_key }}"
         aws_secret_key: "{{ aws_secret_key }}"
         instance_type: "{{instance_type}}"
-        image: "{{image}}"
-        wait: true 
+        image_id: "{{image}}"
+        wait: yes 
         region: "{{region}}"
-        keypair: "{{keypair}}"
+        key_name: "{{keypair}}"
         vpc_subnet_id: "{{subnet}}"
-        assign_public_ip: yes
-        count: 1
+        security_group: "{{sg_group}}"
+        network:
+          assign_public_ip: true
       register: ec2
+    
+    - debug:
+        msg: "{{ec2}}"
