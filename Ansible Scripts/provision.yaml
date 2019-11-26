@@ -3,14 +3,24 @@
   gather_facts: no
   vars:
       instance_type: t2.micro
-      image: ami-0d5d9d301c853a04a                         # Ubuntu Server 16.04 LTS (HVM), SSD Volume Type
-      region: us-east-2b
+      image: ami-0d5d9d301c853a04a
+      region: us-east-2
       keypair: plotbot
       subnet: subnet-92d08ce8
-      user: "ubuntu"
+  vars_files:
+    - plotbot_vault.yml
+
   tasks:
-    - name: Create an EC2 key
-      ec2_key:
-        name: "{{ keypair }}"
-        region: "{{ region }}"
-      register: ec2_key
+    - name: Launch the new EC2 Instance
+      ec2:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        instance_type: "{{instance_type}}"
+        image: "{{image}}"
+        wait: true 
+        region: "{{region}}"
+        keypair: "{{keypair}}"
+        vpc_subnet_id: "{{subnet}}"
+        assign_public_ip: yes
+        count: 1
+      register: ec2
