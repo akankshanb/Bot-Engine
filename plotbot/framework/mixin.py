@@ -3,11 +3,13 @@ import string
 import random
 import pickle
 import framework.constants as constants
-import subprocess
+from subprocess import check_output
 import re
 import datetime
 import os
 from random import randint
+from zipfile import ZipFile 
+
 
 class ID(object):
     def __init__(self):
@@ -68,6 +70,24 @@ constants.userIDs = gatherIDs('user')
 def fetchDB_path():
     pass
 
+def deleteAlreadyZips(userDir):
+    try:
+        list_files = check_output(["ls", userDir, "| grep zip"])    
+        list_files = list_files.decode('utf-8')
+        list_files= list_files.split('\n')
+        for file_listed in list_files:
+            check_output(["rm", file_listed])
+    except:
+        pass
+
+def compressFiles(userDir, filepaths):
+    deleteAlreadyZips(userDir)
+    with ZipFile(userDir+'/compressed.zip','w') as zip: 
+        for file in filepaths: 
+            zip.write(file) 
+    return [userDir+'/compressed.zip']
+
+
 def fetchplotfromDB(plot, user):
     userDir = constants.cwd+'/'+constants.baseStorage+user+'/'
     files = []
@@ -76,11 +96,10 @@ def fetchplotfromDB(plot, user):
             files.append(os.path.join(r, file))
     return_plots = []
     for plotLoc in files:
-        print(plotLoc)
         m = re.search(plot, plotLoc)
-        print(m)
         if m is not None:
             return_plots.append(plotLoc)
+    if len(return_plots) > 5:   return_plots = compressFiles(userDir, return_plots)
     return return_plots
 
 def fetchplotfromDBtimed(time_range, user):
