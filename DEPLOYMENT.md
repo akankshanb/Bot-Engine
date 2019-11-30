@@ -14,7 +14,21 @@ For your DevBots, create a test team and a TA user account, which TAs will be us
 
 Provide **login credentials** for TA.
 
-Provide **acceptance test instructions** for TAs to evaluate your three use cases using the TA user account. The acceptance tests should provide concrete instructions on what to actions to perform and verify at each step.
+###1. To initiate converstion with plotbot
+1.Log-in to [mattermost client](http://ec2-18-217-150-234.us-east-2.compute.amazonaws.com:8065).
+2. Enter the username as **evaluator** and password as **evaluator**.
+3. After successfully logging in, navigate to "evaluation" channel and execute the testcases given in the acceptance test plan below. 
+
+###2.Three usecases to be tested. <br>
+
+**Usecase 1: Give the user with code snippet for reuired type of graph**
+In the first use case, the user can request to provide sample of code snippet and a sample of plot for a particular plot type. Our bot can provide samples codes and plot for only scatterplot, barplot and boxplot.
+```sh
+Input:
+sample scatterplot
+```
+`Expected output`: 
+
 
 ##### Uptime Penalaties
 
