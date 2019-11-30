@@ -148,10 +148,10 @@ describe('Testing PlotBot usecases', function () {
       await browser.close();
     });
 
-    /*it('Happy flow when user requests for his graphs plotted during a time period', async () => {
+    it('Happy flow when user requests for his graphs plotted during a time period', async () => {
         await page.waitForSelector('#post_textbox');
         await page.focus('#post_textbox')
-        await page.keyboard.type( "retrieve from:2019-11-19 13:0:0.0 to:2019-11-30 14:0:0.0" );
+        await page.keyboard.type( "retrieve from:2019-11-19 13:0:0.0 to:2019-12-30 14:0:0.0" );
         await page.keyboard.press('Enter');
         let promise = new Promise((res, rej) => {
           setTimeout(() => res("Waiting for the Response!"), 5000)
@@ -161,10 +161,10 @@ describe('Testing PlotBot usecases', function () {
         const output = await page.evaluate(() => Array.from(
           document.getElementsByClassName('post__body'), e => e.innerText));
         var result = output[output.length-1];
-        expect(result).to.match(/\.png/);
+        expect(result).to.match(/\.(png|zip)/);
 
         await browser.close();
-    });*/
+    });
   
     it('Happy flow when user requests for all his plotted graphs', async () => {
         await page.waitForSelector('#post_textbox');
@@ -187,7 +187,7 @@ describe('Testing PlotBot usecases', function () {
     it('Alternate flow when user requests for his plotted graphs but there are no plots available', async () => {
         await page.waitForSelector('#post_textbox');
         await page.focus('#post_textbox')
-        await page.keyboard.type( "retrieve from:2019-12-19 13:0:0.0 to:2019-12-30 14:0:0.0" );
+        await page.keyboard.type( "retrieve from:2018-12-19 13:0:0.0 to:2018-12-30 14:0:0.0" );
         await page.keyboard.press('Enter');
         let promise = new Promise((res, rej) => {
           setTimeout(() => res("Waiting for the Response!"), 5000)
