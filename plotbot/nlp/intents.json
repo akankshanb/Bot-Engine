@@ -15,12 +15,12 @@
          "context_set": ""
         },
         {"tag": "sample",
-         "patterns": ["need a code snippet", "sample plot for", "draw", "plot something", "sample"],
+         "patterns": ["code snippet", "sample", "draw"],
          "responses": ["Please provide a graph type from scatterplot boxplot or barplot", "Which plot sample do you want? I have boxplot, scatterplot and barplot samples","Choose between scatterplot, boxplot and barplot after typing plot keyword"],
          "context_set": ""
         },
         {"tag": "retrieve",
-         "patterns": ["need my previous plots", "need plots from", "need plots till", "all", "retrieve", "previous plots", "see my plots", "get plots"],
+         "patterns": ["previous", "retrieve", "get"],
          "responses": ["Which plots do you want to retrieve? Write : retrieve all/ retrieve from MM/DD/YY to MM/DD/YY", "Write retrieve followed by either all or the dates in MM/DD/YY format"],
          "context_set": ""
         }
