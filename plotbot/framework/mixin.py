@@ -83,20 +83,21 @@ def deleteAlreadyZips(userDir):
         pass
 
 
-def copyToTMP(file):
+def copyToTMP(file, user):
     filen = file.split('/')
     filen = filen[-1]
-    call(' '.join(["cp", file, '/tmp/'+filen]), shell=True)
-    filen = '/tmp/'+filen
+    call(' '.join(["cp", file, '/tmp/'+user+'/'+filen]), shell=True)
+    filen = '/tmp/'+user+'/'+filen
     return filen
 
 def compressFiles(user, filepaths):
     # deleteAlreadyZips(userDir)
-    with ZipFile('/tmp/'+user+'_compressed.zip','w') as zip: 
+    call(' '.join(["mkdir", '/tmp/'+user]), shell=True)
+    with ZipFile('/tmp/'+user+'/compressed.zip','w') as zip: 
         for file in filepaths: 
-            file = copyToTMP(file)
+            file = copyToTMP(file, user)
             zip.write(file)
-    return ['/tmp/'+user+'_compressed.zip']
+    return ['/tmp/'+user+'/compressed.zip']
 
 
 def fetchplotfromDB(plot, user):
