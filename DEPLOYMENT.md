@@ -29,6 +29,8 @@ sample scatterplot
 ```
 `Expected output`: 
 
+<img width="420" src="https://media.github.ncsu.edu/user/13071/files/0481f480-1392-11ea-9c43-d0537c2665da">
+
 
 ##### Uptime Penalaties
 
