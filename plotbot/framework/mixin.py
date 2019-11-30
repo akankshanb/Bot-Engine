@@ -3,11 +3,13 @@ import string
 import random
 import pickle
 import framework.constants as constants
-import subprocess
+from subprocess import check_output, call
 import re
 import datetime
 import os
 from random import randint
+from zipfile import ZipFile 
+
 
 class ID(object):
     def __init__(self):
@@ -68,6 +70,40 @@ constants.userIDs = gatherIDs('user')
 def fetchDB_path():
     pass
 
+def deleteAlreadyZips(userDir):
+    try:
+        print("=====++++++=====")
+        print(userDir)
+        list_files = check_output(["ls", userDir])
+        list_files = list_files.decode('utf-8')
+        print(list_files)
+        list_files= list_files.split('\n')
+        print(list_files)
+        print("=====++++++=====")
+        for file_listed in list_files:
+            m = re.search('\.zip',file_listed)
+            if m is not None:
+                check_output(["rm", file_listed])
+    except:
+        pass
+
+
+def copyToTMP(file):
+    filen = file.split('/')
+    filen = filen[-1]
+    call(' '.join(["cp", file, '/tmp/'+filen]), shell=True)
+    filen = '/tmp/'+filen
+    return filen
+
+def compressFiles(user, filepaths):
+    # deleteAlreadyZips(userDir)
+    with ZipFile('/tmp/'+user+'_compressed.zip','w') as zip: 
+        for file in filepaths: 
+            file = copyToTMP(file)
+            zip.write(file)
+    return ['/tmp/'+user+'_compressed.zip']
+
+
 def fetchplotfromDB(plot, user):
     userDir = constants.cwd+'/'+constants.baseStorage+user+'/'
     files = []
@@ -76,11 +112,10 @@ def fetchplotfromDB(plot, user):
             files.append(os.path.join(r, file))
     return_plots = []
     for plotLoc in files:
-        print(plotLoc)
         m = re.search(plot, plotLoc)
-        print(m)
         if m is not None:
             return_plots.append(plotLoc)
+    if len(return_plots) > 5:   return_plots = compressFiles(user, return_plots)
     return return_plots
 
 def fetchplotfromDBtimed(time_range, user):
@@ -95,12 +130,9 @@ def fetchplotfromDBtimed(time_range, user):
         dataset = plotLoc.split('/')[-2]
         try:
             timeStamp = constants.metadata[user][dataset][plotLoc]
-            #print(timeStamp.timestamp(), time_range[1].timestamp(), time_range[0].timestamp())
             if timeStamp.timestamp() <= time_range[0].timestamp() and timeStamp.timestamp() >= time_range[1].timestamp():
-                #print("-----+++++0-0000")
                 return_files.append(plotLoc)
         except KeyError:
             pass
-    #print(return_files)
-    if len(return_files) > 5:   return  return_files[:5]
-    else:   return return_files
+    if len(return_files) > 5:   return_files = compressFiles(user, return_files)
+    return return_files

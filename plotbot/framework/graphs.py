@@ -9,8 +9,7 @@ import random
 
 def load_dataset(plot_type, plot_details, datasetname):
     dataset_location = constants.cwd+'/'+constants.baseStorage+plot_details['user']+'/'+plot_details['dataset']+'/'+str(datasetname)+'.csv'
-    data = pd.read_csv(dataset_location)
-    df = pd.DataFrame(data=data, dtype=float)
+    df = pd.read_csv(dataset_location)
     return df
 
 def fetchAxisInfo(graph_details):
@@ -18,6 +17,7 @@ def fetchAxisInfo(graph_details):
             'x-axis':   graph_details['x_axis'],
             'y-axis':   graph_details['y_axis']
     }
+    print(axis_info)
     return axis_info
 
 class graph(object):
@@ -53,7 +53,9 @@ class graph(object):
         self.plt.clf()
     
     def populate_axes_info(self):
-        self.x_axis = self.axis_info['x-axis'][0]
+        if self.axis_info['x-axis'] is not None:
+            self.x_axis = self.axis_info['x-axis'][0]
+        else:  self.x_axis = None 
         self.y_axis = self.axis_info['y-axis']
 
 class scatter_plot(graph):
@@ -79,9 +81,10 @@ class box_plot(graph):
         self.populate_axes_info()
         for y_axis in self.y_axis:
             plot_colour = self.getPlotColor()
-            plot = self.sns.boxplot(x=self.x_axis, y=y_axis, data=self.data, color=plot_colour)
+            if self.x_axis is not None:   plot = self.sns.boxplot(x=self.x_axis, y=y_axis, data=self.data, color=plot_colour)
+            else:   plot = self.sns.boxplot(x=y_axis, data=self.data, color=plot_colour)
             plot.set(xlabel=self.x_axis, ylabel=','.join(self.y_axis))
-
+        
 class bar_plot(graph):
     def __init__(self, dataset, axis_info):
         super(bar_plot, self).__init__()

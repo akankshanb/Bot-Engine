@@ -22,9 +22,10 @@ def check_dataset_axis(response,loc):
     headers = [each.lower() for each in headers]
     x_axis = response["x_axis"]
     y_axis = response["y_axis"]
-    for each in x_axis:
-        if each not in headers:
-            raise ValueError(each + " is not a valid column in the dataset. Please provide valid columns.")
+    if x_axis is not None:
+        for each in x_axis:
+            if each not in headers:
+                raise ValueError(each + " is not a valid column in the dataset. Please provide valid columns.")
     for each in y_axis:
         if each not in headers:
             raise ValueError(each + " is not a valid column in the dataset. Please provide valid columns.")
@@ -56,6 +57,11 @@ def parse_message(input,file_ids):
         x_axis = input[3].lower().split(",")
         y_axis = input[4].lower().split(",")
         file_id = None
+    elif(len(input) == 4 and plot_type =='boxplot'):
+        dataset = input[2]
+        y_axis = input[3].lower().split(",")
+        file_id = None
+        x_axis = None
     else:
         if len(file_ids)>0 and file_ids[0] != '':
             dataset = file_ids[0]

@@ -18,7 +18,7 @@ def load_config():
 def unload():
     filename = constants.baseStorage+constants.dbFile
     outfile = open(filename,'wb')
-    print("Metadata: "+str(constants.metadata))
+    # print("Metadata: "+str(constants.metadata))
     pickle.dump(constants.metadata,outfile)
     outfile.close()
 
@@ -36,5 +36,5 @@ def load():
     if os.path.exists(constants.baseStorage+constants.dbFile):
         infile = open(constants.baseStorage+constants.dbFile, 'rb')
         constants.metadata=pickle.load(infile)
-    print(constants.metadata)
+    # print(constants.metadata)
     print('Setup complete...')

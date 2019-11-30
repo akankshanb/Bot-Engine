@@ -15,7 +15,6 @@ def scatterplotfunc(plot_details, dataset_filename):
     return newGraph.plotLocation
 
 def barplotfunc(plot_details, dataset_filename):
-    #print('in bar')
     axis_info = graphs.fetchAxisInfo(plot_details)
     dataset = graphs.load_dataset('barplot', plot_details, dataset_filename)
     newGraph = graphs.bar_plot(dataset, axis_info)
