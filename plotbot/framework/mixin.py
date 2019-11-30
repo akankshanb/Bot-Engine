@@ -70,18 +70,6 @@ constants.userIDs = gatherIDs('user')
 def fetchDB_path():
     pass
 
-def deleteAlreadyZips(userDir):
-    try:
-        list_files = check_output(["ls", userDir])
-        list_files = list_files.decode('utf-8')
-        list_files= list_files.split('\n')
-        for file_listed in list_files:
-            m = re.search('\.zip',file_listed)
-            if m is not None:
-                check_output(["rm", file_listed])
-    except:
-        pass
-
 
 def copyToTMP(file, user):
     filen = file.split('/')
