@@ -70,33 +70,22 @@ constants.userIDs = gatherIDs('user')
 def fetchDB_path():
     pass
 
-def deleteAlreadyZips(userDir):
-    try:
-        list_files = check_output(["ls", userDir])
-        list_files = list_files.decode('utf-8')
-        list_files= list_files.split('\n')
-        for file_listed in list_files:
-            m = re.search('\.zip',file_listed)
-            if m is not None:
-                check_output(["rm", file_listed])
-    except:
-        pass
 
-
-def copyToTMP(file):
+def copyToTMP(file, user):
     filen = file.split('/')
     filen = filen[-1]
-    call(' '.join(["cp", file, '/tmp/'+filen]), shell=True)
-    filen = '/tmp/'+filen
+    call(' '.join(["cp", file, '/tmp/'+user+'/'+filen]), shell=True)
+    filen = '/tmp/'+user+'/'+filen
     return filen
 
 def compressFiles(user, filepaths):
     # deleteAlreadyZips(userDir)
-    with ZipFile('/tmp/'+user+'_compressed.zip','w') as zip: 
+    call(' '.join(["mkdir", '/tmp/'+user]), shell=True)
+    with ZipFile('/tmp/'+user+'/compressed.zip','w') as zip: 
         for file in filepaths: 
-            file = copyToTMP(file)
+            file = copyToTMP(file, user)
             zip.write(file)
-    return ['/tmp/'+user+'_compressed.zip']
+    return ['/tmp/'+user+'/compressed.zip']
 
 
 def fetchplotfromDB(plot, user):
