@@ -179,7 +179,7 @@ describe('Testing PlotBot usecases', function () {
         const output = await page.evaluate(() => Array.from(
           document.getElementsByClassName('post__body'), e => e.innerText));
         var result = output[output.length-1];
-        expect(result).to.match(/\.png/);
+        expect(result).to.match(/\.(png|zip)/);
 
         await browser.close();
     });
