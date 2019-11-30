@@ -32,12 +32,10 @@ def plotbot():
 
 def loadDataset(dsName,dsFileId,userId):
     print("Loading dataset call ....")
-    print(constants.metadata)
     if userId not in constants.metadata:
         constants.metadata[userId]={}
     if dsName not in constants.metadata[userId]:
         constants.metadata[userId][dsName]={}
-    print("Metadata curr: "+str(constants.metadata))
     file_resp=mm.fetchFile(dsFileId)
     filename=constants.baseStorage+userId+'/'+dsName+'/'+dsName+'.csv'
     os.makedirs(os.path.dirname(filename), exist_ok=True)
@@ -50,13 +48,12 @@ def parseRequest(trigger,message, file_ids, user):
         print("--> requested action: "+trigger)
         if trigger == "@plotbot":
             resp_msg = eventhandle(message)
-            # print(resp_msg)
         elif trigger == "sample":
             resp_msg,files = sampler.fetch(message)
         elif trigger == "plot":
-            #resp_msg = checkplotgraph(message)
+            # resp_msg = checkplotgraph(message)
             response = parser.parse_plot_request(message,file_ids,user)
-            pprint.pprint(response)
+            # pprint.pprint(response)
             text_list= message.strip().split()
             if len(text_list)>2:
                 dsname=text_list[2]
@@ -66,8 +63,7 @@ def parseRequest(trigger,message, file_ids, user):
                 res = parser.data_validation(response)
                 if res:
                     resp_msg, files = plotter.plot(response, dsname)
-                    print("===>")
-                    pprint.pprint(constants.metadata)
+                    # pprint.pprint(constants.metadata)
                 else:
                     raise ValueError("Dataset has no axes information.")
                 #resp_msg, files = plotter.plot(message, dsname)
