@@ -72,14 +72,9 @@ def fetchDB_path():
 
 def deleteAlreadyZips(userDir):
     try:
-        print("=====++++++=====")
-        print(userDir)
         list_files = check_output(["ls", userDir])
         list_files = list_files.decode('utf-8')
-        print(list_files)
         list_files= list_files.split('\n')
-        print(list_files)
-        print("=====++++++=====")
         for file_listed in list_files:
             m = re.search('\.zip',file_listed)
             if m is not None:

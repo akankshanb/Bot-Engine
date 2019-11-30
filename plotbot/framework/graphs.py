@@ -17,7 +17,6 @@ def fetchAxisInfo(graph_details):
             'x-axis':   graph_details['x_axis'],
             'y-axis':   graph_details['y_axis']
     }
-    print(axis_info)
     return axis_info
 
 class graph(object):
@@ -41,7 +40,6 @@ class graph(object):
         if random_col_index not in self.graphColors:
             self.graphColors.append(random_col_index)
             color = constants.color_pallet[random_col_index]
-            print(color)
             return color
         else:
             getPlotColor()

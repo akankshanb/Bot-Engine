@@ -15,7 +15,7 @@ def getMessage(filenames):
         return_msg = "Here are your plots"
     else:
         return_msg = "No plots available"
-    return return_msg, filenames
+    return return_msg
 
 def fetch(message, user):
     n = re.match('^\S+\s+(\S+)$', message)

@@ -41,7 +41,6 @@ def plot(response, dsname):
         filename = graph_dict[response['plot_type']](response, dsname)
         return_msg = "Here is your plots for **{}**".format(response['plot_type'])
         timestamp = mixin.getCurrentTimeStamp()
-        print(filename)
         file_dict = {filename: timestamp}
         constants.metadata[response['user']][response['dataset']].update(file_dict)
         return return_msg, [filename]
