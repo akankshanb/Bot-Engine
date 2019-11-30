@@ -148,7 +148,7 @@ describe('Testing PlotBot usecases', function () {
       await browser.close();
     });
 
-    it('Happy flow when user requests for his graphs plotted during a time period', async () => {
+    /*it('Happy flow when user requests for his graphs plotted during a time period', async () => {
         await page.waitForSelector('#post_textbox');
         await page.focus('#post_textbox')
         await page.keyboard.type( "retrieve from:2019-11-19 13:0:0.0 to:2019-11-30 14:0:0.0" );
@@ -164,7 +164,8 @@ describe('Testing PlotBot usecases', function () {
         expect(result).to.match(/\.png/);
 
         await browser.close();
-    });
+    });*/
+  
     it('Happy flow when user requests for all his plotted graphs', async () => {
         await page.waitForSelector('#post_textbox');
         await page.focus('#post_textbox')
