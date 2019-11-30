@@ -37,7 +37,6 @@ def fetch(message, user):
             start_time = m.group(1)+" "+m.group(2)
         else:
             start_time = m.group(1)+" "+"0:0:0.0"
-    
     n = re.search('.*?to[\s\:]*\s*(\S+)[\s]*(\S*)', message)
     if n is not None:
         if n.group(2) != '':
