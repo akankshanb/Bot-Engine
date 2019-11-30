@@ -33,17 +33,15 @@
       when: key_exists.stat.exists == False
 
     - name: Change permission of key file
-      shell: "chmod 400 ~/.aws/{{keypair}}.pem"
-
+      file:
+        path: ~/.aws/{{keypair}}.pem
+        mode: '400'
+      # shell: "chmod 400 ~/.aws/{{keypair}}.pem"
     - debug:
         msg: "{{ec2_priv}}"
-
-    # - name: Install EC2 dependencies
-    #   pip:
-    #     name: ['boto', 'boto3', 'botocore']
     - name: Launch the new EC2 Instance
       ec2_instance:
-        name: plotbot1
+        name: plotbot_test
         aws_access_key: "{{ aws_access_key }}"
         aws_secret_key: "{{ aws_secret_key }}"
         instance_type: "{{instance_type}}"
@@ -73,34 +71,60 @@
   remote_user: ubuntu
   become: yes
   gather_facts: no
-  pre_tasks:
-    - name: 'install python3'
-      raw: 'sudo apt-get -y install python3'
-#   # tasks:
-#   #   - name: Install Apache
-#   #     apt:
-#   #       name: apache2
-#   #       state: present
-#   #   - service: 
-#   #       name: apache2
-#   #       state: started
-#   #       enabled: yes
+  vars_files:
+    - plotbot_vault.yaml
 
-#     # - debug:
-#     #   msg: "{{ec2}}"
-    
-#     # - name: Export TOKEN
-#     # - name: Run Application
-#     #   shell: |
-#     #     cd ../plotbot/
-#     #     export PLOT_BOT_TOKEN={{PLOT_BOT_TOKEN}}
-#     #     python3 bot-engine.py
-#     # - name: Printing the environment​ variable in Ansible
-#     #   debug:
-#     #     msg: "{{ lookup('env','PLOT_BOT_TOKEN') }}"
-#     # - name: Launch Flask Application
-#     #   command: python3 bot-engine.py
-#     #   args:
-#     #     chdir: ../plotbot/
+  pre_tasks:
+    - name: 'install python2'
+      raw: sudo apt-get -y install python
+
+  tasks:
+    - name: Install python3
+      apt:
+        name: ['python3', 'python3-pip']
+        state: present
+
+    - name: Install plotbot packages
+      pip:
+        name: ['flask', 'mattermostdriver','matplotlib','pandas','seaborn','nltk','scikit-learn','PyYAML','mockito']
+        executable: pip3
+        state: latest
+
+    - name: Install node.js, npm and git
+      apt: 
+        name: ['nodejs', 'npm', 'git']
+        state: present
+    - name: Install forever using npm
+      npm:
+        name: 'forever'
+        state: present
+        global: yes
+
+    - name: git clone a repository
+      git:
+        repo: 'https://github.ncsu.edu/csc510-fall2019/CSC510-22.git'
+        dest: ~/CSC510-22/Repository
+        clone: yes
+        update: yes
+      register: cloned
+    - debug:
+        msg: cloned
+    - name: Check list of forever apps running
+      command: forever list
+      register: forever_list
+      changed_when: false
+
+    - name: Start plotbot application using forever
+      shell: |
+        cd ~/CSC510-22/plotbot
+        export PLOT_BOT_TOKEN={{ PLOT_BOT_TOKEN }}
+        forever start -l plotbot.log -c python3 bot-engine.py 
+        echo $PLOT_BOT_TOKEN
+      when: "forever_list.stdout.find('bot-engine.py') == -1"
+      register: my_out
+
+    - debug:
+        msg: "{{my_out}}"
+
     
 
