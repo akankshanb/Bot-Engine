@@ -27,9 +27,9 @@ For your DevBots, create a test team and a TA user account, which TAs will be us
 Provide **login credentials** for TA.
 
 ### 1. To initiate converstion with plotbot
-1.Log-in to [mattermost client](http://ec2-18-217-150-234.us-east-2.compute.amazonaws.com:8065).
-2. Enter the username as **evaluator** and password as **evaluator**.
-3. After successfully logging in, navigate to "evaluation" channel and execute the testcases given in the acceptance test plan below. 
+  1. Log-in to [mattermost client](http://ec2-18-217-150-234.us-east-2.compute.amazonaws.com:8065).
+  2. Enter the username as **evaluator** and password as **evaluator**.
+  3. After successfully logging in, navigate to "evaluation" channel and execute the testcases given in the acceptance test plan below. 
 
 ### 2.Three usecases to be tested. <br>
 
