@@ -50,7 +50,7 @@ sample barplot
 ```
 `Expected output`: 
 
-<img width="420" src="https://media.github.ncsu.edu/user/13071/files/0481f480-1392-11ea-9c43-d0537c2665da">
+<img width="447"  src="https://media.github.ncsu.edu/user/13071/files/fbae1480-13cb-11ea-9453-e7e4ee924a7d">
 
 3. The user requests for a sample of boxplot
 ```sh
@@ -59,7 +59,7 @@ sample boxplot
 ```
 `Expected output`: 
 
-<img width="420" src="https://media.github.ncsu.edu/user/13071/files/0481f480-1392-11ea-9c43-d0537c2665da">
+<img width="450" src="https://media.github.ncsu.edu/user/13071/files/ea650800-13cb-11ea-89d5-66b9520c4e3e">
 
 4. When user requests for a plot which is not supported (example countplot)
 ```sh
