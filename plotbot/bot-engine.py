@@ -62,6 +62,7 @@ def parseRequest(trigger,message, file_ids, user):
                 res = parser.data_validation(response)
                 if res:
                     resp_msg, files = plotter.plot(response, dsname)
+                    setup.unload()
                     # pprint.pprint(constants.metadata)
                 else:
                     raise ValueError("Dataset has no axes information.")

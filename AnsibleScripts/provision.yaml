@@ -134,10 +134,10 @@
     - name: Start plotbot application using forever
       shell: |
         cd ~/CSC510-22/plotbot
-        forever stop -l plotbot.log -c python3 bot-engine.py 
+        forever stopall
         export PLOT_BOT_TOKEN={{ PLOT_BOT_TOKEN }}
         export PUBLIC_IP={{curr_public_ip.stdout}}
-        forever start -a -l plotbot.log -c python3 bot-engine.py 
+        forever start -a -l plotbot.log -o out.log -c python3 bot-engine.py 
         echo $PLOT_BOT_TOKEN
       register: my_out
 

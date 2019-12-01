@@ -45,7 +45,7 @@ def gatherIDs(idtype):
         filename = 'framework/'+idtype+'_ids.db'
         outfile = open(filename,'wb')
         outfile.close()
-        gatherIDs(idtype)
+        return gatherIDs(idtype)
 
 def randomString(stringLength=10):
     letters = string.ascii_lowercase
