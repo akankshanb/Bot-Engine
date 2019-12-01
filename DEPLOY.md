@@ -179,7 +179,7 @@ retrieve hpzwecnhip.png
 
 `Expected Output:`
 
-<img width="435" src="https://media.github.ncsu.edu/user/13071/files/35801a80-13ce-11ea-9c12-610ee13c3b72">
+<img width="550" src="https://media.github.ncsu.edu/user/13071/files/affd6a00-13cf-11ea-9dec-33724e2d96e8">
 
 3. User requests to retrieve plots from a timestamp to a timestamp (gets zipped file containing all plots during the time range becuase number of returned plots > 5).
 
