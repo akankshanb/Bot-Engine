@@ -141,6 +141,71 @@ Expected Output:
 Please request by uploading the dataset. The mentioned dataset doesn't exist in our database.
 ```
 
+**Usecase 3: Provide user the ability to retrieve their plots.**
+In this usecase, the user has the ability to retrieve his previous plot(s), either fetching one by one by giving the specific plot-ID or they can get all their previous graphs or graphs which were plotted  between a timestamp to other timestamp.
+
+```
+Usage:
+retrieve <plotID.png>
+retrieve all
+retrieve from:<start_time> to:<stop_time>
+```
+
+```
+Note:
+<start_time> and <stop_time> should be of format : Y-m-d H:M:S.f' or 'Y-m-d'
+When giving only date and not time, the time is considered as 0:0:0.0 of that day
+When more than 5 files are to be sent by the bot, they would be put in a zip and returned.
+All timestamps should be in UTC.
+```
+
+1. User requests to retrieve all his plots (gets indivisual file because number of returned plots <= 5).
+
+```
+Input:
+retrieve all
+```
+
+`Expected Output:`
+
+<img width="435" src="https://media.github.ncsu.edu/user/13071/files/35801a80-13ce-11ea-9c12-610ee13c3b72">
+
+2. User requests to retrieve a particular plot using the plot-ID.
+
+```
+Input:
+retrieve hpzwecnhip.png
+```
+
+`Expected Output:`
+
+<img width="435" src="https://media.github.ncsu.edu/user/13071/files/35801a80-13ce-11ea-9c12-610ee13c3b72">
+
+3. User requests to retrieve plots from a timestamp to a timestamp (gets zipped file containing all plots during the time range becuase number of returned plots > 5).
+
+```
+Input:
+retrieve from:2019-11-19 13:0:0.0 to:2019-12-30 14:0:0.0
+```
+
+`Expected Output:`
+
+<img width="419" src="https://media.github.ncsu.edu/user/13071/files/c22ad880-13ce-11ea-9ee8-02c7f5ce633b">
+
+
+4. User requests plot(s), but no plots were generated till date.
+
+```
+Input:
+retrieve abc.png
+```
+
+```
+Expected Output:
+No plots available
+```
+
+
 
 ### Exploratory Testing and Code Inspection
 
