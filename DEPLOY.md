@@ -50,7 +50,7 @@ sample barplot
 ```
 `Expected output`: 
 
-<img width="420" src="https://media.github.ncsu.edu/user/13071/files/0481f480-1392-11ea-9c43-d0537c2665da">
+<img width="447"  src="https://media.github.ncsu.edu/user/13071/files/fbae1480-13cb-11ea-9453-e7e4ee924a7d">
 
 3. The user requests for a sample of boxplot
 ```sh
@@ -59,7 +59,7 @@ sample boxplot
 ```
 `Expected output`: 
 
-<img width="420" src="https://media.github.ncsu.edu/user/13071/files/0481f480-1392-11ea-9c43-d0537c2665da">
+<img width="450" src="https://media.github.ncsu.edu/user/13071/files/ea650800-13cb-11ea-89d5-66b9520c4e3e">
 
 4. When user requests for a plot which is not supported (example countplot)
 ```sh
@@ -83,23 +83,64 @@ Note the following:
 2. The plot-type supports only for 'scatterplot', 'boxplot' and 'barplot'.
 3. You can download the test datasets from location given below.
 4. The trigger word 'plot' has to be in lowercase only.
+5. For scatterplot and barplot there has to be <x-axis_label> <y-axis_label> mandatorily.
+6. For boxplot input of <x-axis_label> only will result in running a outlier analysis on that column.
 ```
 Test Datasets: 
 [petals](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/plotbot/puppeteer/test/dataset.csv) Column names : 
 [weather](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/plotbot/puppeteer/test/weather.csv)
 
-1. The user requests to plot scatterplot by uploading dataset
+1. The user requests to plot barplot by uploading dataset
+`Input:`
+
+<img width="397" src="https://media.github.ncsu.edu/user/13071/files/d4eede80-13c9-11ea-8522-af0a64275b67">
+
+`Expected Output:`
+
+<img width="530" src="https://media.github.ncsu.edu/user/13071/files/d7513880-13c9-11ea-863b-fbdd5dcfe549">
+
+2. The user requests to plot boxplot, with the dataset already uploaded with outlier analysis on any one column (x-axis-label)
 ```
 Input:
+plot boxplot weather x1
 ```
 
-<img width="481" src="https://media.github.ncsu.edu/user/13071/files/76743100-13c6-11ea-9c87-92066e5d6121">
+`Expected Output:`
+
+<img width="526" src="https://media.github.ncsu.edu/user/13071/files/24cca600-13c8-11ea-88b7-ce93b2be4ffe">
+
+3. The user requests to plot boxplot, with the dataset already uploaded with outlier analysis with X and Y axis information
+```
+Input:
+plot boxplot dataset sepal.length sepal.width
+```
+
+`Expected Output:`
+
+<img width="509" src="https://media.github.ncsu.edu/user/13071/files/454a2f80-13cb-11ea-8099-218e08284992">
+
+4. The user requests to plot scatterplot with existing dataset with 1 input variable (x-axis-label) and 1 output variable (y-axis-label)
+```
+Input:
+plot scatterplot weather x1 y
+```
+
+`Expected Output:`
+
+<img width="516" src="https://media.github.ncsu.edu/user/13071/files/9b1dd800-13c9-11ea-8616-b3018114c714">
+
+5. The user requests to plot barplot mentioning a dataset which was not previously uploaded.
+
+```
+Input:
+plot barplot iris month y
+```
 
 ```
 Expected Output:
+Please request by uploading the dataset. The mentioned dataset doesn't exist in our database.
 ```
 
-<img width="504" src="https://media.github.ncsu.edu/user/13071/files/c18e4400-13c6-11ea-9da4-d932002b0549">
 
 ### Exploratory Testing and Code Inspection
 
