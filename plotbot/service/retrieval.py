@@ -3,6 +3,7 @@ import framework.mixin as mixin
 import framework.constants as constants
 import re
 import datetime
+from framework.constants import log as log
 
 def fetchTime(start_time, stop_time):
     date_time_obj_start = datetime.datetime.strptime(start_time, '%Y-%m-%d %H:%M:%S.%f')

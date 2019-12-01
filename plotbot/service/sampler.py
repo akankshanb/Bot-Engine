@@ -1,3 +1,5 @@
+from framework.constants import log as log
+
 def retrieve_snippet(plottype):
     
     snippet_dict={"scatterplot": ["scatterplot_code","scatterplot_graph"],

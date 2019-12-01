@@ -52,7 +52,7 @@
 
     - name: Launch the new EC2 Instance
       ec2_instance:
-        name: plotbot_test2
+        name: plotbot_{{keypair}}
         aws_access_key: "{{ aws_access_key }}"
         aws_secret_key: "{{ aws_secret_key }}"
         instance_type: "{{instance_type}}"
