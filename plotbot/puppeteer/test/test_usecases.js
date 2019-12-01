@@ -29,7 +29,7 @@ describe('Testing PlotBot usecases', function () {
     this.timeout(5000000);
 
     beforeEach(async () => {
-        browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser',headless:true});
+        browser = await puppeteer.launch({headless:true});
         mattermost_url = "http://ec2-18-217-150-234.us-east-2.compute.amazonaws.com:8065/plotbotteam/channels/all_trials";
         page = await login( browser, `${mattermost_url}/login` );
     });
