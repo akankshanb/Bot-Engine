@@ -14,7 +14,7 @@ In the previous milestone, we implemented the services required for your use cas
   1. `sudo ansible-playbook -i inventory provision.yaml --ask-vault-pass`
   2. Enter: **plotbot** (key to unlock the ansible vault)
 
-[**Screencast Link**](https://drive.google.com/open?id=18CEc7PNhk6eBr8sY624rSXV6H2ewBGHQ)
+[**Screencast Link**](https://drive.google.com/open?id=18CEc7PNhk6eBr8sY624rSXV6H2ewBGHQ) running deployment scripts.
 
 ## Acceptance Testing
 
