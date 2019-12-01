@@ -83,23 +83,78 @@ Note the following:
 2. The plot-type supports only for 'scatterplot', 'boxplot' and 'barplot'.
 3. You can download the test datasets from location given below.
 4. The trigger word 'plot' has to be in lowercase only.
+5. For scatterplot and barplot there has to be <x-axis_label> <y-axis_label> mandatorily.
+6. For boxplot input of <x-axis_label> only will result in running a outlier analysis on that column.
 ```
 Test Datasets: 
 [petals](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/plotbot/puppeteer/test/dataset.csv) Column names : 
 [weather](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/plotbot/puppeteer/test/weather.csv)
 
-1. The user requests to plot scatterplot by uploading dataset
+1. The user requests to plot barplot by uploading dataset
 ```
 Input:
 ```
 
-<img width="481" src="https://media.github.ncsu.edu/user/13071/files/76743100-13c6-11ea-9c87-92066e5d6121">
+<img width="397" src="https://media.github.ncsu.edu/user/13071/files/d4eede80-13c9-11ea-8522-af0a64275b67">
+```
+Expected Output:
+```
+
+<img width="530" src="https://media.github.ncsu.edu/user/13071/files/d7513880-13c9-11ea-863b-fbdd5dcfe549">
+
+2. The user requests to plot boxplot, with the dataset already uploaded with outlier analysis on any one column (x-axis-label)
+```
+Input:
+```
+
+<img width="374" src="https://media.github.ncsu.edu/user/13071/files/627cff00-13c7-11ea-8c4b-c1d00f310bdd">
 
 ```
 Expected Output:
 ```
 
+<img width="526" src="https://media.github.ncsu.edu/user/13071/files/24cca600-13c8-11ea-88b7-ce93b2be4ffe">
+
+3. The user requests to plot boxplot, with the dataset already uploaded with outlier analysis with X and Y axis information
+```
+Input:
+```
+
+<img width="431" src="https://media.github.ncsu.edu/user/13071/files/47f75580-13c8-11ea-894f-44bc3d273b9d">
+
+```
+Expected Output:
+```
+
+<img width="541" src="https://media.github.ncsu.edu/user/13071/files/56de0800-13c8-11ea-8cd8-19a9466ccf1f">
+
+
+4. The user requests to plot scatterplot by uploading dataset and plotting 4 (more than 1) input variables (x-axis-labels) corresponding to 1 output variable (y-axis-label)
+```
+Input:
+```
+
+<img width="405" src="https://media.github.ncsu.edu/user/13071/files/9822e780-13c9-11ea-8026-3c8e8c7c5a56">
+
+```
+Expected Output:
+```
+
+<img width="516" src="https://media.github.ncsu.edu/user/13071/files/9b1dd800-13c9-11ea-8616-b3018114c714">
+
+5. The user requests to plot barplot mentioning a dataset which was not previously uploaded.
+```
+Input:
+plot barplot iris month y
+```
+
+```
+Expected Output:
+Please request by uploading the dataset. The mentioned dataset doesn't exist in our database.
+```
+
 <img width="504" src="https://media.github.ncsu.edu/user/13071/files/c18e4400-13c6-11ea-9da4-d932002b0549">
+
 
 ### Exploratory Testing and Code Inspection
 
