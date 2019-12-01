@@ -205,22 +205,12 @@ Expected Output:
 No plots available
 ```
 
+### Final code Structure
+
+<img src= https://media.github.ncsu.edu/user/13071/files/08853500-13d9-11ea-9bc4-c9bdff19ffa9>
 
 
-### Exploratory Testing and Code Inspection
 
-
-You must not hard-code interaction/mock data for your bots. TAs will perform additional exploratory testing and code inspection to verify bots perform as expected and handle edge cases and error in inputs. 
-
-**Failure to adhere to these instructions will result in a 0 for this milestone.**
-testinggg
-### Bonus: Continuous Integration (CI) Server
-
-Create a jenkins server and build job that runs a build job for your bot, including running your integration tests. 
-
-CI can run in a local or hosted VM.
-
-To receive create, you must demonstate your CI working based on a build running from a triggered commit, and show build logs with passing integration tests.
 
 ### Submit
 
