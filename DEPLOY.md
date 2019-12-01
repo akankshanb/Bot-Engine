@@ -2,13 +2,13 @@
 
 In the previous milestone, we implemented the services required for your use cases and implemented interaction with a bot. In this milestone, you will be demonstrating a fully deployed version of your bot for use in a Slack/Mattermost/Github/etc. environment.
 
-### Deployment
+## Deployment
 
 Using a configuring management tool, you must fully provision and configure a remote environment for your bot. You should largely be able to reuse homework materials but adopted for your bot.
 
 In your README.md, document how these configuration management tools and deployment scripts should be run and make sure to include demonstrate running them in your screencast.
 
-### Acceptance Testing
+## Acceptance Testing
 
 For your DevBots, create a test team and a TA user account, which TAs will be using for testing your deployed bot. For github bots, grant the necessary permissions for performing tasks on a demo repository. 
 
@@ -205,7 +205,7 @@ Expected Output:
 No plots available
 ```
 
-### Final code Structure
+## Final code Structure
 
 <img src= https://media.github.ncsu.edu/user/13071/files/08853500-13d9-11ea-9bc4-c9bdff19ffa9>
 
