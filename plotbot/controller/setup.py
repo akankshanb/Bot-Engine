@@ -26,8 +26,9 @@ def unload():
 def load():
     print('Setting up system...')
     load_config() 
+    CURR_HOOK_URL="http://"+os.getenv('PUBLIC_IP')+":5000/plotbot"
     #Create primary bot webhook if not exist
-    mm.save_outgoing_webhook(mm.params['TEAM_ID'],mm.params['DEFAULT_CHANNEL_ID'],'plotbot-hook',mm.params['HOOK_URL'],
+    mm.save_outgoing_webhook(mm.params['TEAM_ID'],mm.params['DEFAULT_CHANNEL_ID'],'plotbot-hook',CURR_HOOK_URL,
                 ['@plotbot','sample','plot','retrieve'])
 
     # Configuring metadata and file storage

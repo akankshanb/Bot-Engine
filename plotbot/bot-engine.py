@@ -36,7 +36,7 @@ def loadDataset(dsName,dsFileId,userId):
     if dsName not in constants.metadata[userId]:
         constants.metadata[userId][dsName]={}
     file_resp=mm.fetchFile(dsFileId)
-    filename=constants.baseStorage+userId+'/'+dsName+'/'+dsName+'.csv'
+    filename=constants.baseStorage+userId+'/'+dsName.lower()+'/'+dsName.lower()+'.csv'
     os.makedirs(os.path.dirname(filename), exist_ok=True)
     with open(filename, 'wb') as w:
         w.write(file_resp.content)

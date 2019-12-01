@@ -18,6 +18,9 @@ def getMessage(filenames):
     return return_msg
 
 def fetch(message, user):
+    chck=re.match('^\S+\s+\S+\s*',message)
+    if chck is None:
+        raise ValueError('Please provide correct retrieve parameters. i.e. `retrieve all`,`retrieve  <plotid.png>`, retrieve from:<Y-m-d H:M:S.f> to:<Y-m-d H:M:S.f>')
     n = re.match('^\S+\s+(\S+)$', message)
     filenames = []
     if n is not None:
@@ -43,9 +46,13 @@ def fetch(message, user):
             stop_time = n.group(1)+" "+n.group(2)
         else:
             stop_time = n.group(1)+" "+"0:0:0.0"
-    if start_time is not None and stop_time is not None:
+    if start_time is  not None and stop_time is not None:
+        # raise ValueError('Please provide correct retrieve parameters. i.e. `retrieve all`,`retrieve  <plotid.png>`, retrieve from:<Y-m-d H:M:S.f> to:<Y-m-d H:M:S.f>')
+    # else:
+        print(start_time, stop_time)
         time_range = fetchTime(start_time, stop_time)
         filenames = mixin.fetchplotfromDBtimed(time_range, user)
+    
     msg = getMessage(filenames)
     return msg, filenames
 

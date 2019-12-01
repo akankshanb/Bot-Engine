@@ -8,7 +8,7 @@ import numpy as np
 import random
 
 def load_dataset(plot_type, plot_details, datasetname):
-    dataset_location = constants.cwd+'/'+constants.baseStorage+plot_details['user']+'/'+plot_details['dataset']+'/'+str(datasetname)+'.csv'
+    dataset_location = constants.cwd+'/'+constants.baseStorage+plot_details['user']+'/'+plot_details['dataset'].lower()+'/'+str(datasetname).lower()+'.csv'
     df = pd.read_csv(dataset_location)
     return df
 
