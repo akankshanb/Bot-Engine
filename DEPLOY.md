@@ -1,11 +1,6 @@
 # Milestone: DEPLOYMENT
 
-In the previous milestone, we implemented the services required for your use cases and implemented interaction with a bot. In this milestone, you will be demonstrating a fully deployed version of your bot for use in a Mattermost environment.
-
-
-## Deployment
-
-Using a configuring management tool, you must fully provision and configure a remote environment for your bot. You should largely be able to reuse homework materials but adopted for your bot.
+In the previous milestone, we implemented the services required for your use cases and implemented interaction with a bot. In this milestone, we will be demonstrating a fully deployed version of our bot for use in a Mattermost environment.
 
 ### Deployment steps
 #### Pre-requisites
@@ -28,8 +23,8 @@ For your DevBots, create a test team and a TA user account, which TAs will be us
 Provide **login credentials** for TA.
 
 ### 1. To initiate converstion with plotbot
-  1. Log-in to [mattermost client](http://ec2-18-217-150-234.us-east-2.compute.amazonaws.com:8065).
-  2. Enter the username as **evaluator** and password as **evaluator**.
+  1. Log-in to [mattermost client](http://ec2-18-217-150-234.us-east-2.compute.amazonaws.com:8065) <br>
+  2. Enter the username as **evaluator** and password as **evaluator**. <br>
   3. After successfully logging in, navigate to "evaluation" channel and execute the testcases given in the acceptance test plan below. 
   
 ```
@@ -237,7 +232,7 @@ We are running Jenkins server on hosted VM.
 We have enabled git polling for every 2 minutes. For every build, a new instance for testing gets created with the latest code from github and integration tests will run on that instance. When all the integration tests pass, the BUILD will be SUCCESS.
 For every build, [this](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/jenkins-script.sh) shell script will be executed.
 
-Screencast: The screencast of the Jenkins server running a build job can be found [here]()
+Screencast: The screencast of the Jenkins server running a build job can be found [here](https://drive.google.com/open?id=1n2hoWPf4boGl9dhvxVfOyGsubLPjNxtR).
 
 
 ### Submit
