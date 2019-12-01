@@ -27,6 +27,8 @@ In the first use case, the user can request to provide sample of code snippet an
 ```
 Usage: 
 sample <plot-type>
+```
+```
 Note: 
 The trigger word 'sample' has to be in lowercase only.
 plot-type supported : scatterplot, boxplot and barplot
@@ -85,6 +87,19 @@ Note the following:
 Test Datasets: 
 [petals](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/plotbot/puppeteer/test/dataset.csv) Column names : 
 [weather](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/plotbot/puppeteer/test/weather.csv)
+
+1. The user requests to plot scatterplot by uploading dataset
+```
+Input:
+```
+
+<img width="481" src="https://media.github.ncsu.edu/user/13071/files/76743100-13c6-11ea-9c87-92066e5d6121">
+
+```
+Expected Output:
+```
+
+<img width="504" src="https://media.github.ncsu.edu/user/13071/files/c18e4400-13c6-11ea-9da4-d932002b0549">
 
 ### Exploratory Testing and Code Inspection
 
