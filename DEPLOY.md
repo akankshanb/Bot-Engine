@@ -30,6 +30,16 @@ Provide **login credentials** for TA.
   1. Log-in to [mattermost client](http://ec2-18-217-150-234.us-east-2.compute.amazonaws.com:8065).
   2. Enter the username as **evaluator** and password as **evaluator**.
   3. After successfully logging in, navigate to "evaluation" channel and execute the testcases given in the acceptance test plan below. 
+  
+```
+Usage: 
+@plotbot hi
+```
+```
+Note: 
+The trigger word is @plotbot for greeting the bot. It can be followed by intents like "hi", "hey" etc. Expected output will be a greeting from the bot.
+```
+<img width="586" alt="Screen Shot 2019-12-01 at 1 44 07 AM" src="https://media.github.ncsu.edu/user/13256/files/6cf5c380-13dc-11ea-99b2-d03c7b54b826">
 
 ### 2.Three usecases to be tested. <br>
 
