@@ -211,7 +211,10 @@ No plots available
 
 ### Bonus: Continuous Integration (CI) Server
 We are running Jenkins server on hosted VM.
-We have enabled git polling for every 2 minutes. For every build, a new instance for testing gets created with the latest code from github and integration tests will run on that instance. When all the integration tests pass, the BUILD 
+We have enabled git polling for every 2 minutes. For every build, a new instance for testing gets created with the latest code from github and integration tests will run on that instance. When all the integration tests pass, the BUILD will be SUCCESS.
+For every build, [this](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/jenkins-script.sh) shell script will be executed.
+
+Screencast: The screencast of the Jenkins server running a build job can be found [here]()
 
 
 ### Submit
