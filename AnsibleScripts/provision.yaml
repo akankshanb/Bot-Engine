@@ -80,6 +80,10 @@
         port: 22
         state: started
 
+    - name: Copy app to remote
+      shell: "scp -i /root/{{keypair}}.pem -r ../plotbot/ ubuntu@{{ ec2.instances[0].public_ip_address }}:~/plotbot/"
+      become: yes
+
 - hosts: Botserver
   remote_user: ubuntu
   become: yes
@@ -125,17 +129,9 @@
         warn: no
       register: curr_public_ip
 
-    - name: Copy plotbot folder
-      copy: 
-        src: ../plotbot
-        dest: ~/CSC510-22
-      register: copied
-    - debug:
-        msg: "{{copied}}"
-
     - name: Start plotbot application using forever
       shell: |
-        cd ~/CSC510-22/plotbot
+        cd plotbot
         forever stopall
         export PLOT_BOT_TOKEN={{ PLOT_BOT_TOKEN }}
         export PUBLIC_IP={{curr_public_ip.stdout}}
