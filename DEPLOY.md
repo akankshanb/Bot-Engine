@@ -209,7 +209,9 @@ No plots available
 
 <img src= https://media.github.ncsu.edu/user/13071/files/08853500-13d9-11ea-9bc4-c9bdff19ffa9>
 
-
+### Bonus: Continuous Integration (CI) Server
+We are running Jenkins server on hosted VM.
+We have enabled git polling for every 2 minutes. For every build, a new instance for testing gets created with the latest code from github and integration tests will run on that instance. When all the integration tests pass, the BUILD 
 
 
 ### Submit
