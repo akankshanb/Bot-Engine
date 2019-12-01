@@ -1,4 +1,4 @@
-# Milestone: DEPLOYMENT
+# Milestone: DEPLOY
 
 In the previous milestone, we implemented the services required for your use cases and implemented interaction with a bot. In this milestone, we will be demonstrating a fully deployed version of our bot for use in a Mattermost environment.
 
