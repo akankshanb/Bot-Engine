@@ -18,7 +18,7 @@ import framework.constants as constants
 import framework.parser as parser
 from nlp.analyze import *
 import atexit
-import pprint
+from framework.constants import log as log
 
 app = Flask(__name__)
 
@@ -30,7 +30,7 @@ def plotbot():
     return ''
 
 def loadDataset(dsName,dsFileId,userId):
-    print("Loading dataset call ....")
+    log.info("Loading dataset call ....")
     if userId not in constants.metadata:
         constants.metadata[userId]={}
     if dsName not in constants.metadata[userId]:
@@ -44,7 +44,7 @@ def loadDataset(dsName,dsFileId,userId):
 def parseRequest(trigger,message, file_ids, user):
     files= []
     try:
-        print("--> requested action: "+trigger)
+        log.info("--> requested action: "+trigger)
         if trigger == "@plotbot":
             resp_msg = eventhandle(message)
         elif trigger == "sample":
@@ -52,18 +52,16 @@ def parseRequest(trigger,message, file_ids, user):
         elif trigger == "plot":
             # resp_msg = checkplotgraph(message)
             response = parser.parse_plot_request(message,file_ids,user)
-            # pprint.pprint(response)
             text_list= message.strip().split()
             if len(text_list)>2:
                 dsname=text_list[2]
-                print(file_ids,len(file_ids))
+                log.info(file_ids,len(file_ids))
                 if len(file_ids)>0 and file_ids[0]!='':
                     loadDataset(dsname,file_ids[0],user)
                 res = parser.data_validation(response)
                 if res:
                     resp_msg, files = plotter.plot(response, dsname)
                     setup.unload()
-                    # pprint.pprint(constants.metadata)
                 else:
                     raise ValueError("Dataset has no axes information.")
                 #resp_msg, files = plotter.plot(message, dsname)
@@ -73,7 +71,7 @@ def parseRequest(trigger,message, file_ids, user):
         elif trigger =="retrieve":
             resp_msg, files = retrieval.fetch(message, user)
     except ValueError as err:
-        print(err.args)
+        log.error(err.args)
         resp_msg=err.args[0]
     return resp_msg,files
 
@@ -94,5 +92,5 @@ def exit_handler():
 if __name__ == "__main__":
     atexit.register(exit_handler)
     setup.load()
-    print("-----")
+    log.info('-----')
     app.run(host='0.0.0.0')

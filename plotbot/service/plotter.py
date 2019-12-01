@@ -6,7 +6,6 @@ import framework.mixin as mixin
 
 
 def scatterplotfunc(plot_details, dataset_filename):
-    #print('in scatter')
     axis_info = graphs.fetchAxisInfo(plot_details)
     dataset = graphs.load_dataset('scatterplot', plot_details, dataset_filename)
     newGraph = graphs.scatter_plot(dataset, axis_info)
@@ -24,7 +23,6 @@ def barplotfunc(plot_details, dataset_filename):
 
 
 def boxplotfunc(plot_details, dataset_filename):
-    #print('in box')
     axis_info = graphs.fetchAxisInfo(plot_details)
     dataset = graphs.load_dataset('boxplot', plot_details, dataset_filename)
     newGraph = graphs.box_plot(dataset, axis_info)

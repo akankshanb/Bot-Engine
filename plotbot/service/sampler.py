@@ -17,8 +17,7 @@ def fetch(input_txt):
         snippets=retrieve_snippet(text_list[1])
     except:
         snippets = None
-    #print(snippets)
-    print(snippets)
+    log.debug(snippets)
     if snippets is not None:
         for name in snippets:
             path="sample_plots/"+name+".png"

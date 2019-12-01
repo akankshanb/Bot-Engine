@@ -15,7 +15,7 @@
       command: hostname
       register: host_out
 
-    - name: Set keypair
+    - name: Set keypair name
       set_fact:
         keypair: "{{host_out.stdout}}"
 

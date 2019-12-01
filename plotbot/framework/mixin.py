@@ -9,7 +9,7 @@ import datetime
 import os
 from random import randint
 from zipfile import ZipFile 
-
+from framework.constants import log as log
 
 class ID(object):
     def __init__(self):
@@ -55,7 +55,7 @@ def randomString(stringLength=10):
 def generateID(idtype):
     if idtype=='plot':
         id = randomString()
-        print(id,constants.plotIDs)
+        log.info(id,constants.plotIDs)
         if id in constants.plotIDs:   generateID('plot')
         constants.plotIDs.append(id)
         saveIDs('plot', constants.plotIDs)

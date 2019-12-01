@@ -8,6 +8,7 @@ from random import randint
 import subprocess
 import re
 import framework.constants as constants
+from framework.constants import log as log
 
 responseDataSet = {
     'scatter_data': sns.load_dataset("iris"),
@@ -72,7 +73,7 @@ def generateMockPlots():
         plots.append(generateBarMockPlot())
     for i in range(0,numBox):
         plots.append(generateBoxMockPlot())
-    print("Mock data generation complete...")
+    log.info("Mock data generation complete...")
     return plots
 
 when(mixin).fetchDB_path().thenReturn('framework/allplots/')

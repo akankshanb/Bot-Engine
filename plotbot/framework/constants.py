@@ -1,5 +1,10 @@
 import os
 import matplotlib
+import logging
+
+logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+log = logging.getLogger("PlotBot-logger")
+
 plotIDs = []
 userIDs = {}
 metadata = {}

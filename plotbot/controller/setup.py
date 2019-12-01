@@ -3,6 +3,7 @@ import yaml
 import controller.mmutil as mm
 import pickle
 import framework.constants as constants
+from framework.constants import log as log
 
 def load_config():
     mm.params['PLOT_BOT_TOKEN']=os.getenv('PLOT_BOT_TOKEN')
@@ -18,13 +19,12 @@ def load_config():
 def unload():
     filename = constants.baseStorage+constants.dbFile
     outfile = open(filename,'wb')
-    # print("Metadata: "+str(constants.metadata))
     pickle.dump(constants.metadata,outfile)
     outfile.close()
 
 
 def load():
-    print('Setting up system...')
+    log.info('Setting up system...')
     load_config() 
     CURR_HOOK_URL="http://"+os.getenv('PUBLIC_IP')+":5000/plotbot"
     #Create primary bot webhook if not exist
@@ -37,5 +37,4 @@ def load():
     if os.path.exists(constants.baseStorage+constants.dbFile):
         infile = open(constants.baseStorage+constants.dbFile, 'rb')
         constants.metadata=pickle.load(infile)
-    # print(constants.metadata)
-    print('Setup complete...')
+    log.info('Setup complete...')

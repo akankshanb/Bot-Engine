@@ -52,6 +52,9 @@ def check_params(input):
 
 def parse_message(input,file_ids):
     plot_type = input[1]
+    if plot_type=='scatterplot' or plot_type=='barplot':
+        if len(input) != 5:
+            raise ValueError('Please provide all the required parameters, i.e. `<scatterplot/barplot> <datasetname> <x_axis_label(s)> <y_axis_label(s)>`')
     if (len(input) == 5):
         dataset = input[2]
         x_axis = input[3].lower().split(",")

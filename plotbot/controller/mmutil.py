@@ -17,10 +17,7 @@ def get_driver():
 def upload_file(channel_id,file_path):
     files={'files': (os.path.basename(file_path), open(file_path, 'rb'))}
     mm_file=get_driver().files.upload_file(channel_id,files)
-    #mm_file=controller.files.get_file_metadata('bqgh91bhabd7ifm6ta4q7pu4bw')
-    #print(mm_file)
     file_id=mm_file["file_infos"][0]["id"]
-    #file_id=mm_file["id"]
     return file_id
 
 def create_post_file(channel_id,message,file_ids):
@@ -56,7 +53,6 @@ def save_outgoing_webhook(team_id,channel_id,display_name,url,words):
         'trigger_words': words,'trigger_when': 0,'callback_urls': [url],'content_type':'application/json'}
     hooks=my_driver.webhooks.list_outgoing_hooks({})
     my_hook=next((hook for hook in hooks if hook['display_name'] == display_name and hook['channel_id'] == channel_id), None)
-    #print(my_hook)
     if my_hook:
         my_driver.webhooks.delete_outgoing_hook(my_hook['id'])
     my_driver.webhooks.create_outgoing_hook(options)

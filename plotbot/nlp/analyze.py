@@ -13,6 +13,8 @@ import re
 from collections import Counter
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+from framework.constants import log as log
+
 nltk.download('punkt')
 nltk.download('stopwords')
 
@@ -88,12 +90,12 @@ def eventhandle(inp):
         # regex = ''
         for b in items["patterns"]:
             match = get_jaccard_sim(b,message)
-            print(match)
-            # print("maxi : ", maxi)
+            log.info(match)
+            # log.info("maxi : ", maxi)
             if(match > maxi):
                 maxi = match
                 response_item = items
-                # print("maxi changes : ", maxi)
+                # log.info("maxi changes : ", maxi)
     if response_item is None:
         return "Sorry I do not understand"
     else: 
@@ -108,18 +110,18 @@ def get_cosine_sim(*strs):
 
 def get_vectors(*strs):
     text = [t for t in strs]
-    print(text)
+    log.debug(text)
     vectorizer = CountVectorizer(text)
-    print(vectorizer)
+    log.debug(vectorizer)
     vectorizer.fit(text)
     return vectorizer.transform(text).toarray()
 
 
 def get_jaccard_sim(str1, str2): 
     a = set(str1.lower().split()) 
-    # print("intent: ", a)
+    # log.debug("intent: ", a)
     b = set(str2.lower().split())
-    # print("input :", b)
+    # log.debug("input :", b)
     c = a.intersection(b)
     return float(len(c)) / (len(a) + len(b) - len(c))
 
@@ -127,16 +129,16 @@ def is_ci_token_stopword_match(a, b):
     """Check if a and b are matches."""
     tokens_a = [token.lower().strip(string.punctuation) for token in tokenizer.tokenize(a) \
                     if token.lower().strip(string.punctuation) not in stopwords]
-    print("sentence1: ", tokens_a)
+    log.debug("sentence1: ", tokens_a)
     tokens_b = [token.lower().strip(string.punctuation) for token in tokenizer.tokenize(b) \
                     if token.lower().strip(string.punctuation) not in stopwords]
-    print("sentence2: ", tokens_b)
+    log.debug("sentence2: ", tokens_b)
     return (tokens_a == tokens_b)
 
 def bag_of_words(s,words):
     bag = [0 for _ in range(len(words))]
     s_words = nltk.word_tokenize(s)
-    print("before: ",s_words)
+    log.debug("before: ",s_words)
     s_words1 = [stemmer.stem(word.lower()) for word in s_words if word!="?"]
-    print("final: ", s_words1)
+    log.debug("final: ", s_words1)
 
