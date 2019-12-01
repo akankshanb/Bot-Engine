@@ -71,7 +71,7 @@ def parseRequest(trigger,message, file_ids, user):
         elif trigger =="retrieve":
             resp_msg, files = retrieval.fetch(message, user)
     except ValueError as err:
-        log.error(err.args)
+        log.error(str(err.args))
         resp_msg=err.args[0]
     return resp_msg,files
 

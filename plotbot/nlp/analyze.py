@@ -90,7 +90,7 @@ def eventhandle(inp):
         # regex = ''
         for b in items["patterns"]:
             match = get_jaccard_sim(b,message)
-            log.info(match)
+            log.debug(str(match))
             # log.info("maxi : ", maxi)
             if(match > maxi):
                 maxi = match

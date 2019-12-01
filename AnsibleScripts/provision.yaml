@@ -1,6 +1,8 @@
 ---
 - hosts: localhost
   gather_facts: no
+  user: root
+  become: yes
   vars:
       instance_type: t2.micro
       image: ami-0d5d9d301c853a04a
@@ -30,7 +32,7 @@
 
     - name: Check that the {{keypair}}.pem exists
       stat:
-        path: "../{{keypair}}.pem"
+        path: "/root/{{keypair}}.pem"
       register: key_exists
 
     - name: create a new ec2 key pair, returns generated private key
@@ -42,12 +44,12 @@
       register: ec2_priv
       when: key_exists.stat.exists == False
     
-    - local_action: copy content={{ ec2_priv.key.private_key }} dest=../{{keypair}}.pem
+    - local_action: copy content={{ ec2_priv.key.private_key }} dest=/root/{{keypair}}.pem
       when: key_exists.stat.exists == False
 
     - name: Change permission of key file
       file:
-        path: ../{{keypair}}.pem
+        path: "/root/{{keypair}}.pem"
         mode: '400'
 
     - name: Launch the new EC2 Instance
@@ -70,7 +72,7 @@
       add_host:
         name: "{{ ec2.instances[0].public_ip_address }}"
         groups: Botserver
-        ansible_ssh_private_key_file: "../{{keypair}}.pem"
+        ansible_ssh_private_key_file: "/root/{{keypair}}.pem"
     
     - name: Wait for SSH to come up
       wait_for:

@@ -50,7 +50,7 @@ def fetch(message, user):
     if start_time is  not None and stop_time is not None:
         # raise ValueError('Please provide correct retrieve parameters. i.e. `retrieve all`,`retrieve  <plotid.png>`, retrieve from:<Y-m-d H:M:S.f> to:<Y-m-d H:M:S.f>')
     # else:
-        log.info(start_time, stop_time)
+        log.debug(start_time, stop_time)
         time_range = fetchTime(start_time, stop_time)
         filenames = mixin.fetchplotfromDBtimed(time_range, user)
     
