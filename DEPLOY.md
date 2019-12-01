@@ -18,7 +18,7 @@ Using a configuring management tool, you must fully provision and configure a re
 #### Ansible playbook
 `sudo ansible-playbook -i inventory provision.yaml --ask-vault-pass`
 
-In your README.md, document how these configuration management tools and deployment scripts should be run and make sure to include demonstrate running them in your screencast.
+[link](https://drive.google.com/open?id=18CEc7PNhk6eBr8sY624rSXV6H2ewBGHQ)
 
 ## Acceptance Testing
 
