@@ -96,6 +96,7 @@ Input:
 ```
 
 <img width="397" src="https://media.github.ncsu.edu/user/13071/files/d4eede80-13c9-11ea-8522-af0a64275b67">
+
 ```
 Expected Output:
 ```
@@ -105,9 +106,8 @@ Expected Output:
 2. The user requests to plot boxplot, with the dataset already uploaded with outlier analysis on any one column (x-axis-label)
 ```
 Input:
+plot boxplot weather x1
 ```
-
-<img width="374" src="https://media.github.ncsu.edu/user/13071/files/627cff00-13c7-11ea-8c4b-c1d00f310bdd">
 
 ```
 Expected Output:
@@ -118,9 +118,8 @@ Expected Output:
 3. The user requests to plot boxplot, with the dataset already uploaded with outlier analysis with X and Y axis information
 ```
 Input:
+plot boxplot dataset sepal.length sepal.width
 ```
-
-<img width="431" src="https://media.github.ncsu.edu/user/13071/files/47f75580-13c8-11ea-894f-44bc3d273b9d">
 
 ```
 Expected Output:
@@ -129,12 +128,11 @@ Expected Output:
 <img width="541" src="https://media.github.ncsu.edu/user/13071/files/56de0800-13c8-11ea-8cd8-19a9466ccf1f">
 
 
-4. The user requests to plot scatterplot by uploading dataset and plotting 4 (more than 1) input variables (x-axis-labels) corresponding to 1 output variable (y-axis-label)
+4. The user requests to plot scatterplot with existing dataset and plotting 4 (more than 1) input variables (x-axis-labels) corresponding to 1 output variable (y-axis-label)
 ```
 Input:
+plot scatterplot weather x1,x2,x3,x4 y
 ```
-
-<img width="405" src="https://media.github.ncsu.edu/user/13071/files/9822e780-13c9-11ea-8026-3c8e8c7c5a56">
 
 ```
 Expected Output:
