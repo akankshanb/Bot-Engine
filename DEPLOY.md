@@ -16,7 +16,8 @@ Using a configuring management tool, you must fully provision and configure a re
 `pip3 install ansible`</br>
 
 #### Ansible playbook
-`sudo ansible-playbook -i inventory provision.yaml --ask-vault-pass`
+  1. `sudo ansible-playbook -i inventory provision.yaml --ask-vault-pass`
+  2. Enter: **plotbot** (key to unlock the ansible vault)
 
 [**Screencast Link**](https://drive.google.com/open?id=18CEc7PNhk6eBr8sY624rSXV6H2ewBGHQ)
 
