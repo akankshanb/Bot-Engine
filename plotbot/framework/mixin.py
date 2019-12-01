@@ -55,7 +55,7 @@ def randomString(stringLength=10):
 def generateID(idtype):
     if idtype=='plot':
         id = randomString()
-        log.info(id,str(constants.plotIDs))
+        #log.info('%(id) , %(str(constants.plotIDs))', id,str(constants.plotIDs))
         if id in constants.plotIDs:   generateID('plot')
         constants.plotIDs.append(id)
         saveIDs('plot', constants.plotIDs)

@@ -55,7 +55,7 @@ def parseRequest(trigger,message, file_ids, user):
             text_list= message.strip().split()
             if len(text_list)>2:
                 dsname=text_list[2]
-                log.info(file_ids,len(file_ids))
+                #log.info('%(file_ids)', file_ids)
                 if len(file_ids)>0 and file_ids[0]!='':
                     loadDataset(dsname,file_ids[0],user)
                 res = parser.data_validation(response)
@@ -71,7 +71,7 @@ def parseRequest(trigger,message, file_ids, user):
         elif trigger =="retrieve":
             resp_msg, files = retrieval.fetch(message, user)
     except ValueError as err:
-        log.error(str(err.args))
+        #log.error('%(str(err.args))',str(err.args))
         resp_msg=err.args[0]
     return resp_msg,files
 
