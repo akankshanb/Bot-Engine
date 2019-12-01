@@ -30,7 +30,7 @@ describe('Testing PlotBot usecases', function () {
 
     beforeEach(async () => {
         browser = await puppeteer.launch({headless:true,executablePath: '/usr/bin/chromium-browser'});
-        mattermost_url = "http://ec2-18-217-150-234.us-east-2.compute.amazonaws.com:8065/plotbotteam/channels/jenkinsIntegration";
+        mattermost_url = "http://ec2-18-217-150-234.us-east-2.compute.amazonaws.com:8065/plotbotteam/channels/jenkinsintegration";
         page = await login( browser, `${mattermost_url}/login` );
     });
 
