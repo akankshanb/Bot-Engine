@@ -14,7 +14,7 @@ For your DevBots, create a test team and a TA user account, which TAs will be us
 
 Provide **login credentials** for TA.
 
-### . To initiate converstion with plotbot
+### 1. To initiate converstion with plotbot
 1.Log-in to [mattermost client](http://ec2-18-217-150-234.us-east-2.compute.amazonaws.com:8065).
 2. Enter the username as **evaluator** and password as **evaluator**.
 3. After successfully logging in, navigate to "evaluation" channel and execute the testcases given in the acceptance test plan below. 
@@ -22,7 +22,16 @@ Provide **login credentials** for TA.
 ### 2.Three usecases to be tested. <br>
 
 **Usecase 1: Give the user with code snippet for reuired type of graph**
-In the first use case, the user can request to provide sample of code snippet and a sample of plot for a particular plot type. Our bot can provide samples codes and plot for only scatterplot, barplot and boxplot.
+In the first use case, the user can request to provide sample of code snippet and a sample of plot for a particular plot type. 
+
+```
+Usage: 
+sample <plot-type>
+Note: 
+The trigger word 'sample' has to be in lowercase only.
+plot-type supported : scatterplot, boxplot and barplot
+```
+
 1. The user requests for a sample of scatterplot
 ```sh
 Input:
@@ -69,10 +78,9 @@ Attached file: CSV of dataset
 ```
 Note the following:
 1. x-axis and y-axis labels are column names in the dataset, so they should match.
-2. The column names should be in lowercase.
-3. The plot-type supports only for 'scatterplot', 'boxplot' and 'barplot'.
-4. You can download the test datasets from location given below
-5. The trigger word 'plot' has to be in lowercase only.
+2. The plot-type supports only for 'scatterplot', 'boxplot' and 'barplot'.
+3. You can download the test datasets from location given below.
+4. The trigger word 'plot' has to be in lowercase only.
 ```
 Test Datasets: 
 [petals](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/plotbot/puppeteer/test/dataset.csv) Column names : 
