@@ -209,10 +209,11 @@ No plots available
 
 ### Exploratory Testing and Code Inspection
 
+
 You must not hard-code interaction/mock data for your bots. TAs will perform additional exploratory testing and code inspection to verify bots perform as expected and handle edge cases and error in inputs. 
 
 **Failure to adhere to these instructions will result in a 0 for this milestone.**
-
+testinggg
 ### Bonus: Continuous Integration (CI) Server
 
 Create a jenkins server and build job that runs a build job for your bot, including running your integration tests. 
