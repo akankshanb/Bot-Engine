@@ -2,9 +2,21 @@
 
 In the previous milestone, we implemented the services required for your use cases and implemented interaction with a bot. In this milestone, you will be demonstrating a fully deployed version of your bot for use in a Mattermost environment.
 
+
 ## Deployment
 
 Using a configuring management tool, you must fully provision and configure a remote environment for your bot. You should largely be able to reuse homework materials but adopted for your bot.
+
+### Deployment steps
+#### Pre-requisites
+`sudo apt update`</br>
+`sudo apt install -y python3`</br>
+`sudo apt install -y python3-pip`</br>
+`sudo apt install -y ansible`</br>
+`pip3 install ansible`</br>
+
+#### Ansible playbook
+`sudo ansible-playbook -i inventory provision.yaml --ask-vault-pass`
 
 In your README.md, document how these configuration management tools and deployment scripts should be run and make sure to include demonstrate running them in your screencast.
 
