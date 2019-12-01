@@ -91,15 +91,11 @@ Test Datasets:
 [weather](https://github.ncsu.edu/csc510-fall2019/CSC510-22/blob/master/plotbot/puppeteer/test/weather.csv)
 
 1. The user requests to plot barplot by uploading dataset
-```
-Input:
-```
+`Input:`
 
 <img width="397" src="https://media.github.ncsu.edu/user/13071/files/d4eede80-13c9-11ea-8522-af0a64275b67">
 
-```
-Expected Output:
-```
+`Expected Output:`
 
 <img width="530" src="https://media.github.ncsu.edu/user/13071/files/d7513880-13c9-11ea-863b-fbdd5dcfe549">
 
@@ -109,9 +105,7 @@ Input:
 plot boxplot weather x1
 ```
 
-```
-Expected Output:
-```
+`Expected Output:`
 
 <img width="526" src="https://media.github.ncsu.edu/user/13071/files/24cca600-13c8-11ea-88b7-ce93b2be4ffe">
 
@@ -121,26 +115,22 @@ Input:
 plot boxplot dataset sepal.length sepal.width
 ```
 
-```
-Expected Output:
-```
+`Expected Output:`
 
-<img width="541" src="https://media.github.ncsu.edu/user/13071/files/56de0800-13c8-11ea-8cd8-19a9466ccf1f">
+<img width="509" src="https://media.github.ncsu.edu/user/13071/files/454a2f80-13cb-11ea-8099-218e08284992">
 
-
-4. The user requests to plot scatterplot with existing dataset and plotting 4 (more than 1) input variables (x-axis-labels) corresponding to 1 output variable (y-axis-label)
+4. The user requests to plot scatterplot with existing dataset with 1 input variable (x-axis-label) and 1 output variable (y-axis-label)
 ```
 Input:
-plot scatterplot weather x1,x2,x3,x4 y
+plot scatterplot weather x1 y
 ```
 
-```
-Expected Output:
-```
+`Expected Output:`
 
 <img width="516" src="https://media.github.ncsu.edu/user/13071/files/9b1dd800-13c9-11ea-8616-b3018114c714">
 
 5. The user requests to plot barplot mentioning a dataset which was not previously uploaded.
+
 ```
 Input:
 plot barplot iris month y
@@ -150,8 +140,6 @@ plot barplot iris month y
 Expected Output:
 Please request by uploading the dataset. The mentioned dataset doesn't exist in our database.
 ```
-
-<img width="504" src="https://media.github.ncsu.edu/user/13071/files/c18e4400-13c6-11ea-9da4-d932002b0549">
 
 
 ### Exploratory Testing and Code Inspection
