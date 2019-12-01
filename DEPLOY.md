@@ -11,8 +11,9 @@ In the previous milestone, we implemented the services required for your use cas
 `pip3 install ansible`</br>
 
 #### Ansible playbook
-  1. `sudo ansible-playbook -i inventory provision.yaml --ask-vault-pass`
-  2. Enter: **plotbot** (key to unlock the ansible vault)
+  1. `cd AnsibleScripts`
+  2. `sudo ansible-playbook -i inventory provision.yaml --ask-vault-pass`
+  3. Enter: **plotbot** (key to unlock the ansible vault)
 
 [**Screencast Link**](https://drive.google.com/open?id=18CEc7PNhk6eBr8sY624rSXV6H2ewBGHQ) running deployment scripts.
 
@@ -37,7 +38,7 @@ The trigger word is @plotbot for greeting the bot. It can be followed by intents
 ```
 <img width="586" alt="Screen Shot 2019-12-01 at 1 44 07 AM" src="https://media.github.ncsu.edu/user/13256/files/6cf5c380-13dc-11ea-99b2-d03c7b54b826">
 
-### 2.Three usecases to be tested. <br>
+### 2. Three usecases to be tested. <br>
 
 **Usecase 1: Give the user with code snippet for reuired type of graph**
 In the first use case, the user can request to provide sample of code snippet and a sample of plot for a particular plot type. 
