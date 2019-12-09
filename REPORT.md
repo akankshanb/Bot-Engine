@@ -5,8 +5,6 @@
 
 ### Report
 
-Prepare a report that summarizes:
-
 #### Problem Statement
 
 Visualizing data is an integral part for people to understand data literacy. Data literacy allows a learner to ask and answer meaningful questions by collecting, analyzing and making sense of the data encountered in real life. Many students, data analysts, data scientists and machine learning enthusiasts can analyze data using integrated plots and determine the most appropriate way to visualize information. As smoothly as they ace through comprehending the data, some may find it difficult to write code to achieve this task, especially people without a programming background. Moreover, with a plethora of libraries available in the same language, it becomes a daunting task to go through the installation procedures and following lines of code step by step. <br>
