@@ -9,7 +9,7 @@ Prepare a report that summarizes:
 
 #### Problem Statement
 
-Visualizing data is an integral part for people to understand data literacy. Data literacy allows a learner to ask and answer meaningful questions by collecting, analyzing and making sense of the data encountered in real life. Many students, data analysts, data scientists and machine learning enthusiasts can analyze data using integrated plots and determine the most appropriate way to visualize information. As smoothly as they ace through comprehending the data, some may find it difficult to write code to achieve this task, especially people without a programming background. Moreover, with a plethora of libraries available in the same language, it becomes a daunting task to go through the installation procedures and following lines of code step by step. 
+Visualizing data is an integral part for people to understand data literacy. Data literacy allows a learner to ask and answer meaningful questions by collecting, analyzing and making sense of the data encountered in real life. Many students, data analysts, data scientists and machine learning enthusiasts can analyze data using integrated plots and determine the most appropriate way to visualize information. As smoothly as they ace through comprehending the data, some may find it difficult to write code to achieve this task, especially people without a programming background. Moreover, with a plethora of libraries available in the same language, it becomes a daunting task to go through the installation procedures and following lines of code step by step. <br>
 Here comes PlotBot - a solution that helps user not to get overwhelmed. There is a need for a quick solution to map any dataset into a graph for people with little to no knowledge on plotting graphs. It is quick and easy with a friendly interaction platform which caters to a specific task instead of providing a million solutions. This library bot makes it easy for the users to choose the kind of plot and makes their work easy by also providing details of how to plot their data. One of the widely used library in Python for plotting graphs is Seaborn in Matplotlib. So for the users working with Python, it might be difficult to navigate through their extensive documentation to find just the right functions and library dependencies. Our bot provides the required libraries.Not only that, PlotBot will provide users with sample code for the kind of plot user wants to use to let them try it out on their own system. For users who want their plot to be made and do not want to go through the rigorous lines of code, Plotbot provides an additional feature of plotting the graph for them with their data they provide. Moreover, through Plotbot, users can retrieve their past plots if they never stored them and want to see their previous outputs before making new changes to their data.<br>
 
 Therefore, to sum it up - <br>
@@ -24,9 +24,9 @@ The types of plots the bot can plot are:
 
 
 
-* Primary features and screenshots.
-* Your reflection on the development process and project.
-* Any limitations and future work.
+#### Primary features and screenshots.
+#### Your reflection on the development process and project.
+#### Any limitations and future work.
 
 ### Peer Evaluation
 
