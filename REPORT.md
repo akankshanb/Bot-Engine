@@ -1,11 +1,11 @@
-### Presentation
+## Presentation
 
 [Video Presentation](https://drive.google.com/open?id=13TNTuUdJqnYFJLe8pP5fd0s1_c_f5ORC)
 
 
-### Report
+## Report
 
-#### Problem Statement
+### Problem Statement
 
 Visualizing data is an integral part for people to understand data literacy. Data literacy allows a learner to ask and answer meaningful questions by collecting, analyzing and making sense of the data encountered in real life. Many students, data analysts, data scientists and machine learning enthusiasts can analyze data using integrated plots and determine the most appropriate way to visualize information. As smoothly as they ace through comprehending the data, some may find it difficult to write code to achieve this task, especially people without a programming background. Moreover, with a plethora of libraries available in the same language, it becomes a daunting task to go through the installation procedures and following lines of code step by step. <br>
 Here comes **PlotBot** - a solution that helps user not to get overwhelmed. There is a need for a quick solution to map any dataset into a graph for people with little to no knowledge on plotting graphs. It is quick and easy with a friendly interaction platform which caters to a specific task instead of providing a million solutions. This library bot makes it easy for the users to choose the kind of plot and makes their work easy by also providing details of how to plot their data. One of the widely used library in Python for plotting graphs is **Seaborn** in Matplotlib. So for the users working with Python, it might be difficult to navigate through their extensive documentation to find just the right functions and library dependencies. Our bot provides the required libraries.Not only that, PlotBot will provide users with sample code for the kind of plot user wants to use to let them try it out on their own system. For users who want their plot to be made and do not want to go through the rigorous lines of code, Plotbot provides an additional feature of plotting the graph for them with their data they provide. Moreover, through Plotbot, users can retrieve their past plots if they never stored them and want to see their previous outputs before making new changes to their data.<br>
@@ -22,7 +22,7 @@ The types of plots the bot can plot are:
 
 
 
-#### Primary features and screenshots.
+### Primary features and screenshots
 
 ##### Primary features
 The bot’s primary features include library support for scatterplot, boxplot and barplot. In which the bot can help provide a code snippet to the user, and also help them generate a plot itself from a given dataset. The bot can also retrieve the plots that have been generated.
@@ -64,13 +64,13 @@ In the below screenshots you can see that the user is trying to access (1st cast
 <img width="428" src="https://media.github.ncsu.edu/user/13071/files/3dad1980-1aa2-11ea-9206-9448f02311a6">
 
 
-#### Your reflection on the development process and project.
+### Your reflection on the development process and project.
 Following good architecture patterns, having implemented the testing practices, following scrum-ban practices and also having configuration management in place helped us to develop our project very efficiently. It is very easy to make any changes to any module without breaking any functionality in other modules as the architecture pattern pipe and filter had all the components as separate services. Thinking about the design and architecture patterns beforehand while proposing the idea helped a lot to have a clear cut idea on what exactly we would want to do, what is possible and not possible to achieve and how to implement it efficiently. In our project, we have used database for storing all the generated plots and fetch them when user wants to retrieve. So, we compared various implementations of database, and went ahead with the design that would work for all our use-cases. It was clear that we need centralised datastore, so we chose data-centered repository architecture over blackboard architecture. Similarly, pipe and filter architecture was chosen over batch-sequential as we wanted to stream and process every user request independently.<br><br>
 Integration testing was implemented using Puppeteer to verify all our use cases. It was very helpful to have the web automation in place and give various user requests and verify if the output is as expected. These automated tests helped a lot in having bug-free code and fix the bugs as early as possible. <br><br>
 Following the various scrum-ban practices was the best part of the project. This made managing the tasks a lot easier. Instead of pushing all the work to last and worrying on fixing things as they break, scrum-ban practices helped us to correctly estimate deadlines and start work beforehand. Regular scrum meetings brought down the problem of communication gap between the team members and increased productivity to a greater extent. Code reviews helped a lot to have an efficient and improved code. Mostly the visualization of tasks on the Github project Kanban board was very useful than just discussing in scrum meetings and knowing the tasks. Using kanban board, we were able to know what others are working on, their progress and also go for help to the right person in the team in case of dependencies involved.<br><br>
 Also, by having configuration management in place, it has become easy to deploy our application anywhere and manage it without worrying about the required dependencies every time we deploy the application. We have also used Jenkins which runs the integration tests on every build job that gets triggered whenever there is a commit made in the repository. This makes sure that pushed new changes do not break any other functionalities of our application. Having this method of continuous integration in place, helped us to detect any bugs beforehand and fix them as early as possible without having a heavy impact on our application. 
 
-#### Any limitations and future work.
+### Any limitations and future work.
 
 * Plotbot targets Python Seaborn library to draw plots for users. As future work, the bot can show visualizations by incorporating other python libraries like Plotly and ggplot. <br>
 
