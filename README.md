@@ -2,8 +2,6 @@
 
 ## Team
 + Akanksha Bhattacharyya: anbhatta
-+ Sai Mounika Chowdhary Nekkalapudi: snekkal
-+ Utsav Kopargaonkar: ukoparg
 + Yash Kamdar: yjkamdar
 
 ## Milestones
